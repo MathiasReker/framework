@@ -18,7 +18,7 @@ class ScopeUserVisibility
      * @param User $actor
      * @param Builder $query
      */
-    public function __invoke(User $actor, $query)
+    public function __invoke(User $actor, $query): void
     {
         if ($actor->cannot('viewForum')) {
             if ($actor->isGuest()) {

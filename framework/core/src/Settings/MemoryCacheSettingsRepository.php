@@ -45,14 +45,14 @@ class MemoryCacheSettingsRepository implements SettingsRepositoryInterface
         return $default;
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         $this->cache[$key] = $value;
 
         $this->inner->set($key, $value);
     }
 
-    public function delete($key)
+    public function delete($key): void
     {
         unset($this->cache[$key]);
 

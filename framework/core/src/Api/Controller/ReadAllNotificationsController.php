@@ -32,7 +32,7 @@ class ReadAllNotificationsController extends AbstractDeleteController
     /**
      * {@inheritdoc}
      */
-    protected function delete(ServerRequestInterface $request)
+    protected function delete(ServerRequestInterface $request): void
     {
         $this->bus->dispatch(
             new ReadAllNotifications(RequestUtil::getActor($request))

@@ -27,12 +27,12 @@ abstract class Migration
     public static function createTable($name, callable $definition)
     {
         return [
-            'up' => function (Builder $schema) use ($name, $definition) {
-                $schema->create($name, function (Blueprint $table) use ($definition) {
+            'up' => function (Builder $schema) use ($name, $definition): void {
+                $schema->create($name, function (Blueprint $table) use ($definition): void {
                     $definition($table);
                 });
             },
-            'down' => function (Builder $schema) use ($name) {
+            'down' => function (Builder $schema) use ($name): void {
                 $schema->drop($name);
             }
         ];
@@ -44,10 +44,10 @@ abstract class Migration
     public static function renameTable($from, $to)
     {
         return [
-            'up' => function (Builder $schema) use ($from, $to) {
+            'up' => function (Builder $schema) use ($from, $to): void {
                 $schema->rename($from, $to);
             },
-            'down' => function (Builder $schema) use ($from, $to) {
+            'down' => function (Builder $schema) use ($from, $to): void {
                 $schema->rename($to, $from);
             }
         ];
@@ -59,16 +59,16 @@ abstract class Migration
     public static function addColumns($tableName, array $columnDefinitions)
     {
         return [
-            'up' => function (Builder $schema) use ($tableName, $columnDefinitions) {
-                $schema->table($tableName, function (Blueprint $table) use ($columnDefinitions) {
+            'up' => function (Builder $schema) use ($tableName, $columnDefinitions): void {
+                $schema->table($tableName, function (Blueprint $table) use ($columnDefinitions): void {
                     foreach ($columnDefinitions as $columnName => $options) {
                         $type = array_shift($options);
                         $table->addColumn($type, $columnName, $options);
                     }
                 });
             },
-            'down' => function (Builder $schema) use ($tableName, $columnDefinitions) {
-                $schema->table($tableName, function (Blueprint $table) use ($columnDefinitions) {
+            'down' => function (Builder $schema) use ($tableName, $columnDefinitions): void {
+                $schema->table($tableName, function (Blueprint $table) use ($columnDefinitions): void {
                     $table->dropColumn(array_keys($columnDefinitions));
                 });
             }
@@ -102,15 +102,15 @@ abstract class Migration
     public static function renameColumns($tableName, array $columnNames)
     {
         return [
-            'up' => function (Builder $schema) use ($tableName, $columnNames) {
-                $schema->table($tableName, function (Blueprint $table) use ($columnNames) {
+            'up' => function (Builder $schema) use ($tableName, $columnNames): void {
+                $schema->table($tableName, function (Blueprint $table) use ($columnNames): void {
                     foreach ($columnNames as $from => $to) {
                         $table->renameColumn($from, $to);
                     }
                 });
             },
-            'down' => function (Builder $schema) use ($tableName, $columnNames) {
-                $schema->table($tableName, function (Blueprint $table) use ($columnNames) {
+            'down' => function (Builder $schema) use ($tableName, $columnNames): void {
+                $schema->table($tableName, function (Blueprint $table) use ($columnNames): void {
                     foreach ($columnNames as $to => $from) {
                         $table->renameColumn($from, $to);
                     }
@@ -128,7 +128,7 @@ abstract class Migration
     public static function addSettings(array $defaults)
     {
         return [
-            'up' => function (Builder $schema) use ($defaults) {
+            'up' => function (Builder $schema) use ($defaults): void {
                 $settings = new DatabaseSettingsRepository(
                     $schema->getConnection()
                 );
@@ -137,7 +137,7 @@ abstract class Migration
                     $settings->set($key, $value);
                 }
             },
-            'down' => function (Builder $schema) use ($defaults) {
+            'down' => function (Builder $schema) use ($defaults): void {
                 $settings = new DatabaseSettingsRepository(
                     $schema->getConnection()
                 );
@@ -166,7 +166,7 @@ abstract class Migration
         }
 
         return [
-            'up' => function (Builder $schema) use ($rows) {
+            'up' => function (Builder $schema) use ($rows): void {
                 $db = $schema->getConnection();
 
                 foreach ($rows as $row) {
@@ -182,7 +182,7 @@ abstract class Migration
                 }
             },
 
-            'down' => function (Builder $schema) use ($rows) {
+            'down' => function (Builder $schema) use ($rows): void {
                 $db = $schema->getConnection();
 
                 foreach ($rows as $row) {

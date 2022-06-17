@@ -131,7 +131,7 @@ class Application
     /**
      * Register the basic bindings into the container.
      */
-    protected function registerBaseBindings()
+    protected function registerBaseBindings(): void
     {
         \Illuminate\Container\Container::setInstance($this->container);
 
@@ -155,7 +155,7 @@ class Application
     /**
      * Register all of the base service providers.
      */
-    protected function registerBaseServiceProviders()
+    protected function registerBaseServiceProviders(): void
     {
         $this->register(new EventServiceProvider($this->container));
     }
@@ -234,7 +234,7 @@ class Application
      * @param ServiceProvider $provider
      * @return void
      */
-    protected function markAsRegistered($provider)
+    protected function markAsRegistered($provider): void
     {
         $this->container['events']->dispatch($class = get_class($provider), [$provider]);
 
@@ -258,7 +258,7 @@ class Application
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         if ($this->booted) {
             return;
@@ -269,7 +269,7 @@ class Application
         // finished. This is useful when ordering the boot-up processes we run.
         $this->fireAppCallbacks($this->bootingCallbacks);
 
-        array_walk($this->serviceProviders, function ($p) {
+        array_walk($this->serviceProviders, function ($p): void {
             $this->bootProvider($p);
         });
 
@@ -297,7 +297,7 @@ class Application
      * @param mixed $callback
      * @return void
      */
-    public function booting($callback)
+    public function booting($callback): void
     {
         $this->bootingCallbacks[] = $callback;
     }
@@ -308,7 +308,7 @@ class Application
      * @param mixed $callback
      * @return void
      */
-    public function booted($callback)
+    public function booted($callback): void
     {
         $this->bootedCallbacks[] = $callback;
 
@@ -323,7 +323,7 @@ class Application
      * @param array $callbacks
      * @return void
      */
-    protected function fireAppCallbacks(array $callbacks)
+    protected function fireAppCallbacks(array $callbacks): void
     {
         foreach ($callbacks as $callback) {
             call_user_func($callback, $this);
@@ -333,7 +333,7 @@ class Application
     /**
      * Register the core class aliases in the container.
      */
-    public function registerCoreContainerAliases()
+    public function registerCoreContainerAliases(): void
     {
         $aliases = [
             'app'                  => [\Illuminate\Contracts\Container\Container::class, \Illuminate\Contracts\Foundation\Application::class,  \Psr\Container\ContainerInterface::class],

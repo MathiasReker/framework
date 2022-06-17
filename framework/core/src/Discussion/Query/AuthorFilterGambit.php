@@ -42,7 +42,7 @@ class AuthorFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), $matches[1], $negate);
     }
@@ -52,12 +52,12 @@ class AuthorFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'author';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $this->constrain($filterState->getQuery(), $filterValue, $negate);
     }
 
-    protected function constrain(Builder $query, $rawUsernames, $negate)
+    protected function constrain(Builder $query, $rawUsernames, $negate): void
     {
         $usernames = trim($rawUsernames, '"');
         $usernames = explode(',', $usernames);

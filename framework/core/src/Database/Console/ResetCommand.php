@@ -33,7 +33,7 @@ class ResetCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('migrate:reset')
@@ -49,7 +49,7 @@ class ResetCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $extensionName = $this->input->getOption('extension');
 

@@ -32,7 +32,7 @@ class SendEmailNotificationJob extends AbstractJob
         $this->recipient = $recipient;
     }
 
-    public function handle(NotificationMailer $mailer)
+    public function handle(NotificationMailer $mailer): void
     {
         $mailer->send($this->blueprint, $this->recipient);
     }

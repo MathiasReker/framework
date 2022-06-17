@@ -131,7 +131,7 @@ class UserDataProvider implements DataProviderInterface
         return $this->questionHelper->ask($this->input, $this->output, $question);
     }
 
-    private function validationError($message)
+    private function validationError($message): void
     {
         $this->output->writeln("<error>$message</error>");
         $this->output->writeln('Please try again.');

@@ -17,9 +17,9 @@ use Illuminate\Validation\ValidationException;
 
 class ValidatorTest extends TestCase
 {
-    private function extendToRequireLongPassword()
+    private function extendToRequireLongPassword(): void
     {
-        $this->extend((new Extend\Validator(UserValidator::class))->configure(function ($flarumValidator, $validator) {
+        $this->extend((new Extend\Validator(UserValidator::class))->configure(function ($flarumValidator, $validator): void {
             $validator->setRules([
                 'password' => [
                     'required',
@@ -29,7 +29,7 @@ class ValidatorTest extends TestCase
         }));
     }
 
-    private function extendToRequireLongPasswordViaInvokableClass()
+    private function extendToRequireLongPasswordViaInvokableClass(): void
     {
         $this->extend((new Extend\Validator(UserValidator::class))->configure(CustomValidatorClass::class));
     }
@@ -37,7 +37,7 @@ class ValidatorTest extends TestCase
     /**
      * @test
      */
-    public function custom_validation_rule_does_not_exist_by_default()
+    public function custom_validation_rule_does_not_exist_by_default(): void
     {
         $this->app()->getContainer()->make(UserValidator::class)->assertValid(['password' => 'simplePassword']);
 
@@ -48,7 +48,7 @@ class ValidatorTest extends TestCase
     /**
      * @test
      */
-    public function custom_validation_rule_exists_if_added()
+    public function custom_validation_rule_exists_if_added(): void
     {
         $this->extendToRequireLongPassword();
 
@@ -60,7 +60,7 @@ class ValidatorTest extends TestCase
     /**
      * @test
      */
-    public function custom_validation_rule_exists_if_added_via_invokable_class()
+    public function custom_validation_rule_exists_if_added_via_invokable_class(): void
     {
         $this->extendToRequireLongPasswordViaInvokableClass();
 
@@ -72,7 +72,7 @@ class ValidatorTest extends TestCase
     /**
      * @test
      */
-    public function custom_validation_rule_doesnt_affect_other_validators()
+    public function custom_validation_rule_doesnt_affect_other_validators(): void
     {
         $this->extendToRequireLongPassword();
 
@@ -85,7 +85,7 @@ class ValidatorTest extends TestCase
 
 class CustomValidatorClass
 {
-    public function __invoke($flarumValidator, $validator)
+    public function __invoke($flarumValidator, $validator): void
     {
         $validator->setRules([
             'password' => [

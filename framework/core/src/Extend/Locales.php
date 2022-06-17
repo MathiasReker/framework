@@ -27,11 +27,11 @@ class Locales implements ExtenderInterface, LifecycleInterface
         $this->directory = $directory;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         $container->resolving(
             LocaleManager::class,
-            function (LocaleManager $locales) {
+            function (LocaleManager $locales): void {
                 foreach (new DirectoryIterator($this->directory) as $file) {
                     if (! $file->isFile()) {
                         continue;
@@ -56,12 +56,12 @@ class Locales implements ExtenderInterface, LifecycleInterface
         );
     }
 
-    public function onEnable(Container $container, Extension $extension)
+    public function onEnable(Container $container, Extension $extension): void
     {
         $container->make(LocaleManager::class)->clearCache();
     }
 
-    public function onDisable(Container $container, Extension $extension)
+    public function onDisable(Container $container, Extension $extension): void
     {
         $container->make(LocaleManager::class)->clearCache();
     }

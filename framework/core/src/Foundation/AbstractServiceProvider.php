@@ -37,7 +37,7 @@ abstract class AbstractServiceProvider extends ServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
     }
 }

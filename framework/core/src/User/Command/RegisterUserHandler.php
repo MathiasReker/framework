@@ -127,7 +127,7 @@ class RegisterUserHandler
         return $user;
     }
 
-    private function applyToken(User $user, RegistrationToken $token)
+    private function applyToken(User $user, RegistrationToken $token): void
     {
         foreach ($token->user_attributes as $k => $v) {
             if ($k === 'avatar_url') {
@@ -150,7 +150,7 @@ class RegisterUserHandler
     /**
      * @throws InvalidArgumentException
      */
-    private function uploadAvatarFromUrl(User $user, string $url)
+    private function uploadAvatarFromUrl(User $user, string $url): void
     {
         $urlValidator = $this->validator->make(compact('url'), [
             'url' => 'required|active_url',
@@ -171,7 +171,7 @@ class RegisterUserHandler
         $this->avatarUploader->upload($user, $image);
     }
 
-    private function fulfillToken(User $user, RegistrationToken $token)
+    private function fulfillToken(User $user, RegistrationToken $token): void
     {
         $token->delete();
 

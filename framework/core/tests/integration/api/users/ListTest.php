@@ -34,7 +34,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function disallows_index_for_guest()
+    public function disallows_index_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users')
@@ -46,7 +46,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_index_for_guest_when_they_have_permission()
+    public function shows_index_for_guest_when_they_have_permission(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -64,7 +64,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_index_for_admin()
+    public function shows_index_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -78,7 +78,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_full_results_without_search_or_filter()
+    public function shows_full_results_without_search_or_filter(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -94,7 +94,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function allows_last_seen_sorting_with_permission()
+    public function allows_last_seen_sorting_with_permission(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -116,7 +116,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function disallows_last_seen_sorting_without_permission()
+    public function disallows_last_seen_sorting_without_permission(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -137,7 +137,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function group_filter_works()
+    public function group_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -155,7 +155,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function group_filter_works_negated()
+    public function group_filter_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -173,7 +173,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_filter_works()
+    public function email_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -191,7 +191,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_filter_works_negated()
+    public function email_filter_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -209,7 +209,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_filter_only_works_for_admin()
+    public function email_filter_only_works_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -227,7 +227,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function group_gambit_works()
+    public function group_gambit_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -245,7 +245,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function group_gambit_works_negated()
+    public function group_gambit_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -263,7 +263,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_gambit_works()
+    public function email_gambit_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -281,7 +281,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_gambit_works_negated()
+    public function email_gambit_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [
@@ -299,7 +299,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function email_gambit_only_works_for_admin()
+    public function email_gambit_only_works_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users', [

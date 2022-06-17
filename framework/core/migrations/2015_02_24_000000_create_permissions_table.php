@@ -12,7 +12,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 return Migration::createTable(
     'permissions',
-    function (Blueprint $table) {
+    function (Blueprint $table): void {
         $table->integer('group_id')->unsigned();
         $table->string('permission', 100);
         $table->primary(['group_id', 'permission']);

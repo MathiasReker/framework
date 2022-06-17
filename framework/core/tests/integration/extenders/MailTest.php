@@ -26,7 +26,7 @@ class MailTest extends TestCase
     /**
      * @test
      */
-    public function drivers_are_unchanged_by_default()
+    public function drivers_are_unchanged_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/mail/settings', [
@@ -52,7 +52,7 @@ class MailTest extends TestCase
     /**
      * @test
      */
-    public function added_driver_appears_in_mail_settings()
+    public function added_driver_appears_in_mail_settings(): void
     {
         $this->extend(
             (new Extend\Mail)
@@ -74,7 +74,7 @@ class MailTest extends TestCase
     /**
      * @test
      */
-    public function adding_driver_with_duplicate_name_overrides_fields()
+    public function adding_driver_with_duplicate_name_overrides_fields(): void
     {
         $this->extend(
             (new Extend\Mail)

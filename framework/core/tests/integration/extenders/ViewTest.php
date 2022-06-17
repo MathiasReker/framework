@@ -18,7 +18,7 @@ class ViewTest extends TestCase
     /**
      * @test
      */
-    public function custom_view_namespace_does_not_exist_by_default()
+    public function custom_view_namespace_does_not_exist_by_default(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->app()->getContainer()->make(Factory::class)->make('integration.test::test');
@@ -27,7 +27,7 @@ class ViewTest extends TestCase
     /**
      * @test
      */
-    public function custom_view_namespace_can_be_added_by_extender()
+    public function custom_view_namespace_can_be_added_by_extender(): void
     {
         $this->extend(
             (new Extend\View)
@@ -40,7 +40,7 @@ class ViewTest extends TestCase
     /**
      * @test
      */
-    public function can_add_view_to_namespace_by_prepend_extender()
+    public function can_add_view_to_namespace_by_prepend_extender(): void
     {
         $this->extend(
             (new Extend\View)
@@ -53,7 +53,7 @@ class ViewTest extends TestCase
     /**
      * @test
      */
-    public function can_override_view_in_namespace_by_prepend_extender()
+    public function can_override_view_in_namespace_by_prepend_extender(): void
     {
         $this->extend(
             (new Extend\View)

@@ -25,7 +25,7 @@ class FileVersioner implements VersionerInterface
         $this->filesystem = $filesystem;
     }
 
-    public function putRevision(string $file, ?string $revision)
+    public function putRevision(string $file, ?string $revision): void
     {
         if ($this->filesystem->has(static::REV_MANIFEST)) {
             $manifest = json_decode($this->filesystem->read(static::REV_MANIFEST), true);

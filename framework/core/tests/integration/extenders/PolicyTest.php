@@ -51,7 +51,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_cant_hide_discussion_by_default()
+    public function unrelated_user_cant_hide_discussion_by_default(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/discussions/1', $this->hideQuery)
@@ -63,7 +63,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_can_hide_discussion_if_allowed()
+    public function unrelated_user_can_hide_discussion_if_allowed(): void
     {
         $this->extend(
             (new Extend\Policy())
@@ -80,7 +80,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_cant_hide_discussion_if_denied()
+    public function unrelated_user_cant_hide_discussion_if_denied(): void
     {
         $this->extend(
             (new Extend\Policy())
@@ -98,7 +98,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_can_hide_discussion_if_force_allowed()
+    public function unrelated_user_can_hide_discussion_if_force_allowed(): void
     {
         $this->extend(
             (new Extend\Policy())
@@ -117,7 +117,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_cant_hide_discussion_if_force_denied()
+    public function unrelated_user_cant_hide_discussion_if_force_denied(): void
     {
         $this->extend(
             (new Extend\Policy())
@@ -137,7 +137,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function regular_user_can_start_discussions_by_default()
+    public function regular_user_can_start_discussions_by_default(): void
     {
         $this->app();
 
@@ -149,7 +149,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function regular_user_cant_start_discussions_if_blocked_by_global_policy()
+    public function regular_user_cant_start_discussions_if_blocked_by_global_policy(): void
     {
         $this->extend(
             (new Extend\Policy)
@@ -166,7 +166,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function global_policy_doesnt_apply_if_argument_provided()
+    public function global_policy_doesnt_apply_if_argument_provided(): void
     {
         $this->extend(
             (new Extend\Policy)
@@ -183,7 +183,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_cant_hide_post_by_default()
+    public function unrelated_user_cant_hide_post_by_default(): void
     {
         $this->app();
 
@@ -195,7 +195,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function unrelated_user_can_hide_post_if_allowed()
+    public function unrelated_user_can_hide_post_if_allowed(): void
     {
         $this->extend(
             (new Extend\Policy)->modelPolicy(CommentPost::class, CommentPostChildClassPolicy::class)
@@ -210,7 +210,7 @@ class PolicyTest extends TestCase
     /**
      * @test
      */
-    public function policies_are_inherited_to_child_classes()
+    public function policies_are_inherited_to_child_classes(): void
     {
         $this->extend(
             (new Extend\Policy)->modelPolicy(Post::class, PostParentClassPolicy::class),

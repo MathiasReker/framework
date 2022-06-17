@@ -92,19 +92,19 @@ class Discussion extends AbstractModel
      *
      * @return void
      */
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
-        static::deleting(function (self $discussion) {
+        static::deleting(function (self $discussion): void {
             Notification::whereSubjectModel(Post::class)
-                ->whereIn('subject_id', function ($query) use ($discussion) {
+                ->whereIn('subject_id', function ($query) use ($discussion): void {
                     $query->select('id')->from('posts')->where('discussion_id', $discussion->id);
                 })
                 ->delete();
         });
 
-        static::deleted(function (self $discussion) {
+        static::deleted(function (self $discussion): void {
             $discussion->raise(new Deleted($discussion));
 
             Notification::whereSubject($discussion)->delete();
@@ -431,7 +431,7 @@ class Discussion extends AbstractModel
      *
      * @param User $user
      */
-    public static function setStateUser(User $user)
+    public static function setStateUser(User $user): void
     {
         static::$stateUser = $user;
     }
@@ -443,7 +443,7 @@ class Discussion extends AbstractModel
      *
      * @param string $title
      */
-    protected function setTitleAttribute($title)
+    protected function setTitleAttribute($title): void
     {
         $this->attributes['title'] = $title;
         $this->slug = Str::slug(

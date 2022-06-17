@@ -175,7 +175,7 @@ class ExtensionManager
      *
      * @internal
      */
-    public function enable($name)
+    public function enable($name): void
     {
         if ($this->isEnabled($name)) {
             return;
@@ -217,7 +217,7 @@ class ExtensionManager
      *
      * @internal
      */
-    public function disable($name)
+    public function disable($name): void
     {
         $extension = $this->getExtension($name);
         $enabledExtensions = $this->getEnabledExtensions();
@@ -254,7 +254,7 @@ class ExtensionManager
      * @param string $name
      * @internal
      */
-    public function uninstall($name)
+    public function uninstall($name): void
     {
         $extension = $this->getExtension($name);
 
@@ -274,7 +274,7 @@ class ExtensionManager
      *
      * @param Extension $extension
      */
-    protected function publishAssets(Extension $extension)
+    protected function publishAssets(Extension $extension): void
     {
         $extension->copyAssetsTo($this->getAssetsFilesystem());
     }
@@ -284,7 +284,7 @@ class ExtensionManager
      *
      * @param Extension $extension
      */
-    protected function unpublishAssets(Extension $extension)
+    protected function unpublishAssets(Extension $extension): void
     {
         $this->getAssetsFilesystem()->deleteDirectory('extensions/'.$extension->getId());
     }
@@ -320,7 +320,7 @@ class ExtensionManager
      *
      * @internal
      */
-    public function migrate(Extension $extension, $direction = 'up')
+    public function migrate(Extension $extension, $direction = 'up'): void
     {
         $this->container->bind(Builder::class, function ($container) {
             return $container->make(ConnectionInterface::class)->getSchemaBuilder();
@@ -376,7 +376,7 @@ class ExtensionManager
      *
      * @param Container $container
      */
-    public function extend(Container $container)
+    public function extend(Container $container): void
     {
         foreach ($this->getEnabledExtensions() as $extension) {
             $extension->extend($container);
@@ -398,7 +398,7 @@ class ExtensionManager
      *
      * @param array $enabledExtensions
      */
-    protected function setEnabledExtensions(array $enabledExtensions)
+    protected function setEnabledExtensions(array $enabledExtensions): void
     {
         $sortedEnabled = static::resolveExtensionOrder($enabledExtensions)['valid'];
 

@@ -34,7 +34,7 @@ class FilterState extends AbstractQueryState
      * @param FilterInterface $filter
      * @return void
      */
-    public function addActiveFilter(FilterInterface $filter)
+    public function addActiveFilter(FilterInterface $filter): void
     {
         $this->activeFilters[] = $filter;
     }

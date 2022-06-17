@@ -25,7 +25,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_type_doesnt_exist_by_default()
+    public function notification_type_doesnt_exist_by_default(): void
     {
         $this->assertArrayNotHasKey('customNotificationType', Notification::getSubjectModels());
     }
@@ -33,7 +33,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_serializer_doesnt_exist_by_default()
+    public function notification_serializer_doesnt_exist_by_default(): void
     {
         $this->app();
 
@@ -46,7 +46,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_driver_doesnt_exist_by_default()
+    public function notification_driver_doesnt_exist_by_default(): void
     {
         $this->assertArrayNotHasKey('customNotificationDriver', NotificationSyncer::getNotificationDrivers());
     }
@@ -54,7 +54,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_type_exists_if_added()
+    public function notification_type_exists_if_added(): void
     {
         $this->extend((new Extend\Notification)->type(
             CustomNotificationType::class,
@@ -69,7 +69,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_serializer_exists_if_added()
+    public function notification_serializer_exists_if_added(): void
     {
         $this->extend((new Extend\Notification)->type(
             CustomNotificationType::class,
@@ -87,7 +87,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_driver_exists_if_added()
+    public function notification_driver_exists_if_added(): void
     {
         $this->extend((new Extend\Notification())->driver(
             'customNotificationDriver',
@@ -102,7 +102,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_driver_enabled_types_exist_if_added()
+    public function notification_driver_enabled_types_exist_if_added(): void
     {
         $this->extend(
             (new Extend\Notification())
@@ -127,7 +127,7 @@ class NotificationTest extends TestCase
     /**
      * @test
      */
-    public function notification_before_sending_callback_works_if_added()
+    public function notification_before_sending_callback_works_if_added(): void
     {
         $this->extend(
             (new Extend\Notification)

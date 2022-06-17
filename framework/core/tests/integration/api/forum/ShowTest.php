@@ -34,7 +34,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function normal_user_sees_most_information()
+    public function normal_user_sees_most_information(): void
     {
         $response = $this->send(
             $this->request('GET', '/api', [
@@ -56,7 +56,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function admin_user_sees_even_more()
+    public function admin_user_sees_even_more(): void
     {
         $response = $this->send(
             $this->request('GET', '/api', [

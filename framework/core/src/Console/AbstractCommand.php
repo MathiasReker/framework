@@ -58,7 +58,7 @@ abstract class AbstractCommand extends Command
      *
      * @param string $message
      */
-    protected function info($message)
+    protected function info($message): void
     {
         $this->output->writeln("<info>$message</info>");
     }
@@ -70,7 +70,7 @@ abstract class AbstractCommand extends Command
      *
      * @param string $message
      */
-    protected function error($message)
+    protected function error($message): void
     {
         if ($this->output instanceof ConsoleOutputInterface) {
             $this->output->getErrorOutput()->writeln("<error>$message</error>");

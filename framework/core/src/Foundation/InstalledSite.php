@@ -139,7 +139,7 @@ class InstalledSite implements SiteInterface
         $laravel->register(ValidationServiceProvider::class);
         $laravel->register(ViewServiceProvider::class);
 
-        $laravel->booting(function () use ($container) {
+        $laravel->booting(function () use ($container): void {
             // Run all local-site extenders before booting service providers
             // (but after those from "real" extensions, which have been set up
             // in a service provider above).
@@ -174,7 +174,7 @@ class InstalledSite implements SiteInterface
         ]);
     }
 
-    protected function registerLogger(Container $container)
+    protected function registerLogger(Container $container): void
     {
         $logPath = $this->paths->storage.'/logs/flarum.log';
         $logLevel = $this->config->inDebugMode() ? Logger::DEBUG : Logger::INFO;
@@ -185,7 +185,7 @@ class InstalledSite implements SiteInterface
         $container->alias('log', LoggerInterface::class);
     }
 
-    protected function registerCache(Container $container)
+    protected function registerCache(Container $container): void
     {
         $container->singleton('cache.store', function ($container) {
             return new CacheRepository($container->make('cache.filestore'));

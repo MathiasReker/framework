@@ -19,7 +19,7 @@ class InstallServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.install.routes', function () {
             return new RouteCollection;
@@ -29,7 +29,7 @@ class InstallServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot(Container $container, RouteHandlerFactory $route)
+    public function boot(Container $container, RouteHandlerFactory $route): void
     {
         $this->loadViewsFrom(__DIR__.'/../../views/install', 'flarum.install');
 
@@ -40,7 +40,7 @@ class InstallServiceProvider extends AbstractServiceProvider
      * @param RouteCollection     $routes
      * @param RouteHandlerFactory $route
      */
-    protected function populateRoutes(RouteCollection $routes, RouteHandlerFactory $route)
+    protected function populateRoutes(RouteCollection $routes, RouteHandlerFactory $route): void
     {
         $routes->get(
             '/{path:.*}',

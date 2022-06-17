@@ -41,7 +41,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function properly_formatted_post_rendered_correctly()
+    public function properly_formatted_post_rendered_correctly(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts/1', [
@@ -62,7 +62,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function malformed_post_caught_by_renderer()
+    public function malformed_post_caught_by_renderer(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts/2', [

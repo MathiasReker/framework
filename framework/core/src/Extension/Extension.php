@@ -126,7 +126,7 @@ class Extension implements Arrayable
     /**
      * Assigns the id for the extension used globally.
      */
-    protected function assignId()
+    protected function assignId(): void
     {
         $this->id = static::nameToId($this->name);
     }
@@ -134,7 +134,7 @@ class Extension implements Arrayable
     /**
      * @internal
      */
-    public function extend(Container $container)
+    public function extend(Container $container): void
     {
         foreach ($this->getExtenders() as $extender) {
             try {
@@ -219,7 +219,7 @@ class Extension implements Arrayable
      *
      * @internal
      */
-    public function calculateDependencies($extensionSet)
+    public function calculateDependencies($extensionSet): void
     {
         $this->extensionDependencyIds = (new Collection(Arr::get($this->composerJson, 'require', [])))
             ->keys()
@@ -301,7 +301,7 @@ class Extension implements Arrayable
     /**
      * @internal
      */
-    public function enable(Container $container)
+    public function enable(Container $container): void
     {
         foreach ($this->getLifecycleExtenders() as $extender) {
             $extender->onEnable($container, $this);
@@ -311,7 +311,7 @@ class Extension implements Arrayable
     /**
      * @internal
      */
-    public function disable(Container $container)
+    public function disable(Container $container): void
     {
         foreach ($this->getLifecycleExtenders() as $extender) {
             $extender->onDisable($container, $this);
@@ -462,7 +462,7 @@ class Extension implements Arrayable
     /**
      * @internal
      */
-    public function copyAssetsTo(FilesystemInterface $target)
+    public function copyAssetsTo(FilesystemInterface $target): void
     {
         if (! $this->hasAssets()) {
             return;

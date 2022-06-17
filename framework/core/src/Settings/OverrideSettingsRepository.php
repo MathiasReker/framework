@@ -49,12 +49,12 @@ class OverrideSettingsRepository implements SettingsRepositoryInterface
         return Arr::get($this->all(), $key, $default);
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         $this->inner->set($key, $value);
     }
 
-    public function delete($key)
+    public function delete($key): void
     {
         $this->inner->delete($key);
     }

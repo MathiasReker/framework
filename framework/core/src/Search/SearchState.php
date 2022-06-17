@@ -34,7 +34,7 @@ class SearchState extends AbstractQueryState
      * @param GambitInterface $gambit
      * @return void
      */
-    public function addActiveGambit(GambitInterface $gambit)
+    public function addActiveGambit(GambitInterface $gambit): void
     {
         $this->activeGambits[] = $gambit;
     }

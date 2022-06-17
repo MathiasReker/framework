@@ -62,17 +62,17 @@ abstract class AbstractModel extends Eloquent
     /**
      * {@inheritdoc}
      */
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
-        static::saved(function (self $model) {
+        static::saved(function (self $model): void {
             foreach ($model->releaseAfterSaveCallbacks() as $callback) {
                 $callback($model);
             }
         });
 
-        static::deleted(function (self $model) {
+        static::deleted(function (self $model): void {
             foreach ($model->releaseAfterDeleteCallbacks() as $callback) {
                 $callback($model);
             }
@@ -162,7 +162,7 @@ abstract class AbstractModel extends Eloquent
      * @param callable $callback
      * @return void
      */
-    public function afterSave($callback)
+    public function afterSave($callback): void
     {
         $this->afterSaveCallbacks[] = $callback;
     }
@@ -173,7 +173,7 @@ abstract class AbstractModel extends Eloquent
      * @param callable $callback
      * @return void
      */
-    public function afterDelete($callback)
+    public function afterDelete($callback): void
     {
         $this->afterDeleteCallbacks[] = $callback;
     }

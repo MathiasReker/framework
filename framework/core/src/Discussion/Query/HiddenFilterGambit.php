@@ -28,7 +28,7 @@ class HiddenFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), $negate);
     }
@@ -38,14 +38,14 @@ class HiddenFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'hidden';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $this->constrain($filterState->getQuery(), $negate);
     }
 
-    protected function constrain(Builder $query, bool $negate)
+    protected function constrain(Builder $query, bool $negate): void
     {
-        $query->where(function ($query) use ($negate) {
+        $query->where(function ($query) use ($negate): void {
             if ($negate) {
                 $query->whereNull('hidden_at')->where('comment_count', '>', 0);
             } else {

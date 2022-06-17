@@ -40,7 +40,7 @@ class DeletionTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_delete()
+    public function admin_can_delete(): void
     {
         $response = $this->send(
             $this->request('DELETE', '/api/discussions/1', [

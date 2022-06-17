@@ -19,7 +19,7 @@ class DiscussionFilter implements FilterInterface
         return 'discussion';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $discussionId = trim($filterValue, '"');
 

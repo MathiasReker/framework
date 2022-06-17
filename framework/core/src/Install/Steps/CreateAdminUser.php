@@ -44,7 +44,7 @@ class CreateAdminUser implements Step
         return 'Creating admin user '.$this->admin->getUsername();
     }
 
-    public function run()
+    public function run(): void
     {
         $uid = $this->database->table('users')->insertGetId(
             $this->admin->getAttributes()

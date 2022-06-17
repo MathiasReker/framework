@@ -16,7 +16,7 @@ class ContentTypeOptionsTest extends TestCase
     /**
      * @test
      */
-    public function has_content_type_options_header()
+    public function has_content_type_options_header(): void
     {
         $response = $this->send(
             $this->request('GET', '/')

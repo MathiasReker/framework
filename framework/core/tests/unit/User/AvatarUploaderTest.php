@@ -41,7 +41,7 @@ class AvatarUploaderTest extends TestCase
         $this->uploader = new AvatarUploader($this->filesystemFactory);
     }
 
-    public function test_removing_avatar_removes_file()
+    public function test_removing_avatar_removes_file(): void
     {
         $this->filesystem->shouldReceive('exists')->with('ABCDEFGHabcdefgh.png')->andReturn(true);
         $this->filesystem->shouldReceive('delete')->with('ABCDEFGHabcdefgh.png')->once();
@@ -63,7 +63,7 @@ class AvatarUploaderTest extends TestCase
         $this->assertEquals(null, $user->getRawOriginal('avatar_url'));
     }
 
-    public function test_removing_url_avatar_removes_no_file()
+    public function test_removing_url_avatar_removes_no_file(): void
     {
         $this->filesystem->shouldReceive('exists')->with('https://example.com/avatar.png')->andReturn(false)->once();
         $this->filesystem->shouldNotReceive('delete');
@@ -83,7 +83,7 @@ class AvatarUploaderTest extends TestCase
         $this->assertEquals(null, $user->getRawOriginal('avatar_url'));
     }
 
-    public function test_changing_avatar_removes_file()
+    public function test_changing_avatar_removes_file(): void
     {
         $this->filesystem->shouldReceive('put')->once();
         $this->filesystem->shouldReceive('exists')->with('ABCDEFGHabcdefgh.png')->andReturn(true);

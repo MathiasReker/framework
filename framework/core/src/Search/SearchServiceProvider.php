@@ -25,7 +25,7 @@ class SearchServiceProvider extends AbstractServiceProvider
     /**
      * @inheritDoc
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.simple_search.fulltext_gambits', function () {
             return [
@@ -54,7 +54,7 @@ class SearchServiceProvider extends AbstractServiceProvider
         });
     }
 
-    public function boot(Container $container)
+    public function boot(Container $container): void
     {
         $fullTextGambits = $container->make('flarum.simple_search.fulltext_gambits');
 

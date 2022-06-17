@@ -44,7 +44,7 @@ class EmailNotificationDriver implements NotificationDriverInterface
      * @param MailableInterface $blueprint
      * @param User[] $recipients
      */
-    protected function mailNotifications(MailableInterface $blueprint, array $recipients)
+    protected function mailNotifications(MailableInterface $blueprint, array $recipients): void
     {
         foreach ($recipients as $user) {
             if ($user->shouldEmail($blueprint::getType())) {

@@ -104,14 +104,14 @@ class Assets
         return $this;
     }
 
-    private function addSources($type, $callback)
+    private function addSources($type, $callback): void
     {
         $this->sources[$type][] = $callback;
     }
 
-    private function populate(CompilerInterface $compiler, string $type, string $locale = null)
+    private function populate(CompilerInterface $compiler, string $type, string $locale = null): void
     {
-        $compiler->addSources(function (SourceCollector $sources) use ($type, $locale) {
+        $compiler->addSources(function (SourceCollector $sources) use ($type, $locale): void {
             foreach ($this->sources[$type] as $callback) {
                 $callback($sources, $locale);
             }
@@ -189,7 +189,7 @@ class Assets
         return $this->name;
     }
 
-    public function setName(string $name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -199,7 +199,7 @@ class Assets
         return $this->assetsDir;
     }
 
-    public function setAssetsDir(Filesystem $assetsDir)
+    public function setAssetsDir(Filesystem $assetsDir): void
     {
         $this->assetsDir = $assetsDir;
     }
@@ -209,7 +209,7 @@ class Assets
         return $this->cacheDir;
     }
 
-    public function setCacheDir(?string $cacheDir)
+    public function setCacheDir(?string $cacheDir): void
     {
         $this->cacheDir = $cacheDir;
     }
@@ -219,17 +219,17 @@ class Assets
         return $this->lessImportDirs;
     }
 
-    public function setLessImportDirs(array $lessImportDirs)
+    public function setLessImportDirs(array $lessImportDirs): void
     {
         $this->lessImportDirs = $lessImportDirs;
     }
 
-    public function addLessImportOverrides(array $lessImportOverrides)
+    public function addLessImportOverrides(array $lessImportOverrides): void
     {
         $this->lessImportOverrides = array_merge($this->lessImportOverrides, $lessImportOverrides);
     }
 
-    public function addFileSourceOverrides(array $fileSourceOverrides)
+    public function addFileSourceOverrides(array $fileSourceOverrides): void
     {
         $this->fileSourceOverrides = array_merge($this->fileSourceOverrides, $fileSourceOverrides);
     }

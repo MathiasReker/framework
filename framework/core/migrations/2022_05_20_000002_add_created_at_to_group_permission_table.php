@@ -11,8 +11,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 
 return [
-    'up' => function (Builder $schema) {
-        $schema->table('group_permission', function (Blueprint $table) {
+    'up' => function (Builder $schema): void {
+        $schema->table('group_permission', function (Blueprint $table): void {
             $table->timestamp('created_at')->nullable();
         });
 
@@ -22,8 +22,8 @@ return [
         $connection->statement("ALTER TABLE `${prefix}group_permission` MODIFY created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP");
     },
 
-    'down' => function (Builder $schema) {
-        $schema->table('group_permission', function (Blueprint $table) {
+    'down' => function (Builder $schema): void {
+        $schema->table('group_permission', function (Blueprint $table): void {
             $table->dropColumn('created_at');
         });
     }

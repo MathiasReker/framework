@@ -33,7 +33,7 @@ class SetTest extends TestCase
     /**
      * @test
      */
-    public function settings_cant_be_updated_by_user()
+    public function settings_cant_be_updated_by_user(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/settings', [
@@ -51,7 +51,7 @@ class SetTest extends TestCase
     /**
      * @test
      */
-    public function settings_can_be_updated_by_admin()
+    public function settings_can_be_updated_by_admin(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/settings', [
@@ -69,7 +69,7 @@ class SetTest extends TestCase
     /**
      * @test
      */
-    public function max_setting_length_validated()
+    public function max_setting_length_validated(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/settings', [

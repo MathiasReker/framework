@@ -38,7 +38,7 @@ class StoreConfig implements Step, ReversibleStep
         return 'Writing config file';
     }
 
-    public function run()
+    public function run(): void
     {
         file_put_contents(
             $this->configFile,
@@ -46,7 +46,7 @@ class StoreConfig implements Step, ReversibleStep
         );
     }
 
-    public function revert()
+    public function revert(): void
     {
         @unlink($this->configFile);
     }

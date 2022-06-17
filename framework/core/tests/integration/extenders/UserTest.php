@@ -36,7 +36,7 @@ class UserTest extends TestCase
         $this->setting('display_name_driver', 'custom');
     }
 
-    protected function registerTestPreference()
+    protected function registerTestPreference(): void
     {
         $this->extend(
             (new Extend\User())
@@ -47,7 +47,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function username_display_name_driver_used_by_default()
+    public function username_display_name_driver_used_by_default(): void
     {
         $this->app();
 
@@ -59,7 +59,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function can_use_custom_display_name_driver()
+    public function can_use_custom_display_name_driver(): void
     {
         $this->extend(
             (new Extend\User)
@@ -76,7 +76,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function user_has_permissions_for_expected_groups_if_no_processors_added()
+    public function user_has_permissions_for_expected_groups_if_no_processors_added(): void
     {
         $this->app();
 
@@ -88,7 +88,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function processor_can_restrict_user_groups()
+    public function processor_can_restrict_user_groups(): void
     {
         $this->extend((new Extend\User)->permissionGroups(function (User $user, array $groupIds) {
             return array_filter($groupIds, function ($id) {
@@ -106,7 +106,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function processor_can_be_invokable_class()
+    public function processor_can_be_invokable_class(): void
     {
         $this->extend((new Extend\User)->permissionGroups(CustomGroupProcessorClass::class));
 
@@ -120,7 +120,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function can_add_user_preference()
+    public function can_add_user_preference(): void
     {
         $this->registerTestPreference();
 
@@ -134,7 +134,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function can_store_user_preference()
+    public function can_store_user_preference(): void
     {
         $this->registerTestPreference();
 
@@ -151,7 +151,7 @@ class UserTest extends TestCase
     /**
      * @test
      */
-    public function storing_user_preference_modified_by_transformer()
+    public function storing_user_preference_modified_by_transformer(): void
     {
         $this->registerTestPreference();
 

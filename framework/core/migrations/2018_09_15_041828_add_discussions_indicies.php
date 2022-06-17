@@ -11,8 +11,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 
 return [
-    'up' => function (Builder $schema) {
-        $schema->table('discussions', function (Blueprint $table) {
+    'up' => function (Builder $schema): void {
+        $schema->table('discussions', function (Blueprint $table): void {
             $table->index('last_posted_at');
             $table->index('last_posted_user_id');
             $table->index('created_at');
@@ -23,8 +23,8 @@ return [
         });
     },
 
-    'down' => function (Builder $schema) {
-        $schema->table('discussions', function (Blueprint $table) {
+    'down' => function (Builder $schema): void {
+        $schema->table('discussions', function (Blueprint $table): void {
             $table->dropIndex(['last_posted_at']);
             $table->dropIndex(['last_posted_user_id']);
             $table->dropIndex(['created_at']);

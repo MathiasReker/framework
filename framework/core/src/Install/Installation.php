@@ -128,7 +128,7 @@ class Installation
         $pipeline->pipe(function () {
             return new Steps\ConnectToDatabase(
                 $this->dbConfig,
-                function ($connection) {
+                function ($connection): void {
                     $this->db = $connection;
                 }
             );

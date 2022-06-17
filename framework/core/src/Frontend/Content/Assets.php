@@ -39,7 +39,7 @@ class Assets
         return $this;
     }
 
-    public function __invoke(Document $document, Request $request)
+    public function __invoke(Document $document, Request $request): void
     {
         $locale = $request->getAttribute('locale');
 
@@ -61,7 +61,7 @@ class Assets
      *
      * @param array $compilers
      */
-    private function forceCommit(array $compilers)
+    private function forceCommit(array $compilers): void
     {
         /** @var CompilerInterface $compiler */
         foreach ($compilers as $compiler) {

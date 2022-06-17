@@ -29,7 +29,7 @@ class UninstallExtensionController extends AbstractDeleteController
         $this->extensions = $extensions;
     }
 
-    protected function delete(ServerRequestInterface $request)
+    protected function delete(ServerRequestInterface $request): void
     {
         RequestUtil::getActor($request)->assertAdmin();
 

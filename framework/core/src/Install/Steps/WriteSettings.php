@@ -37,7 +37,7 @@ class WriteSettings implements Step
         return 'Writing default settings';
     }
 
-    public function run()
+    public function run(): void
     {
         $repo = new DatabaseSettingsRepository($this->database);
 

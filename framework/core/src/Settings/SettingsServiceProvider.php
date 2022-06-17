@@ -21,7 +21,7 @@ class SettingsServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.settings.default', function () {
             return new Collection([
@@ -44,11 +44,11 @@ class SettingsServiceProvider extends AbstractServiceProvider
         $this->container->alias(SettingsRepositoryInterface::class, 'flarum.settings');
     }
 
-    public function boot(Dispatcher $events, SettingsValidator $settingsValidator)
+    public function boot(Dispatcher $events, SettingsValidator $settingsValidator): void
     {
         $events->listen(
             Saving::class,
-            function (Saving $event) use ($settingsValidator) {
+            function (Saving $event) use ($settingsValidator): void {
                 $settingsValidator->assertValid($event->settings);
             }
         );

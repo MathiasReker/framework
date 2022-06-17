@@ -40,7 +40,7 @@ class Frontend
     /**
      * @param callable $content
      */
-    public function content(callable $content)
+    public function content(callable $content): void
     {
         $this->content[] = $content;
     }
@@ -56,7 +56,7 @@ class Frontend
         return $document;
     }
 
-    protected function populate(Document $document, Request $request)
+    protected function populate(Document $document, Request $request): void
     {
         foreach ($this->content as $content) {
             $content($document, $request);

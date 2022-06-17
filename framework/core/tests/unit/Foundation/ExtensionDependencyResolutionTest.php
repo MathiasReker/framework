@@ -30,7 +30,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_empty_set()
+    public function works_with_empty_set(): void
     {
         $expected = [
             'valid' => [],
@@ -42,7 +42,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_proper_data()
+    public function works_with_proper_data(): void
     {
         $exts = [$this->tags, $this->categories, $this->tagBackgrounds, $this->something, $this->help];
 
@@ -56,7 +56,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_missing_dependencies()
+    public function works_with_missing_dependencies(): void
     {
         $exts = [$this->tags, $this->categories, $this->tagBackgrounds, $this->something, $this->help, $this->missing];
 
@@ -70,7 +70,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_circular_dependencies()
+    public function works_with_circular_dependencies(): void
     {
         $exts = [$this->tags, $this->categories, $this->tagBackgrounds, $this->something, $this->help, $this->circular1, $this->circular2];
 
@@ -84,7 +84,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_optional_dependencies()
+    public function works_with_optional_dependencies(): void
     {
         $exts = [$this->tags, $this->optionalDependencyCategories, $this->tagBackgrounds, $this->something, $this->help];
 
@@ -98,7 +98,7 @@ class ExtensionDependencyResolutionTest extends TestCase
     }
 
     /** @test */
-    public function works_with_optional_dependencies_if_optional_dependency_missing()
+    public function works_with_optional_dependencies_if_optional_dependency_missing(): void
     {
         $exts = [$this->tags, $this->optionalDependencyCategories, $this->something, $this->help];
 

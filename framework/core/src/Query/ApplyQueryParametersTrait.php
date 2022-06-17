@@ -23,7 +23,7 @@ trait ApplyQueryParametersTrait
      * @param array $sort
      * @param bool $sortIsDefault
      */
-    protected function applySort(AbstractQueryState $query, array $sort = null, bool $sortIsDefault = false)
+    protected function applySort(AbstractQueryState $query, array $sort = null, bool $sortIsDefault = false): void
     {
         if ($sortIsDefault && ! empty($query->getDefaultSort())) {
             $sort = $query->getDefaultSort();
@@ -48,7 +48,7 @@ trait ApplyQueryParametersTrait
      * @param AbstractQueryState $query
      * @param int $offset
      */
-    protected function applyOffset(AbstractQueryState $query, $offset)
+    protected function applyOffset(AbstractQueryState $query, $offset): void
     {
         if ($offset > 0) {
             $query->getQuery()->skip($offset);
@@ -59,7 +59,7 @@ trait ApplyQueryParametersTrait
      * @param AbstractQueryState $query
      * @param int|null $limit
      */
-    protected function applyLimit(AbstractQueryState $query, $limit)
+    protected function applyLimit(AbstractQueryState $query, $limit): void
     {
         if ($limit > 0) {
             $query->getQuery()->take($limit);

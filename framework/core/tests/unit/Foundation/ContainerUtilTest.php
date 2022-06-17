@@ -28,7 +28,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_closures()
+    public function it_works_with_closures(): void
     {
         $callback = ContainerUtil::wrapCallback(function ($array) {
             $array['key'] = 'newValue';
@@ -44,7 +44,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_invokable_classes()
+    public function it_works_with_invokable_classes(): void
     {
         $callback = ContainerUtil::wrapCallback(CustomInvokableClass::class, $this->container);
 
@@ -56,7 +56,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_invokable_objects()
+    public function it_works_with_invokable_objects(): void
     {
         $callback = ContainerUtil::wrapCallback(new class {
             public function __invoke($array)
@@ -75,7 +75,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_global_functions()
+    public function it_works_with_global_functions(): void
     {
         $callback = ContainerUtil::wrapCallback('boolval', $this->container);
 
@@ -87,7 +87,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_static_class_method_arrays()
+    public function it_works_with_static_class_method_arrays(): void
     {
         $callback = ContainerUtil::wrapCallback([ClassWithMethod::class, 'staticMethod'], $this->container);
 
@@ -95,7 +95,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_allows_passing_args_by_reference_on_closures()
+    public function it_allows_passing_args_by_reference_on_closures(): void
     {
         $callback = ContainerUtil::wrapCallback(function (&$array) {
             $array['key'] = 'newValue3';
@@ -111,7 +111,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_allows_passing_args_by_reference_on_invokable_classes()
+    public function it_allows_passing_args_by_reference_on_invokable_classes(): void
     {
         $callback = ContainerUtil::wrapCallback(SecondCustomInvokableClass::class, $this->container);
 
@@ -123,7 +123,7 @@ class ContainerUtilTest extends TestCase
     }
 
     /** @test */
-    public function it_allows_passing_args_by_reference_on_invokable_objects()
+    public function it_allows_passing_args_by_reference_on_invokable_objects(): void
     {
         $callback = ContainerUtil::wrapCallback(new class {
             public function __invoke(&$array)

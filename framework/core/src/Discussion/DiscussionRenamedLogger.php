@@ -26,7 +26,7 @@ class DiscussionRenamedLogger
         $this->notifications = $notifications;
     }
 
-    public function handle(Renamed $event)
+    public function handle(Renamed $event): void
     {
         $post = DiscussionRenamedPost::reply(
             $event->discussion->id,

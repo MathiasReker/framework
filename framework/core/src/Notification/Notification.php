@@ -67,7 +67,7 @@ class Notification extends AbstractModel
      *
      * @return void
      */
-    public function read()
+    public function read(): void
     {
         $this->read_at = Carbon::now();
     }
@@ -90,7 +90,7 @@ class Notification extends AbstractModel
      *
      * @param mixed $value
      */
-    public function setDataAttribute($value)
+    public function setDataAttribute($value): void
     {
         $this->attributes['data'] = json_encode($value);
     }
@@ -145,7 +145,7 @@ class Notification extends AbstractModel
      */
     public function scopeWhereSubjectVisibleTo(Builder $query, User $actor)
     {
-        return $query->where(function ($query) use ($actor) {
+        return $query->where(function ($query) use ($actor): void {
             $classes = [];
 
             foreach (static::$subjectModels as $type => $class) {
@@ -153,9 +153,9 @@ class Notification extends AbstractModel
             }
 
             foreach ($classes as $class => $types) {
-                $query->orWhere(function ($query) use ($types, $class, $actor) {
+                $query->orWhere(function ($query) use ($types, $class, $actor): void {
                     $query->whereIn('type', $types)
-                        ->whereExists(function ($query) use ($class, $actor) {
+                        ->whereExists(function ($query) use ($class, $actor): void {
                             $query->selectRaw(1)
                                 ->from((new $class)->getTable())
                                 ->whereColumn('id', 'subject_id');
@@ -218,7 +218,7 @@ class Notification extends AbstractModel
      * @param User[] $recipients
      * @param BlueprintInterface $blueprint
      */
-    public static function notify(array $recipients, BlueprintInterface $blueprint)
+    public static function notify(array $recipients, BlueprintInterface $blueprint): void
     {
         $attributes = static::getBlueprintAttributes($blueprint);
         $now = Carbon::now()->toDateTimeString();
@@ -251,7 +251,7 @@ class Notification extends AbstractModel
      *     type.
      * @return void
      */
-    public static function setSubjectModel($type, $subjectModel)
+    public static function setSubjectModel($type, $subjectModel): void
     {
         static::$subjectModels[$type] = $subjectModel;
     }

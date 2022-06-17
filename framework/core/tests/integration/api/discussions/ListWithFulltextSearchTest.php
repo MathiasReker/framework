@@ -69,7 +69,7 @@ class ListWithFulltextSearchTest extends TestCase
     /**
      * @test
      */
-    public function can_search_for_word_or_title_in_post()
+    public function can_search_for_word_or_title_in_post(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -90,7 +90,7 @@ class ListWithFulltextSearchTest extends TestCase
     /**
      * @test
      */
-    public function ignores_non_word_characters_when_searching()
+    public function ignores_non_word_characters_when_searching(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -111,7 +111,7 @@ class ListWithFulltextSearchTest extends TestCase
     /**
      * @test
      */
-    public function can_search_telugu_like_languages()
+    public function can_search_telugu_like_languages(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -133,7 +133,7 @@ class ListWithFulltextSearchTest extends TestCase
     /**
      * @test
      */
-    public function can_search_cjk_languages()
+    public function can_search_cjk_languages(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -155,7 +155,7 @@ class ListWithFulltextSearchTest extends TestCase
     /**
      * @test
      */
-    public function search_for_special_characters_gives_empty_result()
+    public function search_for_special_characters_gives_empty_result(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')

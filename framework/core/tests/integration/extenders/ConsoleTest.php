@@ -19,7 +19,7 @@ class ConsoleTest extends ConsoleTestCase
     /**
      * @test
      */
-    public function custom_command_doesnt_exist_by_default()
+    public function custom_command_doesnt_exist_by_default(): void
     {
         $input = [
             'command' => 'customTestCommand'
@@ -31,7 +31,7 @@ class ConsoleTest extends ConsoleTestCase
     /**
      * @test
      */
-    public function custom_command_exists_when_added()
+    public function custom_command_exists_when_added(): void
     {
         $this->extend(
             (new Extend\Console())
@@ -48,7 +48,7 @@ class ConsoleTest extends ConsoleTestCase
     /**
      * @test
      */
-    public function scheduled_command_doesnt_exist_by_default()
+    public function scheduled_command_doesnt_exist_by_default(): void
     {
         $input = [
             'command' => 'schedule:list'
@@ -60,11 +60,11 @@ class ConsoleTest extends ConsoleTestCase
     /**
      * @test
      */
-    public function scheduled_command_exists_when_added()
+    public function scheduled_command_exists_when_added(): void
     {
         $this->extend(
             (new Extend\Console())
-                ->schedule('cache:clear', function (Event $event) {
+                ->schedule('cache:clear', function (Event $event): void {
                     $event->everyMinute();
                 })
         );
@@ -82,7 +82,7 @@ class CustomCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('customTestCommand');
     }
@@ -90,7 +90,7 @@ class CustomCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $this->info('Custom Command.');
     }

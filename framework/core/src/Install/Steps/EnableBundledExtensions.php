@@ -73,7 +73,7 @@ class EnableBundledExtensions implements Step
         return 'Enabling bundled extensions';
     }
 
-    public function run()
+    public function run(): void
     {
         $extensions = $this->loadExtensions();
 

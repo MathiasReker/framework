@@ -11,7 +11,7 @@ use Flarum\Api\Controller;
 use Flarum\Http\RouteCollection;
 use Flarum\Http\RouteHandlerFactory;
 
-return function (RouteCollection $map, RouteHandlerFactory $route) {
+return function (RouteCollection $map, RouteHandlerFactory $route): void {
     // Get forum information
     $map->get(
         '/',

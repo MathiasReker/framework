@@ -28,14 +28,14 @@ class DatabaseSettingsRepositoryTest extends TestCase
         $this->repository = new DatabaseSettingsRepository($this->connection);
     }
 
-    public function test_requesting_an_existing_setting_should_return_its_value()
+    public function test_requesting_an_existing_setting_should_return_its_value(): void
     {
         $this->connection->shouldReceive('table->where->value')->andReturn('value');
 
         $this->assertEquals('value', $this->repository->get('key'));
     }
 
-    public function test_non_existent_setting_values_should_return_null()
+    public function test_non_existent_setting_values_should_return_null(): void
     {
         $this->connection->shouldReceive('table->where->value')->andReturn(null);
 

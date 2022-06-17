@@ -21,7 +21,7 @@ class RegisteredTypesScope implements Scope
      * @param Builder $builder
      * @param Model $post
      */
-    public function apply(Builder $builder, Model $post)
+    public function apply(Builder $builder, Model $post): void
     {
         $query = $builder->getQuery();
         $types = array_keys($post::getModels());

@@ -35,7 +35,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function admin_cannot_create_group_without_data()
+    public function admin_cannot_create_group_without_data(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/groups', [
@@ -50,7 +50,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_create_group()
+    public function admin_can_create_group(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/groups', [
@@ -88,7 +88,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function normal_user_cannot_create_group()
+    public function normal_user_cannot_create_group(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/groups', [

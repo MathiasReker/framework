@@ -16,7 +16,7 @@ class ReferrerPolicyTest extends TestCase
     /**
      * @test
      */
-    public function has_referer_header()
+    public function has_referer_header(): void
     {
         $response = $this->send(
             $this->request('GET', '/')
@@ -28,7 +28,7 @@ class ReferrerPolicyTest extends TestCase
     /**
      * @test
      */
-    public function has_default_referer_policy()
+    public function has_default_referer_policy(): void
     {
         $response = $this->send(
             $this->request('GET', '/')

@@ -56,13 +56,13 @@ class Event implements ExtenderInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         $events = $container->make(Dispatcher::class);
 
         $app = $container->make('flarum');
 
-        $app->booted(function () use ($events) {
+        $app->booted(function () use ($events): void {
             foreach ($this->listeners as $listener) {
                 $events->listen($listener[0], $listener[1]);
             }

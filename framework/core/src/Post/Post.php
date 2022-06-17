@@ -84,14 +84,14 @@ class Post extends AbstractModel
     /**
      * {@inheritdoc}
      */
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
         // When a post is created, set its type according to the value of the
         // subclass. Also give it an auto-incrementing number within the
         // discussion.
-        static::creating(function (self $post) {
+        static::creating(function (self $post): void {
             $post->type = $post::$type;
 
             /** @var ConnectionInterface $db */
@@ -105,12 +105,12 @@ class Post extends AbstractModel
             .')');
         });
 
-        static::created(function (self $post) {
+        static::created(function (self $post): void {
             $post->refresh();
             $post->discussion->save();
         });
 
-        static::deleted(function (self $post) {
+        static::deleted(function (self $post): void {
             $post->raise(new Deleted($post));
 
             Notification::whereSubject($post)->delete();
@@ -228,7 +228,7 @@ class Post extends AbstractModel
      *
      * @internal
      */
-    public static function setModel(string $type, string $model)
+    public static function setModel(string $type, string $model): void
     {
         static::$models[$type] = $model;
     }

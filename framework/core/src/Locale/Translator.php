@@ -58,7 +58,7 @@ class Translator extends BaseTranslator implements TranslatorContract
     /**
      * @param MessageCatalogueInterface $catalogue
      */
-    private function parseCatalogue(MessageCatalogueInterface $catalogue)
+    private function parseCatalogue(MessageCatalogueInterface $catalogue): void
     {
         foreach ($catalogue->all() as $domain => $messages) {
             foreach ($messages as $id => $translation) {
@@ -86,7 +86,7 @@ class Translator extends BaseTranslator implements TranslatorContract
         return $translation;
     }
 
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         parent::setLocale($locale);
     }

@@ -43,9 +43,9 @@ class AddTranslations
         return $this;
     }
 
-    public function to(Assets $assets)
+    public function to(Assets $assets): void
     {
-        $assets->localeJs(function (SourceCollector $sources, string $locale) {
+        $assets->localeJs(function (SourceCollector $sources, string $locale): void {
             $sources->addString(function () use ($locale) {
                 $translations = $this->getTranslations($locale);
 

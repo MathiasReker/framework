@@ -46,7 +46,7 @@ trait AccountActivationMailerTrait
      * @param User $user
      * @param array $data
      */
-    protected function sendConfirmationEmail(User $user, $data)
+    protected function sendConfirmationEmail(User $user, $data): void
     {
         $body = $this->translator->trans('core.email.activate_account.body', $data);
         $subject = $this->translator->trans('core.email.activate_account.subject');

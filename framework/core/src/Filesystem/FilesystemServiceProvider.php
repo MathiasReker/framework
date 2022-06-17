@@ -26,7 +26,7 @@ class FilesystemServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('files', function () {
             return new Filesystem;

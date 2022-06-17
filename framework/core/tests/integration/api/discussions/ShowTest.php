@@ -45,7 +45,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function author_can_see_discussion()
+    public function author_can_see_discussion(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/1', [
@@ -59,7 +59,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function author_can_see_discussion_via_slug()
+    public function author_can_see_discussion_via_slug(): void
     {
         // Note that here, the slug doesn't actually have to match the real slug
         // since the default slugging strategy only takes the numerical part into account
@@ -77,7 +77,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_cannot_see_empty_discussion()
+    public function guest_cannot_see_empty_discussion(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/1')
@@ -89,7 +89,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_cannot_see_hidden_posts()
+    public function guest_cannot_see_hidden_posts(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/4')
@@ -103,7 +103,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function author_can_see_hidden_posts()
+    public function author_can_see_hidden_posts(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/4', [
@@ -119,7 +119,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_can_see_discussion()
+    public function guest_can_see_discussion(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/2')
@@ -131,7 +131,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guests_cannot_see_private_discussion()
+    public function guests_cannot_see_private_discussion(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/3')

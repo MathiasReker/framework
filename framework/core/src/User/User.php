@@ -131,18 +131,18 @@ class User extends AbstractModel
      *
      * @return void
      */
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
         // Don't allow the root admin to be deleted.
-        static::deleting(function (self $user) {
+        static::deleting(function (self $user): void {
             if ($user->id == 1) {
                 throw new DomainException('Cannot delete the root admin');
             }
         });
 
-        static::deleted(function (self $user) {
+        static::deleted(function (self $user): void {
             $user->raise(new Deleted($user));
 
             Notification::whereSubject($user)->delete();
@@ -174,7 +174,7 @@ class User extends AbstractModel
     /**
      * @param Gate $gate
      */
-    public static function setGate($gate)
+    public static function setGate($gate): void
     {
         static::$gate = $gate;
     }
@@ -184,12 +184,12 @@ class User extends AbstractModel
      *
      * @param DriverInterface $driver
      */
-    public static function setDisplayNameDriver(DriverInterface $driver)
+    public static function setDisplayNameDriver(DriverInterface $driver): void
     {
         static::$displayNameDriver = $driver;
     }
 
-    public static function setPasswordCheckers(array $checkers)
+    public static function setPasswordCheckers(array $checkers): void
     {
         static::$passwordCheckers = $checkers;
     }
@@ -264,7 +264,7 @@ class User extends AbstractModel
      *
      * @param string $value
      */
-    public function setPasswordAttribute($value)
+    public function setPasswordAttribute($value): void
     {
         $this->attributes['password'] = $value ? static::$hasher->make($value) : '';
     }
@@ -410,7 +410,7 @@ class User extends AbstractModel
         return false;
     }
 
-    private function checkForDeprecatedPermissions($permission)
+    private function checkForDeprecatedPermissions($permission): void
     {
         foreach (['viewDiscussions', 'viewUserList'] as $deprecated) {
             if (strpos($permission, $deprecated) !== false) {
@@ -498,7 +498,7 @@ class User extends AbstractModel
      *
      * @param mixed $value
      */
-    public function setPreferencesAttribute($value)
+    public function setPreferencesAttribute($value): void
     {
         $this->attributes['preferences'] = json_encode($value);
     }
@@ -610,7 +610,7 @@ class User extends AbstractModel
      * @param bool $condition
      * @throws PermissionDeniedException
      */
-    public function assertPermission($condition)
+    public function assertPermission($condition): void
     {
         if (! $condition) {
             throw new PermissionDeniedException;
@@ -626,7 +626,7 @@ class User extends AbstractModel
      *
      * @throws NotAuthenticatedException
      */
-    public function assertRegistered()
+    public function assertRegistered(): void
     {
         if ($this->isGuest()) {
             throw new NotAuthenticatedException;
@@ -638,7 +638,7 @@ class User extends AbstractModel
      * @param mixed $arguments
      * @throws PermissionDeniedException
      */
-    public function assertCan($ability, $arguments = null)
+    public function assertCan($ability, $arguments = null): void
     {
         $this->assertPermission(
             $this->can($ability, $arguments)
@@ -648,7 +648,7 @@ class User extends AbstractModel
     /**
      * @throws PermissionDeniedException
      */
-    public function assertAdmin()
+    public function assertAdmin(): void
     {
         $this->assertCan($this, 'administrate');
     }
@@ -802,7 +802,7 @@ class User extends AbstractModel
      *
      * @internal
      */
-    public static function setHasher(Hasher $hasher)
+    public static function setHasher(Hasher $hasher): void
     {
         static::$hasher = $hasher;
     }
@@ -816,7 +816,7 @@ class User extends AbstractModel
      *
      * @internal
      */
-    public static function registerPreference($key, callable $transformer = null, $default = null)
+    public static function registerPreference($key, callable $transformer = null, $default = null): void
     {
         static::$preferences[$key] = compact('transformer', 'default');
     }

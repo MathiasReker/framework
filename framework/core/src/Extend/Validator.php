@@ -48,9 +48,9 @@ class Validator implements ExtenderInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
-        $container->resolving($this->validator, function ($validator, $container) {
+        $container->resolving($this->validator, function ($validator, $container): void {
             foreach ($this->configurationCallbacks as $callback) {
                 $validator->addConfiguration(ContainerUtil::wrapCallback($callback, $container));
             }

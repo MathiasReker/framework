@@ -21,7 +21,7 @@ trait EventGeneratorTrait
      *
      * @param mixed $event
      */
-    public function raise($event)
+    public function raise($event): void
     {
         $this->pendingEvents[] = $event;
     }

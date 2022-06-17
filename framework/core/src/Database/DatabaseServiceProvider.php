@@ -20,7 +20,7 @@ class DatabaseServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton(Manager::class, function (Container $container) {
             $manager = new Manager($container);
@@ -65,13 +65,13 @@ class DatabaseServiceProvider extends AbstractServiceProvider
         });
     }
 
-    public function boot(Container $container)
+    public function boot(Container $container): void
     {
         AbstractModel::setConnectionResolver($container->make(ConnectionResolverInterface::class));
         AbstractModel::setEventDispatcher($container->make('events'));
 
         foreach ($container->make('flarum.database.model_private_checkers') as $modelClass => $checkers) {
-            $modelClass::saving(function ($instance) use ($checkers) {
+            $modelClass::saving(function ($instance) use ($checkers): void {
                 foreach ($checkers as $checker) {
                     if ($checker($instance) === true) {
                         $instance->is_private = true;

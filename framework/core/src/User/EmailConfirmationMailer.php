@@ -46,7 +46,7 @@ class EmailConfirmationMailer
         $this->translator = $translator;
     }
 
-    public function handle(EmailChangeRequested $event)
+    public function handle(EmailChangeRequested $event): void
     {
         $email = $event->email;
         $data = $this->getEmailData($event->user, $email);

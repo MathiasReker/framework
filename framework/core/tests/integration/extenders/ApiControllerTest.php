@@ -60,11 +60,11 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_callback_works_if_added()
+    public function prepare_data_serialization_callback_works_if_added(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowDiscussionController::class))
-                ->prepareDataForSerialization(function ($controller, Discussion $discussion) {
+                ->prepareDataForSerialization(function ($controller, Discussion $discussion): void {
                     $discussion->title = 'dataSerializationPrepCustomTitle';
                 })
         );
@@ -83,7 +83,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_callback_works_with_invokable_classes()
+    public function prepare_data_serialization_callback_works_with_invokable_classes(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowDiscussionController::class))
@@ -104,14 +104,14 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_allows_passing_args_by_reference_with_closures()
+    public function prepare_data_serialization_allows_passing_args_by_reference_with_closures(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
                 ->hasMany('referenceTest', UserSerializer::class),
             (new Extend\ApiController(ShowForumController::class))
                 ->addInclude('referenceTest')
-                ->prepareDataForSerialization(function ($controller, &$data) {
+                ->prepareDataForSerialization(function ($controller, &$data): void {
                     $data['referenceTest'] = User::limit(2)->get();
                 })
         );
@@ -130,7 +130,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_allows_passing_args_by_reference_with_invokable_classes()
+    public function prepare_data_serialization_allows_passing_args_by_reference_with_invokable_classes(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
@@ -154,11 +154,11 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_callback_works_if_added_to_parent_class()
+    public function prepare_data_serialization_callback_works_if_added_to_parent_class(): void
     {
         $this->extend(
             (new Extend\ApiController(AbstractShowController::class))
-                ->prepareDataForSerialization(function ($controller, Discussion $discussion) {
+                ->prepareDataForSerialization(function ($controller, Discussion $discussion): void {
                     if ($controller instanceof ShowDiscussionController) {
                         $discussion->title = 'dataSerializationPrepCustomTitle2';
                     }
@@ -179,17 +179,17 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_serialization_callback_prioritizes_child_classes()
+    public function prepare_data_serialization_callback_prioritizes_child_classes(): void
     {
         $this->extend(
             (new Extend\ApiController(AbstractShowController::class))
-                ->prepareDataForSerialization(function ($controller, Discussion $discussion) {
+                ->prepareDataForSerialization(function ($controller, Discussion $discussion): void {
                     if ($controller instanceof ShowDiscussionController) {
                         $discussion->title = 'dataSerializationPrepCustomTitle3';
                     }
                 }),
             (new Extend\ApiController(ShowDiscussionController::class))
-                ->prepareDataForSerialization(function ($controller, Discussion $discussion) {
+                ->prepareDataForSerialization(function ($controller, Discussion $discussion): void {
                     $discussion->title = 'dataSerializationPrepCustomTitle4';
                 })
         );
@@ -208,11 +208,11 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_query_callback_works_if_added_to_parent_class()
+    public function prepare_data_query_callback_works_if_added_to_parent_class(): void
     {
         $this->extend(
             (new Extend\ApiController(AbstractShowController::class))
-                ->prepareDataQuery(function ($controller) {
+                ->prepareDataQuery(function ($controller): void {
                     if ($controller instanceof ShowDiscussionController) {
                         $controller->setSerializer(CustomDiscussionSerializer2::class);
                     }
@@ -233,17 +233,17 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function prepare_data_query_callback_prioritizes_child_classes()
+    public function prepare_data_query_callback_prioritizes_child_classes(): void
     {
         $this->extend(
             (new Extend\ApiController(AbstractShowController::class))
-                ->prepareDataForSerialization(function ($controller) {
+                ->prepareDataForSerialization(function ($controller): void {
                     if ($controller instanceof ShowDiscussionController) {
                         $controller->setSerializer(CustomDiscussionSerializer2::class);
                     }
                 }),
             (new Extend\ApiController(ShowDiscussionController::class))
-                ->prepareDataForSerialization(function ($controller) {
+                ->prepareDataForSerialization(function ($controller): void {
                     $controller->setSerializer(CustomDiscussionSerializer::class);
                 })
         );
@@ -262,7 +262,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_serializer_doesnt_work_by_default()
+    public function custom_serializer_doesnt_work_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions/1', [
@@ -278,7 +278,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_serializer_works_if_set()
+    public function custom_serializer_works_if_set(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowDiscussionController::class))
@@ -299,7 +299,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_serializer_works_if_set_with_invokable_class()
+    public function custom_serializer_works_if_set_with_invokable_class(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowPostController::class))
@@ -325,7 +325,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_serializer_doesnt_work_with_false_callback_return()
+    public function custom_serializer_doesnt_work_with_false_callback_return(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowUserController::class))
@@ -348,7 +348,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_not_included_by_default()
+    public function custom_relationship_not_included_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/2', [
@@ -365,7 +365,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_included_if_added()
+    public function custom_relationship_included_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -390,7 +390,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_optionally_included_if_added()
+    public function custom_relationship_optionally_included_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -417,7 +417,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_included_by_default()
+    public function custom_relationship_included_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/2', [
@@ -433,7 +433,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_not_included_if_removed()
+    public function custom_relationship_not_included_if_removed(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowUserController::class))
@@ -454,7 +454,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_not_optionally_included_if_removed()
+    public function custom_relationship_not_optionally_included_if_removed(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -480,7 +480,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_limit_doesnt_work_by_default()
+    public function custom_limit_doesnt_work_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', [
@@ -496,7 +496,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_limit_works_if_set()
+    public function custom_limit_works_if_set(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -517,7 +517,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_max_limit_works_if_set()
+    public function custom_max_limit_works_if_set(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -540,7 +540,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_doesnt_exist_by_default()
+    public function custom_sort_field_doesnt_exist_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', [
@@ -556,7 +556,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_doesnt_work_with_false_callback_return()
+    public function custom_sort_field_doesnt_work_with_false_callback_return(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -579,7 +579,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_exists_if_added()
+    public function custom_sort_field_exists_if_added(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -603,7 +603,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_exists_by_default()
+    public function custom_sort_field_exists_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', [
@@ -619,7 +619,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_doesnt_exist_if_removed()
+    public function custom_sort_field_doesnt_exist_if_removed(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -640,7 +640,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_sort_field_works_if_set()
+    public function custom_sort_field_works_if_set(): void
     {
         $this->extend(
             (new Extend\ApiController(ListDiscussionsController::class))
@@ -663,7 +663,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_first_level_relation_is_not_loaded_by_default()
+    public function custom_first_level_relation_is_not_loaded_by_default(): void
     {
         $users = null;
 
@@ -690,7 +690,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_first_level_relation_is_loaded_if_added()
+    public function custom_first_level_relation_is_loaded_if_added(): void
     {
         $users = null;
 
@@ -718,7 +718,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_second_level_relation_is_not_loaded_by_default()
+    public function custom_second_level_relation_is_not_loaded_by_default(): void
     {
         $users = null;
 
@@ -747,7 +747,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_second_level_relation_is_loaded_if_added()
+    public function custom_second_level_relation_is_loaded_if_added(): void
     {
         $users = null;
 
@@ -777,7 +777,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_second_level_relation_is_not_loaded_when_first_level_is_not()
+    public function custom_second_level_relation_is_not_loaded_when_first_level_is_not(): void
     {
         $users = null;
 
@@ -807,7 +807,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_callable_first_level_relation_is_loaded_if_added()
+    public function custom_callable_first_level_relation_is_loaded_if_added(): void
     {
         $users = null;
 
@@ -815,7 +815,7 @@ class ApiControllerTest extends TestCase
             (new Extend\Model(User::class))
                 ->hasOne('firstLevelRelation', Post::class, 'user_id'),
             (new Extend\ApiController(ListUsersController::class))
-                ->loadWhere('firstLevelRelation', function ($query, $request) {})
+                ->loadWhere('firstLevelRelation', function ($query, $request): void {})
                 ->prepareDataForSerialization(function ($controller, $data) use (&$users) {
                     $users = $data;
 
@@ -835,7 +835,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_callable_second_level_relation_is_loaded_if_added()
+    public function custom_callable_second_level_relation_is_loaded_if_added(): void
     {
         $users = null;
 
@@ -846,7 +846,7 @@ class ApiControllerTest extends TestCase
                 ->belongsTo('secondLevelRelation', Discussion::class),
             (new Extend\ApiController(ListUsersController::class))
                 ->load('firstLevelRelation')
-                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request) {})
+                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request): void {})
                 ->prepareDataForSerialization(function ($controller, $data) use (&$users) {
                     $users = $data;
 
@@ -866,7 +866,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_callable_second_level_relation_is_not_loaded_when_first_level_is_not()
+    public function custom_callable_second_level_relation_is_not_loaded_when_first_level_is_not(): void
     {
         $users = null;
 
@@ -876,7 +876,7 @@ class ApiControllerTest extends TestCase
             (new Extend\Model(Post::class))
                 ->belongsTo('secondLevelRelation', Discussion::class),
             (new Extend\ApiController(ListUsersController::class))
-                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request) {})
+                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request): void {})
                 ->prepareDataForSerialization(function ($controller, $data) use (&$users) {
                     $users = $data;
 
@@ -896,7 +896,7 @@ class ApiControllerTest extends TestCase
     /**
      * @test
      */
-    public function custom_callable_second_level_relation_is_loaded_when_first_level_is()
+    public function custom_callable_second_level_relation_is_loaded_when_first_level_is(): void
     {
         $users = null;
 
@@ -906,8 +906,8 @@ class ApiControllerTest extends TestCase
             (new Extend\Model(Post::class))
                 ->belongsTo('secondLevelRelation', Discussion::class),
             (new Extend\ApiController(ListUsersController::class))
-                ->loadWhere('firstLevelRelation', function ($query, $request) {})
-                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request) {})
+                ->loadWhere('firstLevelRelation', function ($query, $request): void {})
+                ->loadWhere('firstLevelRelation.secondLevelRelation', function ($query, $request): void {})
                 ->prepareDataForSerialization(function ($controller, $data) use (&$users) {
                     $users = $data;
 
@@ -975,7 +975,7 @@ class CustomApiControllerInvokableClass
 
 class CustomPrepareDataSerializationInvokableClass
 {
-    public function __invoke(ShowDiscussionController $controller, Discussion $discussion)
+    public function __invoke(ShowDiscussionController $controller, Discussion $discussion): void
     {
         $discussion->title = __CLASS__;
     }
@@ -983,7 +983,7 @@ class CustomPrepareDataSerializationInvokableClass
 
 class CustomInvokableClassArgsReference
 {
-    public function __invoke($controller, &$data)
+    public function __invoke($controller, &$data): void
     {
         $data['referenceTest2'] = User::limit(2)->get();
     }

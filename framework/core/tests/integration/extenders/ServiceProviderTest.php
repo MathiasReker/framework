@@ -18,7 +18,7 @@ class ServiceProviderTest extends TestCase
     /**
      * @test
      */
-    public function providers_dont_work_by_default()
+    public function providers_dont_work_by_default(): void
     {
         $this->app();
 
@@ -30,7 +30,7 @@ class ServiceProviderTest extends TestCase
     /**
      * @test
      */
-    public function providers_first_register_order_is_correct()
+    public function providers_first_register_order_is_correct(): void
     {
         $this->extend(
             (new Extend\ServiceProvider())
@@ -48,7 +48,7 @@ class ServiceProviderTest extends TestCase
     /**
      * @test
      */
-    public function providers_second_register_order_is_correct()
+    public function providers_second_register_order_is_correct(): void
     {
         $this->extend(
             (new Extend\ServiceProvider())
@@ -67,7 +67,7 @@ class ServiceProviderTest extends TestCase
     /**
      * @test
      */
-    public function providers_boot_order_is_correct()
+    public function providers_boot_order_is_correct(): void
     {
         $this->extend(
             (new Extend\ServiceProvider())
@@ -87,7 +87,7 @@ class ServiceProviderTest extends TestCase
 
 class CustomServiceProvider extends AbstractServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         // First we override the singleton here.
         $this->app->extend('flarum.forum.middleware', function () {
@@ -98,7 +98,7 @@ class CustomServiceProvider extends AbstractServiceProvider
 
 class SecondCustomServiceProvider extends AbstractServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         // Second we check that the singleton was overriden here.
         $this->app->extend('flarum.forum.middleware', function ($forumRoutes) {
@@ -109,7 +109,7 @@ class SecondCustomServiceProvider extends AbstractServiceProvider
 
 class ThirdCustomProvider extends AbstractServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         // Third we override one last time here, to make sure this is the final result.
         $this->app->extend('flarum.forum.middleware', function ($forumRoutes) {

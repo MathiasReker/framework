@@ -38,7 +38,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function tokens_expire()
+    public function tokens_expire(): void
     {
         $this->populateDatabase();
 
@@ -55,7 +55,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function tokens_valid()
+    public function tokens_valid(): void
     {
         $this->populateDatabase();
 
@@ -72,7 +72,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function touch_updates_lifetime()
+    public function touch_updates_lifetime(): void
     {
         $this->populateDatabase();
 
@@ -90,7 +90,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function touch_without_request()
+    public function touch_without_request(): void
     {
         $this->populateDatabase();
 
@@ -107,7 +107,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function touch_with_request()
+    public function touch_with_request(): void
     {
         $this->populateDatabase();
 
@@ -126,7 +126,7 @@ class AccessTokenLifecycleTest extends TestCase
     /**
      * @test
      */
-    public function long_user_agent_id_truncated()
+    public function long_user_agent_id_truncated(): void
     {
         $this->populateDatabase();
 

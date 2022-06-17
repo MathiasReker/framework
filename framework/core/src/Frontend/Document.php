@@ -312,7 +312,7 @@ class Document implements Renderable
     /**
      * @param array $forumApiDocument
      */
-    public function setForumApiDocument(array $forumApiDocument)
+    public function setForumApiDocument(array $forumApiDocument): void
     {
         $this->forumApiDocument = $forumApiDocument;
     }

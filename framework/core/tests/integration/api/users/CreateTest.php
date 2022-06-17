@@ -32,7 +32,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function cannot_create_user_without_data()
+    public function cannot_create_user_without_data(): void
     {
         $response = $this->send(
             $this->request(
@@ -76,7 +76,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_user()
+    public function can_create_user(): void
     {
         $response = $this->send(
             $this->request(
@@ -109,7 +109,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function admins_can_create_activated_users()
+    public function admins_can_create_activated_users(): void
     {
         $response = $this->send(
             $this->request(
@@ -142,7 +142,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function disabling_sign_up_prevents_user_creation()
+    public function disabling_sign_up_prevents_user_creation(): void
     {
         /** @var SettingsRepositoryInterface $settings */
         $settings = $this->app()->getContainer()->make(SettingsRepositoryInterface::class);
@@ -173,7 +173,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function cannot_create_user_with_invalid_avatar_uri_scheme()
+    public function cannot_create_user_with_invalid_avatar_uri_scheme(): void
     {
         // Boot app
         $this->app();
@@ -239,7 +239,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function cannot_create_user_with_invalid_avatar_uri()
+    public function cannot_create_user_with_invalid_avatar_uri(): void
     {
         // Boot app
         $this->app();
@@ -313,7 +313,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_user_with_valid_avatar_uri()
+    public function can_create_user_with_valid_avatar_uri(): void
     {
         // Boot app
         $this->app();

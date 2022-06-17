@@ -12,7 +12,7 @@ use Flarum\Admin\Controller\UpdateExtensionController;
 use Flarum\Http\RouteCollection;
 use Flarum\Http\RouteHandlerFactory;
 
-return function (RouteCollection $map, RouteHandlerFactory $route) {
+return function (RouteCollection $map, RouteHandlerFactory $route): void {
     $map->get(
         '/',
         'index',

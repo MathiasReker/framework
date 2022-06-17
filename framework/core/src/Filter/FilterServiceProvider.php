@@ -29,7 +29,7 @@ class FilterServiceProvider extends AbstractServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.filter.filters', function () {
             return [
@@ -61,7 +61,7 @@ class FilterServiceProvider extends AbstractServiceProvider
         });
     }
 
-    public function boot(Container $container)
+    public function boot(Container $container): void
     {
         // We can resolve the filter mutators in the when->needs->give callback,
         // but we need to resolve at least one regardless so we know which

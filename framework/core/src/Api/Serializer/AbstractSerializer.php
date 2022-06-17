@@ -62,7 +62,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
     /**
      * @param Request $request
      */
-    public function setRequest(Request $request)
+    public function setRequest(Request $request): void
     {
         $this->request = $request;
         $this->actor = RequestUtil::getActor($request);
@@ -277,7 +277,7 @@ abstract class AbstractSerializer extends BaseAbstractSerializer
      *
      * @internal
      */
-    public static function setContainer(Container $container)
+    public static function setContainer(Container $container): void
     {
         static::$container = $container;
     }

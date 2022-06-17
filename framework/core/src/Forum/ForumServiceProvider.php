@@ -42,7 +42,7 @@ class ForumServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->extend(UrlGenerator::class, function (UrlGenerator $url, Container $container) {
             return $url->addCollection('forum', $container->make('flarum.forum.routes'));
@@ -55,7 +55,7 @@ class ForumServiceProvider extends AbstractServiceProvider
             return $routes;
         });
 
-        $this->container->afterResolving('flarum.forum.routes', function (RouteCollection $routes, Container $container) {
+        $this->container->afterResolving('flarum.forum.routes', function (RouteCollection $routes, Container $container): void {
             $this->setDefaultRoute($routes, $container);
         });
 
@@ -106,14 +106,14 @@ class ForumServiceProvider extends AbstractServiceProvider
             /** @var Assets $assets */
             $assets = $container->make('flarum.assets.factory')('forum');
 
-            $assets->js(function (SourceCollector $sources) use ($container) {
+            $assets->js(function (SourceCollector $sources) use ($container): void {
                 $sources->addFile(__DIR__.'/../../js/dist/forum.js');
                 $sources->addString(function () use ($container) {
                     return $container->make(Formatter::class)->getJs();
                 });
             });
 
-            $assets->css(function (SourceCollector $sources) use ($container) {
+            $assets->css(function (SourceCollector $sources) use ($container): void {
                 $sources->addFile(__DIR__.'/../../less/forum.less');
                 $sources->addString(function () use ($container) {
                     return $container->make(SettingsRepositoryInterface::class)->get('custom_less', '');
@@ -140,7 +140,7 @@ class ForumServiceProvider extends AbstractServiceProvider
         });
     }
 
-    public function boot(Container $container, Dispatcher $events, Factory $view)
+    public function boot(Container $container, Dispatcher $events, Factory $view): void
     {
         $this->loadViewsFrom(__DIR__.'/../../views', 'flarum.forum');
 
@@ -151,7 +151,7 @@ class ForumServiceProvider extends AbstractServiceProvider
 
         $events->listen(
             [Enabled::class, Disabled::class, ClearingCache::class],
-            function () use ($container) {
+            function () use ($container): void {
                 $recompile = new RecompileFrontendAssets(
                     $container->make('flarum.assets.forum'),
                     $container->make(LocaleManager::class)
@@ -162,7 +162,7 @@ class ForumServiceProvider extends AbstractServiceProvider
 
         $events->listen(
             Saved::class,
-            function (Saved $event) use ($container) {
+            function (Saved $event) use ($container): void {
                 $recompile = new RecompileFrontendAssets(
                     $container->make('flarum.assets.forum'),
                     $container->make(LocaleManager::class)
@@ -181,7 +181,7 @@ class ForumServiceProvider extends AbstractServiceProvider
 
         $events->listen(
             Saving::class,
-            function (Saving $event) use ($container) {
+            function (Saving $event) use ($container): void {
                 $validator = new ValidateCustomLess(
                     $container->make('flarum.assets.forum'),
                     $container->make('flarum.locales'),
@@ -199,7 +199,7 @@ class ForumServiceProvider extends AbstractServiceProvider
      * @param RouteCollection $routes
      * @param Container       $container
      */
-    protected function populateRoutes(RouteCollection $routes, Container $container)
+    protected function populateRoutes(RouteCollection $routes, Container $container): void
     {
         $factory = $container->make(RouteHandlerFactory::class);
 
@@ -213,7 +213,7 @@ class ForumServiceProvider extends AbstractServiceProvider
      * @param RouteCollection $routes
      * @param Container       $container
      */
-    protected function setDefaultRoute(RouteCollection $routes, Container $container)
+    protected function setDefaultRoute(RouteCollection $routes, Container $container): void
     {
         $factory = $container->make(RouteHandlerFactory::class);
         $defaultRoute = $container->make('flarum.settings')->get('default_route');

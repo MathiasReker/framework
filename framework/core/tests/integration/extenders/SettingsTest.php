@@ -37,7 +37,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_isnt_serialized_by_default()
+    public function custom_setting_isnt_serialized_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api', [
@@ -53,7 +53,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_serialized_if_added()
+    public function custom_setting_serialized_if_added(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -75,7 +75,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_callback_works_if_added()
+    public function custom_setting_callback_works_if_added(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -99,7 +99,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_callback_works_with_invokable_class()
+    public function custom_setting_callback_works_with_invokable_class(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -121,7 +121,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_falls_back_to_default()
+    public function custom_setting_falls_back_to_default(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -143,7 +143,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_default_passed_to_callback()
+    public function custom_setting_default_passed_to_callback(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -167,7 +167,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_default_prioritizes_extender()
+    public function custom_setting_default_prioritizes_extender(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -188,7 +188,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_setting_default_falls_back_to_parameter()
+    public function custom_setting_default_falls_back_to_parameter(): void
     {
         $this->extend(
             (new Extend\Settings())
@@ -206,7 +206,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function null_custom_setting_returns_null()
+    public function null_custom_setting_returns_null(): void
     {
         $this->setting('custom-prefix.custom_null_setting', null);
 
@@ -226,7 +226,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_less_var_does_not_work_by_default()
+    public function custom_less_var_does_not_work_by_default(): void
     {
         $this->extend(
             (new Extend\Frontend('forum'))
@@ -241,7 +241,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function custom_less_var_works_if_registered()
+    public function custom_less_var_works_if_registered(): void
     {
         $this->extend(
             (new Extend\Frontend('forum'))
@@ -261,7 +261,7 @@ class SettingsTest extends TestCase
     /**
      * @test
      */
-    public function cant_save_setting_if_invalid_less_var()
+    public function cant_save_setting_if_invalid_less_var(): void
     {
         $this->extend(
             (new Extend\Settings())

@@ -111,7 +111,7 @@ class Formatter implements ExtenderInterface, LifecycleInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         $container->extend('flarum.formatter', function ($formatter, $container) {
             foreach ($this->configurationCallbacks as $callback) {
@@ -134,13 +134,13 @@ class Formatter implements ExtenderInterface, LifecycleInterface
         });
     }
 
-    public function onEnable(Container $container, Extension $extension)
+    public function onEnable(Container $container, Extension $extension): void
     {
         // FLush the formatter cache when this extension is enabled
         $container->make(ActualFormatter::class)->flush();
     }
 
-    public function onDisable(Container $container, Extension $extension)
+    public function onDisable(Container $container, Extension $extension): void
     {
         // FLush the formatter cache when this extension is disabled
         $container->make(ActualFormatter::class)->flush();

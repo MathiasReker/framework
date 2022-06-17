@@ -43,7 +43,7 @@ class AdminUser
         ];
     }
 
-    private function validate()
+    private function validate(): void
     {
         if (! filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             throw new ValidationFailed('You must enter a valid email.');

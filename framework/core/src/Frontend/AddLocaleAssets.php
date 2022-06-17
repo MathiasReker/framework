@@ -30,15 +30,15 @@ class AddLocaleAssets
         $this->locales = $locales;
     }
 
-    public function to(Assets $assets)
+    public function to(Assets $assets): void
     {
-        $assets->localeJs(function (SourceCollector $sources, string $locale) {
+        $assets->localeJs(function (SourceCollector $sources, string $locale): void {
             foreach ($this->locales->getJsFiles($locale) as $file) {
                 $sources->addFile($file);
             }
         });
 
-        $assets->localeCss(function (SourceCollector $sources, string $locale) {
+        $assets->localeCss(function (SourceCollector $sources, string $locale): void {
             foreach ($this->locales->getCssFiles($locale) as $file) {
                 $sources->addFile($file);
             }

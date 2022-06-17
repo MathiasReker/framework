@@ -43,7 +43,7 @@ class FulltextGambit implements GambitInterface
     /**
      * {@inheritdoc}
      */
-    public function apply(SearchState $search, $searchValue)
+    public function apply(SearchState $search, $searchValue): void
     {
         $search->getQuery()
             ->whereIn(

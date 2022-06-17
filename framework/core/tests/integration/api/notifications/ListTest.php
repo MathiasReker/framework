@@ -33,7 +33,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function disallows_index_for_guest()
+    public function disallows_index_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/notifications')
@@ -45,7 +45,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_index_for_user()
+    public function shows_index_for_user(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/notifications', [

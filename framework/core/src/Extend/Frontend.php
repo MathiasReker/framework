@@ -170,7 +170,7 @@ class Frontend implements ExtenderInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         $this->registerAssets($container, $this->getModuleName($extension));
         $this->registerRoutes($container);
@@ -187,9 +187,9 @@ class Frontend implements ExtenderInterface
 
         $abstract = 'flarum.assets.'.$this->frontend;
 
-        $container->resolving($abstract, function (Assets $assets) use ($moduleName) {
+        $container->resolving($abstract, function (Assets $assets) use ($moduleName): void {
             if ($this->js) {
-                $assets->js(function (SourceCollector $sources) use ($moduleName) {
+                $assets->js(function (SourceCollector $sources) use ($moduleName): void {
                     $sources->addString(function () {
                         return 'var module={};';
                     });
@@ -201,7 +201,7 @@ class Frontend implements ExtenderInterface
             }
 
             if ($this->css) {
-                $assets->css(function (SourceCollector $sources) use ($moduleName) {
+                $assets->css(function (SourceCollector $sources) use ($moduleName): void {
                     foreach ($this->css as $path) {
                         $sources->addFile($path, $moduleName);
                     }
@@ -219,7 +219,7 @@ class Frontend implements ExtenderInterface
 
             $events->listen(
                 [Enabled::class, Disabled::class, ClearingCache::class],
-                function () use ($container, $abstract) {
+                function () use ($container, $abstract): void {
                     $recompile = new RecompileFrontendAssets(
                         $container->make($abstract),
                         $container->make(LocaleManager::class)
@@ -230,7 +230,7 @@ class Frontend implements ExtenderInterface
 
             $events->listen(
                 Saved::class,
-                function (Saved $event) use ($container, $abstract) {
+                function (Saved $event) use ($container, $abstract): void {
                     $recompile = new RecompileFrontendAssets(
                         $container->make($abstract),
                         $container->make(LocaleManager::class)
@@ -249,7 +249,7 @@ class Frontend implements ExtenderInterface
 
         $container->resolving(
             "flarum.{$this->frontend}.routes",
-            function (RouteCollection $collection, Container $container) {
+            function (RouteCollection $collection, Container $container): void {
                 /** @var RouteHandlerFactory $factory */
                 $factory = $container->make(RouteHandlerFactory::class);
 
@@ -276,7 +276,7 @@ class Frontend implements ExtenderInterface
 
         $container->resolving(
             "flarum.frontend.$this->frontend",
-            function (ActualFrontend $frontend, Container $container) {
+            function (ActualFrontend $frontend, Container $container): void {
                 foreach ($this->content as $content) {
                     $frontend->content(ContainerUtil::wrapCallback($content, $container));
                 }
@@ -292,8 +292,8 @@ class Frontend implements ExtenderInterface
 
         $container->resolving(
             "flarum.frontend.$this->frontend",
-            function (ActualFrontend $frontend, Container $container) {
-                $frontend->content(function (Document $document) use ($container) {
+            function (ActualFrontend $frontend, Container $container): void {
+                $frontend->content(function (Document $document) use ($container): void {
                     foreach ($this->preloadArrs as $preloadArr) {
                         $preloads = is_callable($preloadArr) ? ContainerUtil::wrapCallback($preloadArr, $container)($document) : $preloadArr;
                         $document->preloads = array_merge($document->preloads, $preloads);

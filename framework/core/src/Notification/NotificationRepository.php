@@ -48,7 +48,7 @@ class NotificationRepository
      *
      * @return void
      */
-    public function markAllAsRead(User $user)
+    public function markAllAsRead(User $user): void
     {
         Notification::where('user_id', $user->id)
             ->whereNull('read_at')

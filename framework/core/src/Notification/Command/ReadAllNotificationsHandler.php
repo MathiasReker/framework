@@ -40,7 +40,7 @@ class ReadAllNotificationsHandler
      * @param ReadAllNotifications $command
      * @throws \Flarum\User\Exception\PermissionDeniedException
      */
-    public function handle(ReadAllNotifications $command)
+    public function handle(ReadAllNotifications $command): void
     {
         $actor = $command->actor;
 

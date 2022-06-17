@@ -39,7 +39,7 @@ class ModelTest extends TestCase
         ]);
     }
 
-    protected function prepPostsHierarchy()
+    protected function prepPostsHierarchy(): void
     {
         $this->prepareDatabase([
             'discussions' => [
@@ -54,7 +54,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_does_not_exist_by_default()
+    public function custom_relationship_does_not_exist_by_default(): void
     {
         $this->app();
 
@@ -67,7 +67,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_hasOne_relationship_exists_if_added()
+    public function custom_hasOne_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -84,7 +84,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_hasMany_relationship_exists_if_added()
+    public function custom_hasMany_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -101,7 +101,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_belongsTo_relationship_exists_if_added()
+    public function custom_belongsTo_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -118,7 +118,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_exists_if_added()
+    public function custom_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -137,7 +137,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_can_be_invokable_class()
+    public function custom_relationship_can_be_invokable_class(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -154,7 +154,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_exists_and_can_return_instances_if_added()
+    public function custom_relationship_exists_and_can_return_instances_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -180,7 +180,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_is_inherited_to_child_classes()
+    public function custom_relationship_is_inherited_to_child_classes(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -200,7 +200,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_prioritizes_child_classes_within_2_parent_classes()
+    public function custom_relationship_prioritizes_child_classes_within_2_parent_classes(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -222,7 +222,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_prioritizes_child_classes_within_child_class_and_immediate_parent()
+    public function custom_relationship_prioritizes_child_classes_within_child_class_and_immediate_parent(): void
     {
         $this->extend(
             (new Extend\Model(AbstractEventPost::class))
@@ -244,7 +244,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_does_not_exist_if_added_to_unrelated_model()
+    public function custom_relationship_does_not_exist_if_added_to_unrelated_model(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -264,7 +264,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_doesnt_exist_if_not_set()
+    public function custom_default_attribute_doesnt_exist_if_not_set(): void
     {
         $group = new Group;
 
@@ -276,7 +276,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_works_if_set()
+    public function custom_default_attribute_works_if_set(): void
     {
         $this->extend(
             (new Extend\Model(Group::class))
@@ -293,7 +293,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_evaluated_at_runtime_if_callable()
+    public function custom_default_attribute_evaluated_at_runtime_if_callable(): void
     {
         $this->extend(
             (new Extend\Model(Group::class))
@@ -316,7 +316,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_is_inherited_to_child_classes()
+    public function custom_default_attribute_is_inherited_to_child_classes(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -333,7 +333,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_inheritance_prioritizes_child_class()
+    public function custom_default_attribute_inheritance_prioritizes_child_class(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -358,7 +358,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_default_attribute_doesnt_work_if_set_on_unrelated_model()
+    public function custom_default_attribute_doesnt_work_if_set_on_unrelated_model(): void
     {
         $this->extend(
             (new Extend\Model(Group::class))
@@ -375,7 +375,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_date_attribute_doesnt_exist_by_default()
+    public function custom_date_attribute_doesnt_exist_by_default(): void
     {
         $post = new Post;
 
@@ -387,7 +387,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_date_attribute_can_be_set()
+    public function custom_date_attribute_can_be_set(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -404,7 +404,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_date_attribute_is_inherited_to_child_classes()
+    public function custom_date_attribute_is_inherited_to_child_classes(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))
@@ -421,7 +421,7 @@ class ModelTest extends TestCase
     /**
      * @test
      */
-    public function custom_date_attribute_doesnt_work_if_set_on_unrelated_model()
+    public function custom_date_attribute_doesnt_work_if_set_on_unrelated_model(): void
     {
         $this->extend(
             (new Extend\Model(Post::class))

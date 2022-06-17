@@ -25,7 +25,7 @@ class ValidationExceptionHandlerTest extends TestCase
         $this->handler = new ValidationExceptionHandler;
     }
 
-    public function test_managing_exceptions()
+    public function test_managing_exceptions(): void
     {
         $error = $this->handler->handle(new ValidationException(
             ['foo' => 'Attribute error'],

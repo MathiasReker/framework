@@ -63,7 +63,7 @@ class AdminPayload
         $this->events = $events;
     }
 
-    public function __invoke(Document $document, Request $request)
+    public function __invoke(Document $document, Request $request): void
     {
         $settings = $this->settings->all();
 

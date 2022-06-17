@@ -55,7 +55,7 @@ class ValidateCustomLess
         $this->customLessSettings = $customLessSettings;
     }
 
-    public function whenSettingsSaving(Saving $event)
+    public function whenSettingsSaving(Saving $event): void
     {
         if (! isset($event->settings['custom_less']) && ! $this->hasDirtyCustomLessSettings($event)) {
             return;
@@ -94,7 +94,7 @@ class ValidateCustomLess
         $this->container->instance(SettingsRepositoryInterface::class, $settings);
     }
 
-    public function whenSettingsSaved(Saved $event)
+    public function whenSettingsSaved(Saved $event): void
     {
         if (! isset($event->settings['custom_less']) && ! $this->hasDirtyCustomLessSettings($event)) {
             return;

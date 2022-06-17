@@ -30,12 +30,12 @@ class ShowTest extends TestCase
         ]);
     }
 
-    private function forbidGuestsFromSeeingForum()
+    private function forbidGuestsFromSeeingForum(): void
     {
         $this->database()->table('group_permission')->where('permission', 'viewForum')->where('group_id', 2)->delete();
     }
 
-    private function forbidMembersFromSearchingUsers()
+    private function forbidMembersFromSearchingUsers(): void
     {
         $this->database()->table('group_permission')->where('permission', 'searchUsers')->where('group_id', 3)->delete();
     }
@@ -43,7 +43,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_see_user()
+    public function admin_can_see_user(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/2', [
@@ -57,7 +57,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_see_user_via_slug()
+    public function admin_can_see_user_via_slug(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/normal', [
@@ -73,7 +73,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_can_see_user_by_default()
+    public function guest_can_see_user_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/2')
@@ -85,7 +85,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_can_see_user_by_slug_by_default()
+    public function guest_can_see_user_by_slug_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/normal')->withQueryParams([
@@ -99,7 +99,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_cant_see_user_if_blocked()
+    public function guest_cant_see_user_if_blocked(): void
     {
         $this->forbidGuestsFromSeeingForum();
 
@@ -113,7 +113,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function guest_cant_see_user_by_slug_if_blocked()
+    public function guest_cant_see_user_by_slug_if_blocked(): void
     {
         $this->forbidGuestsFromSeeingForum();
 
@@ -129,7 +129,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function user_can_see_themselves()
+    public function user_can_see_themselves(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/2', [
@@ -143,7 +143,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function user_can_see_themselves_via_slug()
+    public function user_can_see_themselves_via_slug(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/normal', [
@@ -159,7 +159,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function user_can_see_others_by_default()
+    public function user_can_see_others_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/1', [
@@ -173,7 +173,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function user_can_see_others_by_default_via_slug()
+    public function user_can_see_others_by_default_via_slug(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/users/admin', [
@@ -189,7 +189,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function user_can_still_see_others_via_slug_even_if_cant_search()
+    public function user_can_still_see_others_via_slug_even_if_cant_search(): void
     {
         $this->forbidMembersFromSearchingUsers();
 

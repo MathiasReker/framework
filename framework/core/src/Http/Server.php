@@ -29,7 +29,7 @@ class Server
         $this->site = $site;
     }
 
-    public function listen()
+    public function listen(): void
     {
         $runner = new RequestHandlerRunner(
             $this->safelyBootAndGetHandler(),
@@ -78,7 +78,7 @@ class Server
      * or if there is a filesystem error.
      * @param Throwable $error
      */
-    private function cleanBootExceptionLog(Throwable $error)
+    private function cleanBootExceptionLog(Throwable $error): void
     {
         if (app()->has('flarum.config') && app('flarum.config')->inDebugMode()) {
             // If the application booted far enough for the config to be available, we will check for debug mode
@@ -114,7 +114,7 @@ ERROR;
      * @param Throwable $error
      * @throws Throwable
      */
-    private function fallbackBootExceptionLog(Throwable $error)
+    private function fallbackBootExceptionLog(Throwable $error): void
     {
         echo 'Flarum encountered a boot error. Details have been logged to the system PHP log file.<br />';
 

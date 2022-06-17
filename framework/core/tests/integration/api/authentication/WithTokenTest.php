@@ -34,7 +34,7 @@ class WithTokenTest extends TestCase
     /**
      * @test
      */
-    public function user_generates_token()
+    public function user_generates_token(): void
     {
         $response = $this->send(
             $this->request(
@@ -66,7 +66,7 @@ class WithTokenTest extends TestCase
     /**
      * @test
      */
-    public function failure_with_invalid_credentials()
+    public function failure_with_invalid_credentials(): void
     {
         $response = $this->send(
             $this->request(

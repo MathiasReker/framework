@@ -52,7 +52,7 @@ class DatabaseConfig implements Arrayable
         ];
     }
 
-    private function validate()
+    private function validate(): void
     {
         if (empty($this->driver)) {
             throw new ValidationFailed('Please specify a database driver.');

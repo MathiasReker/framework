@@ -27,5 +27,5 @@ interface Step
      * @return void
      * @throws StepFailed
      */
-    public function run();
+    public function run(): void;
 }

@@ -40,7 +40,7 @@ class FrontendTitleTest extends TestCase
     /**
      * @test
      */
-    public function basic_title_driver_is_used_by_default()
+    public function basic_title_driver_is_used_by_default(): void
     {
         $this->assertTitleEquals('Test Discussion - Flarum');
     }
@@ -48,7 +48,7 @@ class FrontendTitleTest extends TestCase
     /**
      * @test
      */
-    public function custom_title_driver_works_if_set()
+    public function custom_title_driver_works_if_set(): void
     {
         $this->extend((new Frontend('forum'))->title(CustomTitleDriver::class));
 

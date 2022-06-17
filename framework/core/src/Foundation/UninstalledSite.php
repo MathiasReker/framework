@@ -121,7 +121,7 @@ class UninstalledSite implements SiteInterface
         ]);
     }
 
-    protected function registerLogger(Container $container)
+    protected function registerLogger(Container $container): void
     {
         $logPath = $this->paths->storage.'/logs/flarum-installer.log';
         $handler = new StreamHandler($logPath, Logger::DEBUG);

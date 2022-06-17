@@ -27,7 +27,7 @@ class Server
         $this->site = $site;
     }
 
-    public function listen()
+    public function listen(): void
     {
         $app = $this->site->bootApp();
 
@@ -42,11 +42,11 @@ class Server
         exit($console->run());
     }
 
-    private function handleErrors(Application $console)
+    private function handleErrors(Application $console): void
     {
         $dispatcher = new EventDispatcher();
 
-        $dispatcher->addListener(ConsoleEvents::ERROR, function (ConsoleErrorEvent $event) {
+        $dispatcher->addListener(ConsoleEvents::ERROR, function (ConsoleErrorEvent $event): void {
             $container = Container::getInstance();
 
             /** @var Registry $registry */

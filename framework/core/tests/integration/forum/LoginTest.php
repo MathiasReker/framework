@@ -37,7 +37,7 @@ class LoginTest extends TestCase
     /**
      * @test
      */
-    public function cant_login_without_data()
+    public function cant_login_without_data(): void
     {
         $response = $this->send(
             $this->request('POST', '/login', [
@@ -51,7 +51,7 @@ class LoginTest extends TestCase
     /**
      * @test
      */
-    public function cant_login_with_wrong_password()
+    public function cant_login_with_wrong_password(): void
     {
         $response = $this->send(
             $this->request('POST', '/login', [
@@ -68,7 +68,7 @@ class LoginTest extends TestCase
     /**
      * @test
      */
-    public function can_login_with_data()
+    public function can_login_with_data(): void
     {
         $response = $this->send(
             $this->request('POST', '/login', [

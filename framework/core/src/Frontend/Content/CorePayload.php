@@ -39,7 +39,7 @@ class CorePayload
         $this->api = $api;
     }
 
-    public function __invoke(Document $document, Request $request)
+    public function __invoke(Document $document, Request $request): void
     {
         $document->payload = array_merge(
             $document->payload,

@@ -36,7 +36,7 @@ class IndexTest extends TestCase
     /**
      * @test
      */
-    public function guest_not_serialized_by_current_user_serializer()
+    public function guest_not_serialized_by_current_user_serializer(): void
     {
         $response = $this->send(
             $this->request('GET', '/')
@@ -49,7 +49,7 @@ class IndexTest extends TestCase
     /**
      * @test
      */
-    public function user_serialized_by_current_user_serializer()
+    public function user_serialized_by_current_user_serializer(): void
     {
         $login = $this->send(
             $this->request('POST', '/login', [

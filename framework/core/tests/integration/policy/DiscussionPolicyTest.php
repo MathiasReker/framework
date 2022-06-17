@@ -56,7 +56,7 @@ class DiscussionPolicyTest extends TestCase
     /**
      * @test
      */
-    public function rename_indefinitely()
+    public function rename_indefinitely(): void
     {
         $this->setting('allow_renaming', '-1');
         $this->app();
@@ -78,7 +78,7 @@ class DiscussionPolicyTest extends TestCase
     /**
      * @test
      */
-    public function rename_until_reply()
+    public function rename_until_reply(): void
     {
         $this->setting('allow_renaming', 'reply');
         $this->app();
@@ -107,7 +107,7 @@ class DiscussionPolicyTest extends TestCase
     /**
      * @test
      */
-    public function rename_10_minutes()
+    public function rename_10_minutes(): void
     {
         $this->setting('allow_renaming', '10');
         $this->app();

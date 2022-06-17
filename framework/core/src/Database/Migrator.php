@@ -79,7 +79,7 @@ class Migrator
      * @param  Extension $extension
      * @return void
      */
-    public function run($path, Extension $extension = null)
+    public function run($path, Extension $extension = null): void
     {
         $files = $this->getMigrationFiles($path);
 
@@ -98,7 +98,7 @@ class Migrator
      * @param  Extension $extension
      * @return void
      */
-    public function runMigrationList($path, $migrations, Extension $extension = null)
+    public function runMigrationList($path, $migrations, Extension $extension = null): void
     {
         // First we will just make sure that there are any migrations to run. If there
         // aren't, we will just make a note of it to the developer so they're aware
@@ -126,7 +126,7 @@ class Migrator
      * @param  Extension $extension
      * @return void
      */
-    protected function runUp($path, $file, Extension $extension = null)
+    protected function runUp($path, $file, Extension $extension = null): void
     {
         $migration = $this->resolve($path, $file);
 
@@ -175,7 +175,7 @@ class Migrator
      * @param  Extension $extension
      * @return void
      */
-    protected function runDown($path, $file, Extension $extension = null)
+    protected function runDown($path, $file, Extension $extension = null): void
     {
         $migration = $this->resolve($path, $file);
 
@@ -196,7 +196,7 @@ class Migrator
      * @param string $direction
      * @throws Exception
      */
-    protected function runClosureMigration($migration, $direction = 'up')
+    protected function runClosureMigration($migration, $direction = 'up'): void
     {
         if (is_array($migration) && array_key_exists($direction, $migration)) {
             call_user_func($migration[$direction], $this->connection->getSchemaBuilder());
@@ -252,7 +252,7 @@ class Migrator
      *
      * @param string $path to the directory containing the dump.
      */
-    public function installFromSchema(string $path)
+    public function installFromSchema(string $path): void
     {
         $schemaPath = "$path/install.dump";
 
@@ -302,7 +302,7 @@ class Migrator
      * @param string $message
      * @return void
      */
-    protected function note($message)
+    protected function note($message): void
     {
         if ($this->output) {
             $this->output->writeln($message);

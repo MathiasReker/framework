@@ -17,7 +17,7 @@ trait ScopeVisibilityTrait
 {
     protected static $visibilityScopers = [];
 
-    public static function registerVisibilityScoper($scoper, $ability = null)
+    public static function registerVisibilityScoper($scoper, $ability = null): void
     {
         $model = static::class;
 

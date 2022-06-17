@@ -18,7 +18,7 @@ class ScopeGroupVisibility
      * @param User $actor
      * @param Builder $query
      */
-    public function __invoke(User $actor, $query)
+    public function __invoke(User $actor, $query): void
     {
         if ($actor->cannot('viewHiddenGroups')) {
             $query->where('is_hidden', false);

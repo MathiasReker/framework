@@ -56,12 +56,12 @@ class RevisionCompiler implements CompilerInterface
         return $this->filename;
     }
 
-    public function setFilename(string $filename)
+    public function setFilename(string $filename): void
     {
         $this->filename = $filename;
     }
 
-    public function commit(bool $force = false)
+    public function commit(bool $force = false): void
     {
         $sources = $this->getSources();
 
@@ -83,7 +83,7 @@ class RevisionCompiler implements CompilerInterface
         }
     }
 
-    public function addSources(callable $callback)
+    public function addSources(callable $callback): void
     {
         $this->sourcesCallbacks[] = $callback;
     }
@@ -187,7 +187,7 @@ class RevisionCompiler implements CompilerInterface
         return null;
     }
 
-    public function flush()
+    public function flush(): void
     {
         if ($this->versioner->getRevision($this->filename) !== null) {
             $this->delete($this->filename);
@@ -199,7 +199,7 @@ class RevisionCompiler implements CompilerInterface
     /**
      * @param string $file
      */
-    protected function delete(string $file)
+    protected function delete(string $file): void
     {
         if ($this->assetsDir->has($file)) {
             $this->assetsDir->delete($file);

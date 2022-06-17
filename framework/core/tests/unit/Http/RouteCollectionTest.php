@@ -15,13 +15,13 @@ use Flarum\Testing\unit\TestCase;
 class RouteCollectionTest extends TestCase
 {
     /** @test */
-    public function can_add_routes()
+    public function can_add_routes(): void
     {
         $routeCollection = (new RouteCollection)
-            ->addRoute('GET', '/index', 'index', function () {
+            ->addRoute('GET', '/index', 'index', function (): void {
                 echo 'index';
             })
-            ->addRoute('DELETE', '/posts', 'forum.posts.delete', function () {
+            ->addRoute('DELETE', '/posts', 'forum.posts.delete', function (): void {
                 echo 'delete posts';
             });
 
@@ -30,15 +30,15 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function can_add_routes_late()
+    public function can_add_routes_late(): void
     {
-        $routeCollection = (new RouteCollection)->addRoute('GET', '/index', 'index', function () {
+        $routeCollection = (new RouteCollection)->addRoute('GET', '/index', 'index', function (): void {
             echo 'index';
         });
 
         $this->assertEquals('/index', $routeCollection->getPath('index'));
 
-        $routeCollection->addRoute('DELETE', '/posts', 'forum.posts.delete', function () {
+        $routeCollection->addRoute('DELETE', '/posts', 'forum.posts.delete', function (): void {
             echo 'delete posts';
         });
 
@@ -46,12 +46,12 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function must_provide_required_parameters()
+    public function must_provide_required_parameters(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage("Could not generate URL for route 'user': no value provided for required part 'user'.");
 
-        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}', 'user', function () {
+        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}', 'user', function (): void {
             echo 'user';
         });
 
@@ -59,9 +59,9 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function dont_need_to_provide_optional_parameters()
+    public function dont_need_to_provide_optional_parameters(): void
     {
-        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}[/{test}]', 'user', function () {
+        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}[/{test}]', 'user', function (): void {
             echo 'user';
         });
 
@@ -71,9 +71,9 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function can_provide_optional_parameters()
+    public function can_provide_optional_parameters(): void
     {
-        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}[/{test}]', 'user', function () {
+        $routeCollection = (new RouteCollection)->addRoute('GET', '/user/{user}[/{test}]', 'user', function (): void {
             echo 'user';
         });
 

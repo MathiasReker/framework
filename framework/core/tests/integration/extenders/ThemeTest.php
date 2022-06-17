@@ -17,7 +17,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_override_import_doesnt_work_by_default()
+    public function theme_extender_override_import_doesnt_work_by_default(): void
     {
         $response = $this->send($this->request('GET', '/'));
 
@@ -30,7 +30,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_override_import_works()
+    public function theme_extender_override_import_works(): void
     {
         $this->extend(
             (new Extend\Theme)
@@ -49,7 +49,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_override_import_works_with_external_sources()
+    public function theme_extender_override_import_works_with_external_sources(): void
     {
         $this->extend(
             (new Extend\Frontend('forum'))
@@ -73,7 +73,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_override_file_source_works()
+    public function theme_extender_override_file_source_works(): void
     {
         $this->extend(
             (new Extend\Theme)
@@ -92,7 +92,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_override_file_source_works_by_failing_when_necessary()
+    public function theme_extender_override_file_source_works_by_failing_when_necessary(): void
     {
         $this->extend(
             (new Extend\Theme)
@@ -108,7 +108,7 @@ class ThemeTest extends TestCase
     /**
      * @test
      */
-    public function theme_extender_can_add_custom_function()
+    public function theme_extender_can_add_custom_function(): void
     {
         $this->extend(
             (new Extend\Frontend('forum'))

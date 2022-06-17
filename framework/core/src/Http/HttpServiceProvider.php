@@ -24,7 +24,7 @@ class HttpServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.http.csrfExemptPaths', function () {
             return ['token'];
@@ -69,12 +69,12 @@ class HttpServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot()
+    public function boot(): void
     {
         $this->setAccessTokenTypes();
     }
 
-    protected function setAccessTokenTypes()
+    protected function setAccessTokenTypes(): void
     {
         $models = [
             DeveloperAccessToken::class,

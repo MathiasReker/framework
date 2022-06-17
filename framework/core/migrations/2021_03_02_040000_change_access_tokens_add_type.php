@@ -11,8 +11,8 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 
 return [
-    'up' => function (Builder $schema) {
-        $schema->table('access_tokens', function (Blueprint $table) {
+    'up' => function (Builder $schema): void {
+        $schema->table('access_tokens', function (Blueprint $table): void {
             $table->string('type', 100)->index();
         });
 
@@ -29,13 +29,13 @@ return [
                 'type' => 'session_remember',
             ]);
 
-        $schema->table('access_tokens', function (Blueprint $table) {
+        $schema->table('access_tokens', function (Blueprint $table): void {
             $table->dropColumn('lifetime_seconds');
         });
     },
 
-    'down' => function (Builder $schema) {
-        $schema->table('access_tokens', function (Blueprint $table) {
+    'down' => function (Builder $schema): void {
+        $schema->table('access_tokens', function (Blueprint $table): void {
             $table->dropColumn('type');
             $table->integer('lifetime_seconds');
         });

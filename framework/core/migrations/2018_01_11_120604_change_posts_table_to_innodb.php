@@ -10,13 +10,13 @@
 use Illuminate\Database\Schema\Builder;
 
 return [
-    'up' => function (Builder $schema) {
+    'up' => function (Builder $schema): void {
         $connection = $schema->getConnection();
         $prefix = $connection->getTablePrefix();
         $connection->statement('ALTER TABLE '.$prefix.'posts ENGINE = InnoDB');
     },
 
-    'down' => function (Builder $schema) {
+    'down' => function (Builder $schema): void {
         $connection = $schema->getConnection();
         $prefix = $connection->getTablePrefix();
         $connection->statement('ALTER TABLE '.$prefix.'posts ENGINE = MyISAM');

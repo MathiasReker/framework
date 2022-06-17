@@ -40,7 +40,7 @@ class EmailFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), $matches[1], $negate);
     }
@@ -50,7 +50,7 @@ class EmailFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'email';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         if (! $filterState->getActor()->hasPermission('user.edit')) {
             return;
@@ -59,7 +59,7 @@ class EmailFilterGambit extends AbstractRegexGambit implements FilterInterface
         $this->constrain($filterState->getQuery(), $filterValue, $negate);
     }
 
-    protected function constrain(Builder $query, $rawEmail, bool $negate)
+    protected function constrain(Builder $query, $rawEmail, bool $negate): void
     {
         $email = trim($rawEmail, '"');
 

@@ -26,7 +26,7 @@ class CookieFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_create_cookies()
+    public function can_create_cookies(): void
     {
         $cookie = $this->factory()->make('test', 'australia');
 
@@ -38,7 +38,7 @@ class CookieFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_override_cookie_settings_from_config()
+    public function can_override_cookie_settings_from_config(): void
     {
         $cookie = $this->factory([
             'cookie' => [
@@ -56,7 +56,7 @@ class CookieFactoryTest extends TestCase
     }
 
     /** @test */
-    public function can_expire_cookies()
+    public function can_expire_cookies(): void
     {
         $cookie = $this->factory()->expire('test');
 

@@ -20,7 +20,7 @@ class FulltextGambit implements GambitInterface
     /**
      * {@inheritdoc}
      */
-    public function apply(SearchState $search, $bit)
+    public function apply(SearchState $search, $bit): void
     {
         // Replace all non-word characters with spaces.
         // We do this to prevent MySQL fulltext search boolean mode from taking
@@ -61,7 +61,7 @@ class FulltextGambit implements GambitInterface
             ->groupBy('discussions.id')
             ->addBinding($subquery->getBindings(), 'join');
 
-        $search->setDefaultSort(function ($query) use ($grammar, $bit) {
+        $search->setDefaultSort(function ($query) use ($grammar, $bit): void {
             $query->orderByRaw('MATCH('.$grammar->wrap('discussions.title').') AGAINST (?) desc', [$bit]);
             $query->orderBy('posts_ft.score', 'desc');
         });

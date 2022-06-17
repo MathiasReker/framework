@@ -34,7 +34,7 @@ class ThrottleApiTest extends TestCase
     /**
      * @test
      */
-    public function list_discussions_not_restricted_by_default()
+    public function list_discussions_not_restricted_by_default(): void
     {
         $response = $this->send($this->request('GET', '/api/discussions', ['authenticatedAs' => 2]));
 
@@ -44,7 +44,7 @@ class ThrottleApiTest extends TestCase
     /**
      * @test
      */
-    public function list_discussions_can_be_restricted()
+    public function list_discussions_can_be_restricted(): void
     {
         $this->extend((new Extend\ThrottleApi)->set('blockListDiscussions', function ($request) {
             if ($request->getAttribute('routeName') === 'discussions.index') {
@@ -60,7 +60,7 @@ class ThrottleApiTest extends TestCase
     /**
      * @test
      */
-    public function false_overrides_true_for_evaluating_throttlers()
+    public function false_overrides_true_for_evaluating_throttlers(): void
     {
         $this->extend(
             (new Extend\ThrottleApi)->set('blockListDiscussions', function ($request) {
@@ -83,7 +83,7 @@ class ThrottleApiTest extends TestCase
     /**
      * @test
      */
-    public function throttling_applies_to_api_client()
+    public function throttling_applies_to_api_client(): void
     {
         $this->extend((new Extend\ThrottleApi)->set('blockRegistration', function ($request) {
             if ($request->getAttribute('routeName') === 'users.create') {

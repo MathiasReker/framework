@@ -19,7 +19,7 @@ class FrontendPreloadTest extends TestCase
     /**
      * @test
      */
-    public function default_preloads_are_present()
+    public function default_preloads_are_present(): void
     {
         $response = $this->send(
             $this->request('GET', '/')
@@ -42,7 +42,7 @@ class FrontendPreloadTest extends TestCase
     /**
      * @test
      */
-    public function preloads_can_be_added()
+    public function preloads_can_be_added(): void
     {
         $urls = $this->customPreloadUrls;
 
@@ -68,7 +68,7 @@ class FrontendPreloadTest extends TestCase
     /**
      * @test
      */
-    public function preloads_can_be_added_via_callable()
+    public function preloads_can_be_added_via_callable(): void
     {
         $urls = $this->customPreloadUrls;
 

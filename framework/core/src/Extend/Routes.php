@@ -175,7 +175,7 @@ class Routes implements ExtenderInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         if (empty($this->routes) && empty($this->removedRoutes)) {
             return;
@@ -183,7 +183,7 @@ class Routes implements ExtenderInterface
 
         $container->resolving(
             "flarum.{$this->appName}.routes",
-            function (RouteCollection $collection, Container $container) {
+            function (RouteCollection $collection, Container $container): void {
                 /** @var RouteHandlerFactory $factory */
                 $factory = $container->make(RouteHandlerFactory::class);
 

@@ -12,7 +12,7 @@ use Flarum\Forum\Controller;
 use Flarum\Http\RouteCollection;
 use Flarum\Http\RouteHandlerFactory;
 
-return function (RouteCollection $map, RouteHandlerFactory $route) {
+return function (RouteCollection $map, RouteHandlerFactory $route): void {
     $map->get(
         '/all',
         'index',

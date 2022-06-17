@@ -66,7 +66,7 @@ class InfoCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('info')
@@ -76,7 +76,7 @@ class InfoCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $coreVersion = $this->findPackageVersion(__DIR__.'/../../../', Application::VERSION);
         $this->output->writeln("<info>Flarum core $coreVersion</info>");

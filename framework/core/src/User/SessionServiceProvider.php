@@ -18,7 +18,7 @@ class SessionServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('session.handler', function ($container) {
             return new FileSessionHandler(

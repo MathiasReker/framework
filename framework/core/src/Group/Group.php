@@ -64,11 +64,11 @@ class Group extends AbstractModel
      *
      * @return void
      */
-    public static function boot()
+    public static function boot(): void
     {
         parent::boot();
 
-        static::deleted(function (self $group) {
+        static::deleted(function (self $group): void {
             $group->raise(new Deleted($group));
         });
     }

@@ -11,31 +11,31 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Schema\Builder;
 
 return [
-    'up' => function (Builder $schema) {
+    'up' => function (Builder $schema): void {
         // Delete rows with non-existent users so that we will be able to create
         // foreign keys without any issues.
         $schema->getConnection()
             ->table('notifications')
-            ->whereNotExists(function ($query) {
+            ->whereNotExists(function ($query): void {
                 $query->selectRaw(1)->from('users')->whereColumn('id', 'user_id');
             })
             ->delete();
 
         $schema->getConnection()
             ->table('notifications')
-            ->whereNotExists(function ($query) {
+            ->whereNotExists(function ($query): void {
                 $query->selectRaw(1)->from('users')->whereColumn('id', 'from_user_id');
             })
             ->update(['from_user_id' => null]);
 
-        $schema->table('notifications', function (Blueprint $table) {
+        $schema->table('notifications', function (Blueprint $table): void {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('from_user_id')->references('id')->on('users')->onDelete('set null');
         });
     },
 
-    'down' => function (Builder $schema) {
-        $schema->table('notifications', function (Blueprint $table) {
+    'down' => function (Builder $schema): void {
+        $schema->table('notifications', function (Blueprint $table): void {
             $table->dropForeign(['user_id']);
             $table->dropForeign(['from_user_id']);
         });

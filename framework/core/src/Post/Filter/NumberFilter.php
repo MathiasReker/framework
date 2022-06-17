@@ -19,7 +19,7 @@ class NumberFilter implements FilterInterface
         return 'number';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $number = trim($filterValue, '"');
 

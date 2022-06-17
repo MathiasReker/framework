@@ -49,7 +49,7 @@ class LessCompiler extends RevisionCompiler
         return $this->cacheDir;
     }
 
-    public function setCacheDir(string $cacheDir)
+    public function setCacheDir(string $cacheDir): void
     {
         $this->cacheDir = $cacheDir;
     }
@@ -59,22 +59,22 @@ class LessCompiler extends RevisionCompiler
         return $this->importDirs;
     }
 
-    public function setImportDirs(array $importDirs)
+    public function setImportDirs(array $importDirs): void
     {
         $this->importDirs = $importDirs;
     }
 
-    public function setLessImportOverrides(array $lessImportOverrides)
+    public function setLessImportOverrides(array $lessImportOverrides): void
     {
         $this->lessImportOverrides = new Collection($lessImportOverrides);
     }
 
-    public function setFileSourceOverrides(array $fileSourceOverrides)
+    public function setFileSourceOverrides(array $fileSourceOverrides): void
     {
         $this->fileSourceOverrides = new Collection($fileSourceOverrides);
     }
 
-    public function setCustomFunctions(array $customFunctions)
+    public function setCustomFunctions(array $customFunctions): void
     {
         $this->customFunctions = $customFunctions;
     }

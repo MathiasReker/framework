@@ -28,7 +28,7 @@ class IlluminateValidationExceptionHandlerTest extends TestCase
         $this->handler = new IlluminateValidationExceptionHandler;
     }
 
-    public function test_it_creates_the_desired_output()
+    public function test_it_creates_the_desired_output(): void
     {
         $exception = new ValidationException($this->makeValidator(['foo' => ''], ['foo' => 'required']));
 

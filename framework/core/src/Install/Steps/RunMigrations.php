@@ -38,7 +38,7 @@ class RunMigrations implements Step
         return 'Running migrations';
     }
 
-    public function run()
+    public function run(): void
     {
         $migrator = $this->getMigrator();
 

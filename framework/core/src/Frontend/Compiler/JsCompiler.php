@@ -68,7 +68,7 @@ class JsCompiler extends RevisionCompiler
     /**
      * {@inheritdoc}
      */
-    protected function delete(string $file)
+    protected function delete(string $file): void
     {
         parent::delete($file);
 

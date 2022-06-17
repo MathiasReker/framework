@@ -46,7 +46,7 @@ class CollectGarbage implements Middleware
         return $handler->handle($request);
     }
 
-    private function collectGarbageSometimes()
+    private function collectGarbageSometimes(): void
     {
         // In order to save performance, we only execute this query
         // from time to time (with 2% chance).

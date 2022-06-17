@@ -18,7 +18,7 @@ class BaseUrlTest extends TestCase
     /**
      * @dataProvider urlProvider
      */
-    public function test_base_url_simulating_cli_installer($uri, $expected)
+    public function test_base_url_simulating_cli_installer($uri, $expected): void
     {
         $this->assertEquals($expected, BaseUrl::fromString($uri));
     }
@@ -26,7 +26,7 @@ class BaseUrlTest extends TestCase
     /**
      * @dataProvider urlProvider
      */
-    public function test_base_url_simulating_web_installer($uri, $expected)
+    public function test_base_url_simulating_web_installer($uri, $expected): void
     {
         $uri = new Uri($uri);
 
@@ -36,7 +36,7 @@ class BaseUrlTest extends TestCase
     /**
      * @dataProvider emailProvider
      */
-    public function test_default_email_generation($uri, $expected)
+    public function test_default_email_generation($uri, $expected): void
     {
         $this->assertEquals(
             $expected,

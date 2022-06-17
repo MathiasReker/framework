@@ -42,7 +42,7 @@ class AssetsPublishCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('assets:publish')
@@ -52,7 +52,7 @@ class AssetsPublishCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $this->info('Publishing core assets...');
 

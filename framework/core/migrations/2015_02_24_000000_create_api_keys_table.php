@@ -12,7 +12,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 return Migration::createTable(
     'api_keys',
-    function (Blueprint $table) {
+    function (Blueprint $table): void {
         $table->string('id', 100)->primary();
     }
 );

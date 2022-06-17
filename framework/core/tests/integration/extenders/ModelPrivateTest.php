@@ -22,7 +22,7 @@ class ModelPrivateTest extends TestCase
     /**
      * @test
      */
-    public function discussion_isnt_saved_as_private_by_default()
+    public function discussion_isnt_saved_as_private_by_default(): void
     {
         $this->app();
 
@@ -37,7 +37,7 @@ class ModelPrivateTest extends TestCase
     /**
      * @test
      */
-    public function discussion_is_saved_as_private_if_privacy_checker_added()
+    public function discussion_is_saved_as_private_if_privacy_checker_added(): void
     {
         $this->extend(
             (new Extend\ModelPrivate(Discussion::class))
@@ -62,7 +62,7 @@ class ModelPrivateTest extends TestCase
     /**
      * @test
      */
-    public function discussion_is_saved_as_private_if_privacy_checker_added_via_invokable_class()
+    public function discussion_is_saved_as_private_if_privacy_checker_added_via_invokable_class(): void
     {
         $this->extend(
             (new Extend\ModelPrivate(Discussion::class))
@@ -85,7 +85,7 @@ class ModelPrivateTest extends TestCase
     /**
      * @test
      */
-    public function private_checkers_that_return_false_dont_matter()
+    public function private_checkers_that_return_false_dont_matter(): void
     {
         $this->extend(
             (new Extend\ModelPrivate(Discussion::class))

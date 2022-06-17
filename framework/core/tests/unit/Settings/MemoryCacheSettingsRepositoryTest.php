@@ -28,7 +28,7 @@ class MemoryCacheSettingsRepositoryTest extends TestCase
         $this->repository = new MemoryCacheSettingsRepository($this->baseRepository);
     }
 
-    public function test_it_should_return_all_settings_when_not_cached()
+    public function test_it_should_return_all_settings_when_not_cached(): void
     {
         $this->baseRepository->shouldReceive('all')->once()->andReturn(['key' => 'value']);
 
@@ -36,7 +36,7 @@ class MemoryCacheSettingsRepositoryTest extends TestCase
         $this->assertEquals(['key' => 'value'], $this->repository->all()); // Assert twice to ensure we hit the cache
     }
 
-    public function test_it_should_retrieve_a_specific_value()
+    public function test_it_should_retrieve_a_specific_value(): void
     {
         $this->baseRepository->shouldReceive('all')->once()->andReturn(['key1' => 'value1', 'key2' => 'value2']);
 
@@ -44,7 +44,7 @@ class MemoryCacheSettingsRepositoryTest extends TestCase
         $this->assertEquals('value2', $this->repository->get('key2')); // Assert twice to ensure we hit the cache
     }
 
-    public function test_it_should_set_a_key_value_pair()
+    public function test_it_should_set_a_key_value_pair(): void
     {
         $this->baseRepository->shouldReceive('set')->once();
 

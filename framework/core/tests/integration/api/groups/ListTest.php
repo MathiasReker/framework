@@ -34,7 +34,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_limited_index_for_guest()
+    public function shows_limited_index_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups')
@@ -50,7 +50,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_index_for_admin()
+    public function shows_index_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups', [
@@ -68,7 +68,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function filters_only_public_groups_for_admin()
+    public function filters_only_public_groups_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups', [
@@ -89,7 +89,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function filters_only_hidden_groups_for_admin()
+    public function filters_only_hidden_groups_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups', [
@@ -110,7 +110,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function filters_only_public_groups_for_guest()
+    public function filters_only_public_groups_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups')
@@ -129,7 +129,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function hides_hidden_groups_when_filtering_for_guest()
+    public function hides_hidden_groups_when_filtering_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups')
@@ -149,7 +149,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function paginates_groups_without_filter()
+    public function paginates_groups_without_filter(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups')
@@ -168,7 +168,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function paginates_groups_with_filter()
+    public function paginates_groups_with_filter(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups')
@@ -189,7 +189,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function sorts_groups_by_name()
+    public function sorts_groups_by_name(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups', [

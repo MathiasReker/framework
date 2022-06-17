@@ -50,11 +50,11 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function when_allowed_guests_can_see_hidden_posts()
+    public function when_allowed_guests_can_see_hidden_posts(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(CommentPost::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=1');
                 }, 'hidePosts')
         );
@@ -71,7 +71,7 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function user_can_see_posts_by_default()
+    public function user_can_see_posts_by_default(): void
     {
         $this->app();
 
@@ -85,11 +85,11 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function custom_visibility_scoper_can_stop_user_from_seeing_posts()
+    public function custom_visibility_scoper_can_stop_user_from_seeing_posts(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(CommentPost::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=0');
                 }, 'view')
         );
@@ -106,11 +106,11 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function custom_visibility_scoper_applies_if_added_to_parent_class()
+    public function custom_visibility_scoper_applies_if_added_to_parent_class(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(Post::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=0');
                 }, 'view')
         );
@@ -127,15 +127,15 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function custom_visibility_scoper_for_class_applied_after_scopers_for_parent_class()
+    public function custom_visibility_scoper_for_class_applied_after_scopers_for_parent_class(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(CommentPost::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->orWhereRaw('1=1');
                 }, 'view'),
             (new Extend\ModelVisibility(Post::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=0');
                 }, 'view')
         );
@@ -152,15 +152,15 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function custom_scoper_works_for_abilities_other_than_view()
+    public function custom_scoper_works_for_abilities_other_than_view(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(Discussion::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=1');
                 }, 'viewPrivate'),
             (new Extend\ModelVisibility(Post::class))
-                ->scope(function (User $user, Builder $query) {
+                ->scope(function (User $user, Builder $query): void {
                     $query->whereRaw('1=1');
                 }, 'viewPrivate')
         );
@@ -177,17 +177,17 @@ class ModelVisibilityTest extends TestCase
     /**
      * @test
      */
-    public function universal_scoper_works()
+    public function universal_scoper_works(): void
     {
         $this->extend(
             (new Extend\ModelVisibility(Discussion::class))
-                ->scopeAll(function (User $user, Builder $query, string $ability) {
+                ->scopeAll(function (User $user, Builder $query, string $ability): void {
                     if ($ability == 'viewPrivate') {
                         $query->whereRaw('1=1');
                     }
                 }),
             (new Extend\ModelVisibility(Post::class))
-                ->scopeAll(function (User $user, Builder $query, string $ability) {
+                ->scopeAll(function (User $user, Builder $query, string $ability): void {
                     if ($ability == 'viewPrivate') {
                         $query->whereRaw('1=1');
                     }

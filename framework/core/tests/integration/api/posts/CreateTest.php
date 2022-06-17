@@ -37,7 +37,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_reply()
+    public function can_create_reply(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/posts', [
@@ -61,7 +61,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function limited_by_throttler()
+    public function limited_by_throttler(): void
     {
         $this->send(
             $this->request('POST', '/api/posts', [

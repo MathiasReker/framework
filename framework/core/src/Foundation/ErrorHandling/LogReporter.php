@@ -27,7 +27,7 @@ class LogReporter implements Reporter
         $this->logger = $logger;
     }
 
-    public function report(Throwable $error)
+    public function report(Throwable $error): void
     {
         $this->logger->error($error);
     }

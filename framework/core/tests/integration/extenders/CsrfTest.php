@@ -24,7 +24,7 @@ class CsrfTest extends TestCase
     /**
      * @test
      */
-    public function create_user_post_needs_csrf_token_by_default()
+    public function create_user_post_needs_csrf_token_by_default(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/users', [
@@ -42,7 +42,7 @@ class CsrfTest extends TestCase
     /**
      * @test
      */
-    public function create_user_post_doesnt_need_csrf_token_if_whitelisted()
+    public function create_user_post_doesnt_need_csrf_token_if_whitelisted(): void
     {
         $this->extend(
             (new Extend\Csrf)

@@ -30,7 +30,7 @@ class GroupFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), $search->getActor(), $matches[1], $negate);
     }
@@ -40,12 +40,12 @@ class GroupFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'group';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $this->constrain($filterState->getQuery(), $filterState->getActor(), $filterValue, $negate);
     }
 
-    protected function constrain(Builder $query, User $actor, string $rawQuery, bool $negate)
+    protected function constrain(Builder $query, User $actor, string $rawQuery, bool $negate): void
     {
         $groupIdentifiers = explode(',', trim($rawQuery, '"'));
 

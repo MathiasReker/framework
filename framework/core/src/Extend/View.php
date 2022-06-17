@@ -63,9 +63,9 @@ class View implements ExtenderInterface, LifecycleInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
-        $container->resolving(Factory::class, function (Factory $view) {
+        $container->resolving(Factory::class, function (Factory $view): void {
             foreach ($this->namespaces as $namespace => $hints) {
                 $view->addNamespace($namespace, $hints);
             }
@@ -80,7 +80,7 @@ class View implements ExtenderInterface, LifecycleInterface
      * @param Extension $extension
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function onEnable(Container $container, Extension $extension)
+    public function onEnable(Container $container, Extension $extension): void
     {
         $storagePath = $container->make(Paths::class)->storage;
         array_map('unlink', glob($storagePath.'/views/*'));
@@ -91,7 +91,7 @@ class View implements ExtenderInterface, LifecycleInterface
      * @param Extension $extension
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function onDisable(Container $container, Extension $extension)
+    public function onDisable(Container $container, Extension $extension): void
     {
         $storagePath = $container->make(Paths::class)->storage;
         array_map('unlink', glob($storagePath.'/views/*'));

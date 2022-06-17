@@ -40,7 +40,7 @@ class GenerateDumpCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('schema:dump')
@@ -50,7 +50,7 @@ class GenerateDumpCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $dumpPath = __DIR__.'/../../../migrations/install.dump';
         /** @var Connection */
@@ -59,7 +59,7 @@ class GenerateDumpCommand extends AbstractCommand
         $connection
             ->getSchemaState()
             ->withMigrationTable($connection->getTablePrefix().'migrations')
-            ->handleOutputUsing(function ($type, $buffer) {
+            ->handleOutputUsing(function ($type, $buffer): void {
                 $this->output->write($buffer);
             })
             ->dump($connection, $dumpPath);

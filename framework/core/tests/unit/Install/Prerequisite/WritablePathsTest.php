@@ -14,7 +14,7 @@ use Flarum\Testing\unit\TestCase;
 
 class WritablePathsTest extends TestCase
 {
-    public function test_no_problems_when_all_directories_are_writable()
+    public function test_no_problems_when_all_directories_are_writable(): void
     {
         $writable = new WritablePaths([
             __DIR__.'/../../../fixtures/writable_paths/writable',
@@ -23,7 +23,7 @@ class WritablePathsTest extends TestCase
         $this->assertCount(0, $writable->problems());
     }
 
-    public function test_paths_can_be_given_with_wildcard()
+    public function test_paths_can_be_given_with_wildcard(): void
     {
         $writable = new WritablePaths([
             __DIR__.'/../../../fixtures/writable_paths/writable/*',
@@ -32,7 +32,7 @@ class WritablePathsTest extends TestCase
         $this->assertCount(0, $writable->problems());
     }
 
-    public function test_problems_when_one_path_is_missing()
+    public function test_problems_when_one_path_is_missing(): void
     {
         $writable = new WritablePaths([
             __DIR__.'/../../../fixtures/writable_paths/missing',
@@ -51,7 +51,7 @@ class WritablePathsTest extends TestCase
         );
     }
 
-    public function test_problem_details_filter_out_wildcard()
+    public function test_problem_details_filter_out_wildcard(): void
     {
         $writable = new WritablePaths([
             __DIR__.'/../../../fixtures/writable_paths/missing/*',

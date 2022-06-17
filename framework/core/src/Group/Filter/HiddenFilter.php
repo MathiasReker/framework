@@ -19,7 +19,7 @@ class HiddenFilter implements FilterInterface
         return 'hidden';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $filterState->getQuery()->where('is_hidden', $negate ? '!=' : '=', $filterValue);
     }

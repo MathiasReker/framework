@@ -33,7 +33,7 @@ class DeleteGroupController extends AbstractDeleteController
     /**
      * {@inheritdoc}
      */
-    protected function delete(ServerRequestInterface $request)
+    protected function delete(ServerRequestInterface $request): void
     {
         $this->bus->dispatch(
             new DeleteGroup(Arr::get($request->getQueryParams(), 'id'), RequestUtil::getActor($request))

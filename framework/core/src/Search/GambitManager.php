@@ -39,7 +39,7 @@ class GambitManager
      *
      * @param GambitInterface $gambit
      */
-    public function add(GambitInterface $gambit)
+    public function add(GambitInterface $gambit): void
     {
         $this->gambits[] = $gambit;
     }
@@ -50,7 +50,7 @@ class GambitManager
      * @param SearchState $search
      * @param string $query
      */
-    public function apply(SearchState $search, $query)
+    public function apply(SearchState $search, $query): void
     {
         $query = $this->applyGambits($search, $query);
 
@@ -106,7 +106,7 @@ class GambitManager
      * @param SearchState $search
      * @param string $query
      */
-    protected function applyFulltext(SearchState $search, $query)
+    protected function applyFulltext(SearchState $search, $query): void
     {
         $search->addActiveGambit($this->fulltextGambit);
         $this->fulltextGambit->apply($search, $query);

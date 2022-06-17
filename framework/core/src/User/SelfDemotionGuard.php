@@ -21,7 +21,7 @@ class SelfDemotionGuard
      * @param Saving $event
      * @throws PermissionDeniedException
      */
-    public function handle(Saving $event)
+    public function handle(Saving $event): void
     {
         // Non-admin users pose no problem
         if (! $event->actor->isAdmin()) {

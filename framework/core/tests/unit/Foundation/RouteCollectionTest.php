@@ -16,7 +16,7 @@ use RuntimeException;
 class RouteCollectionTest extends TestCase
 {
     /** @test */
-    public function it_errors_when_nonexistent_route_requested()
+    public function it_errors_when_nonexistent_route_requested(): void
     {
         $collection = new RouteCollection();
 
@@ -26,7 +26,7 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_properly_processes_a_simple_route_with_no_parameters()
+    public function it_properly_processes_a_simple_route_with_no_parameters(): void
     {
         $collection = new RouteCollection();
         // We can use anything for the handler since we're only testing getPath
@@ -36,7 +36,7 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_properly_processes_a_route_with_all_parameters_required()
+    public function it_properly_processes_a_route_with_all_parameters_required(): void
     {
         $collection = new RouteCollection();
         // We can use anything for the handler since we're only testing getPath
@@ -50,7 +50,7 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_works_if_optional_parameters_are_missing()
+    public function it_works_if_optional_parameters_are_missing(): void
     {
         $collection = new RouteCollection();
         // We can use anything for the handler since we're only testing getPath
@@ -62,7 +62,7 @@ class RouteCollectionTest extends TestCase
     }
 
     /** @test */
-    public function it_works_with_optional_parameters()
+    public function it_works_with_optional_parameters(): void
     {
         $collection = new RouteCollection();
         // We can use anything for the handler since we're only testing getPath

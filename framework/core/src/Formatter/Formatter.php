@@ -47,7 +47,7 @@ class Formatter
     /**
      * @internal
      */
-    public function addConfigurationCallback($callback)
+    public function addConfigurationCallback($callback): void
     {
         $this->configurationCallbacks[] = $callback;
     }
@@ -55,7 +55,7 @@ class Formatter
     /**
      * @internal
      */
-    public function addParsingCallback($callback)
+    public function addParsingCallback($callback): void
     {
         $this->parsingCallbacks[] = $callback;
     }
@@ -63,7 +63,7 @@ class Formatter
     /**
      * @internal
      */
-    public function addUnparsingCallback($callback)
+    public function addUnparsingCallback($callback): void
     {
         $this->unparsingCallbacks[] = $callback;
     }
@@ -71,7 +71,7 @@ class Formatter
     /**
      * @internal
      */
-    public function addRenderingCallback($callback)
+    public function addRenderingCallback($callback): void
     {
         $this->renderingCallbacks[] = $callback;
     }
@@ -132,7 +132,7 @@ class Formatter
     /**
      * Flush the cache so that the formatter components are regenerated.
      */
-    public function flush()
+    public function flush(): void
     {
         $this->cache->forget('flarum.formatter');
     }
@@ -172,7 +172,7 @@ class Formatter
     /**
      * @param Configurator $configurator
      */
-    protected function configureExternalLinks(Configurator $configurator)
+    protected function configureExternalLinks(Configurator $configurator): void
     {
         $dom = $configurator->tags['URL']->template->asDOM();
 
@@ -221,7 +221,7 @@ class Formatter
      */
     protected function getRenderer()
     {
-        spl_autoload_register(function ($class) {
+        spl_autoload_register(function ($class): void {
             if (file_exists($file = $this->cacheDir.'/'.$class.'.php')) {
                 include $file;
             }

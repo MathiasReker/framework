@@ -26,7 +26,7 @@ interface MigrationRepositoryInterface
      * @param string $extension
      * @return void
      */
-    public function log($file, $extension = null);
+    public function log($file, $extension = null): void;
 
     /**
      * Remove a migration from the log.
@@ -35,7 +35,7 @@ interface MigrationRepositoryInterface
      * @param string $extension
      * @return void
      */
-    public function delete($file, $extension = null);
+    public function delete($file, $extension = null): void;
 
     /**
      * Determine if the migration repository exists.

@@ -21,7 +21,7 @@ abstract class AbstractValidator
      */
     protected $configuration = [];
 
-    public function addConfiguration($callable)
+    public function addConfiguration($callable): void
     {
         $this->configuration[] = $callable;
     }
@@ -56,7 +56,7 @@ abstract class AbstractValidator
      *
      * @param array $attributes
      */
-    public function assertValid(array $attributes)
+    public function assertValid(array $attributes): void
     {
         $validator = $this->makeValidator($attributes);
 

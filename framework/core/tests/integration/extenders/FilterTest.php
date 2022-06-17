@@ -21,7 +21,7 @@ class FilterTest extends TestCase
 {
     use RetrievesAuthorizedUsers;
 
-    public function prepDb()
+    public function prepDb(): void
     {
         $this->prepareDatabase([
             'discussions' => [
@@ -55,7 +55,7 @@ class FilterTest extends TestCase
     /**
      * @test
      */
-    public function works_as_expected_with_no_modifications()
+    public function works_as_expected_with_no_modifications(): void
     {
         $this->prepDb();
 
@@ -67,7 +67,7 @@ class FilterTest extends TestCase
     /**
      * @test
      */
-    public function custom_filter_has_effect_if_added()
+    public function custom_filter_has_effect_if_added(): void
     {
         $this->extend((new Extend\Filter(DiscussionFilterer::class))->addFilter(NoResultFilter::class));
 
@@ -82,9 +82,9 @@ class FilterTest extends TestCase
     /**
      * @test
      */
-    public function filter_mutator_has_effect_if_added()
+    public function filter_mutator_has_effect_if_added(): void
     {
-        $this->extend((new Extend\Filter(DiscussionFilterer::class))->addFilterMutator(function ($filterState, $criteria) {
+        $this->extend((new Extend\Filter(DiscussionFilterer::class))->addFilterMutator(function ($filterState, $criteria): void {
             $filterState->getQuery()->whereRaw('1=0');
         }));
 
@@ -96,7 +96,7 @@ class FilterTest extends TestCase
     /**
      * @test
      */
-    public function filter_mutator_has_effect_if_added_with_invokable_class()
+    public function filter_mutator_has_effect_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\Filter(DiscussionFilterer::class))->addFilterMutator(CustomFilterMutator::class));
 
@@ -116,7 +116,7 @@ class NoResultFilter implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         if ($filterValue) {
             $filterState->getQuery()
@@ -127,7 +127,7 @@ class NoResultFilter implements FilterInterface
 
 class CustomFilterMutator
 {
-    public function __invoke($filterState, $criteria)
+    public function __invoke($filterState, $criteria): void
     {
         $filterState->getQuery()->whereRaw('1=0');
     }

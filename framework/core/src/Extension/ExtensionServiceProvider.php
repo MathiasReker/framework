@@ -18,7 +18,7 @@ class ExtensionServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton(ExtensionManager::class);
         $this->container->alias(ExtensionManager::class, 'flarum.extensions');
@@ -27,7 +27,7 @@ class ExtensionServiceProvider extends AbstractServiceProvider
         // listener on the app rather than in the service provider's boot method
         // below, so that extensions have a chance to register things on the
         // container before the core boots up (and starts resolving services).
-        $this->container['flarum']->booting(function () {
+        $this->container['flarum']->booting(function (): void {
             $this->container->make('flarum.extensions')->extend($this->container);
         });
     }
@@ -35,7 +35,7 @@ class ExtensionServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot(Dispatcher $events)
+    public function boot(Dispatcher $events): void
     {
         $events->listen(
             Disabling::class,

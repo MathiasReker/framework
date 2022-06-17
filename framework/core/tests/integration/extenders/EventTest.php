@@ -41,7 +41,7 @@ class EventTest extends TestCase
     /**
      * @test
      */
-    public function custom_listener_doesnt_work_by_default()
+    public function custom_listener_doesnt_work_by_default(): void
     {
         $group = $this->buildGroup();
 
@@ -51,9 +51,9 @@ class EventTest extends TestCase
     /**
      * @test
      */
-    public function custom_listener_works_with_closure()
+    public function custom_listener_works_with_closure(): void
     {
-        $this->extend((new Extend\Event)->listen(Created::class, function (Created $event) {
+        $this->extend((new Extend\Event)->listen(Created::class, function (Created $event): void {
             $event->group->name_singular = 'modified group';
         }));
 
@@ -65,7 +65,7 @@ class EventTest extends TestCase
     /**
      * @test
      */
-    public function custom_listener_works_with_class_with_handle_method_and_can_inject_stuff()
+    public function custom_listener_works_with_class_with_handle_method_and_can_inject_stuff(): void
     {
         // Because it injects a translator, this also tests that stuff can be injected into this callback.
         $this->extend((new Extend\Event)->listen(Created::class, CustomListener::class));
@@ -78,7 +78,7 @@ class EventTest extends TestCase
     /**
      * @test
      */
-    public function custom_subscriber_works()
+    public function custom_subscriber_works(): void
     {
         // Because it injects a translator, this also tests that stuff can be injected into this callback.
         $this->extend((new Extend\Event)->subscribe(CustomSubscriber::class));
@@ -91,7 +91,7 @@ class EventTest extends TestCase
     /**
      * @test
      */
-    public function custom_subscriber_applied_after_app_booted()
+    public function custom_subscriber_applied_after_app_booted(): void
     {
         // Because it injects a translator, this also tests that stuff can be injected into this callback.
         $this->extend((new Extend\Event)->subscribe(CustomSubscriber::class));
@@ -111,7 +111,7 @@ class CustomListener
         $this->translator = $translator;
     }
 
-    public function handle(Created $event)
+    public function handle(Created $event): void
     {
         $event->group->name_singular = $this->translator->trans('core.group.admin');
     }
@@ -128,12 +128,12 @@ class CustomSubscriber
         $this->translator = $translator;
     }
 
-    public function subscribe(Dispatcher $events)
+    public function subscribe(Dispatcher $events): void
     {
         $events->listen(Created::class, [$this, 'whenGroupCreated']);
     }
 
-    public function whenGroupCreated(Created $event)
+    public function whenGroupCreated(Created $event): void
     {
         $event->group->name_singular = $this->translator->trans('core.group.admin');
         $event->group->name_plural = $this->bootedAtConstruct ? 'booted' : 'not booted';

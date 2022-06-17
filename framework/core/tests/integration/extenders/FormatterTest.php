@@ -26,7 +26,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_config_doesnt_work_by_default()
+    public function custom_formatter_config_doesnt_work_by_default(): void
     {
         $formatter = $this->getFormatter();
 
@@ -36,9 +36,9 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_config_works_if_added_with_closure()
+    public function custom_formatter_config_works_if_added_with_closure(): void
     {
-        $this->extend((new Extend\Formatter)->configure(function ($config) {
+        $this->extend((new Extend\Formatter)->configure(function ($config): void {
             $config->BBCodes->addFromRepository('B');
         }));
 
@@ -50,7 +50,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_config_works_if_added_with_invokable_class()
+    public function custom_formatter_config_works_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\Formatter)->configure(InvokableConfig::class));
 
@@ -62,7 +62,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_parsing_doesnt_work_by_default()
+    public function custom_formatter_parsing_doesnt_work_by_default(): void
     {
         $this->assertEquals('<t>Text&lt;a&gt;</t>', $this->getFormatter()->parse('Text<a>'));
     }
@@ -70,7 +70,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_parsing_works_if_added_with_closure()
+    public function custom_formatter_parsing_works_if_added_with_closure(): void
     {
         $this->extend((new Extend\Formatter)->parse(function ($parser, $context, $text) {
             return 'ReplacedText<a>';
@@ -82,7 +82,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_parsing_works_if_added_with_invokable_class()
+    public function custom_formatter_parsing_works_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\Formatter)->parse(InvokableParsing::class));
 
@@ -92,7 +92,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_unparsing_doesnt_work_by_default()
+    public function custom_formatter_unparsing_doesnt_work_by_default(): void
     {
         $this->assertEquals('Text<a>', $this->getFormatter()->unparse('<t>Text&lt;a&gt;</t>'));
     }
@@ -100,7 +100,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_unparsing_works_if_added_with_closure()
+    public function custom_formatter_unparsing_works_if_added_with_closure(): void
     {
         $this->extend((new Extend\Formatter)->unparse(function ($context, $xml) {
             return '<t>ReplacedText&lt;a&gt;</t>';
@@ -112,7 +112,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_unparsing_works_if_added_with_invokable_class()
+    public function custom_formatter_unparsing_works_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\Formatter)->unparse(InvokableUnparsing::class));
 
@@ -122,7 +122,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_rendering_doesnt_work_by_default()
+    public function custom_formatter_rendering_doesnt_work_by_default(): void
     {
         $this->assertEquals('Text', $this->getFormatter()->render('<p>Text</p>'));
     }
@@ -130,7 +130,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_rendering_works_if_added_with_closure()
+    public function custom_formatter_rendering_works_if_added_with_closure(): void
     {
         $this->extend((new Extend\Formatter)->render(function ($renderer, $context, $xml, $request) {
             return '<html>ReplacedText</html>';
@@ -142,7 +142,7 @@ class FormatterTest extends TestCase
     /**
      * @test
      */
-    public function custom_formatter_rendering_works_if_added_with_invokable_class()
+    public function custom_formatter_rendering_works_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\Formatter)->render(InvokableRendering::class));
 
@@ -152,7 +152,7 @@ class FormatterTest extends TestCase
 
 class InvokableConfig
 {
-    public function __invoke($config)
+    public function __invoke($config): void
     {
         $config->BBCodes->addFromRepository('B');
     }

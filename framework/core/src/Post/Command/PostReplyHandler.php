@@ -100,7 +100,7 @@ class PostReplyHandler
 
         $post->save();
 
-        $this->notifications->onePerUser(function () use ($post, $actor) {
+        $this->notifications->onePerUser(function () use ($post, $actor): void {
             $this->dispatchEventsFor($post, $actor);
         });
 

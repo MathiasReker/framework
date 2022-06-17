@@ -28,7 +28,7 @@ class RegisterTest extends TestCase
     /**
      * @test
      */
-    public function cant_register_without_data()
+    public function cant_register_without_data(): void
     {
         $response = $this->send(
             $this->request('POST', '/register')
@@ -66,7 +66,7 @@ class RegisterTest extends TestCase
     /**
      * @test
      */
-    public function can_register_with_data()
+    public function can_register_with_data(): void
     {
         $response = $this->send(
             $this->request('POST', '/register', [

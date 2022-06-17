@@ -56,7 +56,7 @@ class NotificationSyncer
      * @param User[] $users
      * @return void
      */
-    public function sync(Blueprint\BlueprintInterface $blueprint, array $users)
+    public function sync(Blueprint\BlueprintInterface $blueprint, array $users): void
     {
         // Find all existing notification records in the database matching this
         // blueprint. We will begin by assuming that they all need to be
@@ -117,7 +117,7 @@ class NotificationSyncer
      * @param \Flarum\Notification\Blueprint\BlueprintInterface $blueprint
      * @return void
      */
-    public function delete(BlueprintInterface $blueprint)
+    public function delete(BlueprintInterface $blueprint): void
     {
         Notification::matchingBlueprint($blueprint)->update(['is_deleted' => true]);
     }
@@ -128,7 +128,7 @@ class NotificationSyncer
      * @param BlueprintInterface $blueprint
      * @return void
      */
-    public function restore(BlueprintInterface $blueprint)
+    public function restore(BlueprintInterface $blueprint): void
     {
         Notification::matchingBlueprint($blueprint)->update(['is_deleted' => false]);
     }
@@ -140,7 +140,7 @@ class NotificationSyncer
      * @param callable $callback
      * @return void
      */
-    public function onePerUser(callable $callback)
+    public function onePerUser(callable $callback): void
     {
         static::$sentTo = [];
         static::$onePerUser = true;
@@ -156,7 +156,7 @@ class NotificationSyncer
      * @param int[] $ids
      * @param bool $isDeleted
      */
-    protected function setDeleted(array $ids, $isDeleted)
+    protected function setDeleted(array $ids, $isDeleted): void
     {
         Notification::whereIn('id', $ids)->update(['is_deleted' => $isDeleted]);
     }

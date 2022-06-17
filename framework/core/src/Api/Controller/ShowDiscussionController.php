@@ -112,7 +112,7 @@ class ShowDiscussionController extends AbstractShowController
      * @param ServerRequestInterface $request
      * @param array $include
      */
-    private function includePosts(Discussion $discussion, ServerRequestInterface $request, array $include)
+    private function includePosts(Discussion $discussion, ServerRequestInterface $request, array $include): void
     {
         $actor = RequestUtil::getActor($request);
         $limit = $this->extractLimit($request);

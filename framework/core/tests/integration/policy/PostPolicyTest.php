@@ -50,7 +50,7 @@ class PostPolicyTest extends TestCase
     /**
      * @test
      */
-    public function edit_indefinitely()
+    public function edit_indefinitely(): void
     {
         $this->setting('allow_post_editing', '-1');
         $this->app();
@@ -75,7 +75,7 @@ class PostPolicyTest extends TestCase
     /**
      * @test
      */
-    public function edit_until_reply()
+    public function edit_until_reply(): void
     {
         $this->setting('allow_post_editing', 'reply');
         $this->app();
@@ -100,7 +100,7 @@ class PostPolicyTest extends TestCase
     /**
      * @test
      */
-    public function edit_10_minutes()
+    public function edit_10_minutes(): void
     {
         $this->setting('allow_post_editing', '10');
         $this->app();

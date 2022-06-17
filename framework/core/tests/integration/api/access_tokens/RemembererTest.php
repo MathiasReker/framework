@@ -35,7 +35,7 @@ class RemembererTest extends TestCase
     /**
      * @test
      */
-    public function non_remember_tokens_cannot_be_used()
+    public function non_remember_tokens_cannot_be_used(): void
     {
         $this->populateDatabase();
 
@@ -56,7 +56,7 @@ class RemembererTest extends TestCase
     /**
      * @test
      */
-    public function expired_tokens_cannot_be_used()
+    public function expired_tokens_cannot_be_used(): void
     {
         $this->populateDatabase();
 
@@ -77,7 +77,7 @@ class RemembererTest extends TestCase
     /**
      * @test
      */
-    public function valid_tokens_can_be_used()
+    public function valid_tokens_can_be_used(): void
     {
         $this->populateDatabase();
 

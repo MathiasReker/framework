@@ -26,9 +26,9 @@ class SendRawEmailJob extends AbstractJob
         $this->body = $body;
     }
 
-    public function handle(Mailer $mailer)
+    public function handle(Mailer $mailer): void
     {
-        $mailer->raw($this->body, function (Message $message) {
+        $mailer->raw($this->body, function (Message $message): void {
             $message->to($this->email);
             $message->subject($this->subject);
         });

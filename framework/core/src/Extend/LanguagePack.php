@@ -38,7 +38,7 @@ class LanguagePack implements ExtenderInterface, LifecycleInterface
         $this->path = $path;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
         if (is_null($extension)) {
             throw new InvalidArgumentException(
@@ -57,13 +57,13 @@ class LanguagePack implements ExtenderInterface, LifecycleInterface
 
         $container->resolving(
             LocaleManager::class,
-            function (LocaleManager $locales, Container $container) use ($extension, $locale, $title) {
+            function (LocaleManager $locales, Container $container) use ($extension, $locale, $title): void {
                 $this->registerLocale($container, $locales, $extension, $locale, $title);
             }
         );
     }
 
-    private function registerLocale(Container $container, LocaleManager $locales, Extension $extension, $locale, $title)
+    private function registerLocale(Container $container, LocaleManager $locales, Extension $extension, $locale, $title): void
     {
         $locales->addLocale($locale, $title);
 
@@ -122,12 +122,12 @@ class LanguagePack implements ExtenderInterface, LifecycleInterface
         return $extensions->isEnabled($slug);
     }
 
-    public function onEnable(Container $container, Extension $extension)
+    public function onEnable(Container $container, Extension $extension): void
     {
         $container->make('flarum.locales')->clearCache();
     }
 
-    public function onDisable(Container $container, Extension $extension)
+    public function onDisable(Container $container, Extension $extension): void
     {
         $container->make('flarum.locales')->clearCache();
     }

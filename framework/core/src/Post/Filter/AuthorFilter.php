@@ -33,7 +33,7 @@ class AuthorFilter implements FilterInterface
         return 'author';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $usernames = trim($filterValue, '"');
         $usernames = explode(',', $usernames);

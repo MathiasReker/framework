@@ -35,7 +35,7 @@ class RequireCsrfTokenTest extends TestCase
     /**
      * @test
      */
-    public function error_when_doing_cookie_auth_without_csrf_token()
+    public function error_when_doing_cookie_auth_without_csrf_token(): void
     {
         $auth = $this->send(
             $this->request(
@@ -74,7 +74,7 @@ class RequireCsrfTokenTest extends TestCase
     /**
      * @test
      */
-    public function cookie_auth_succeeds_with_csrf_token_in_header()
+    public function cookie_auth_succeeds_with_csrf_token_in_header(): void
     {
         $initial = $this->send(
             $this->request('GET', '/')
@@ -119,7 +119,7 @@ class RequireCsrfTokenTest extends TestCase
     /**
      * @test
      */
-    public function cookie_auth_succeeds_with_csrf_token_in_body()
+    public function cookie_auth_succeeds_with_csrf_token_in_body(): void
     {
         $initial = $this->send(
             $this->request('GET', '/')
@@ -164,7 +164,7 @@ class RequireCsrfTokenTest extends TestCase
     /**
      * @test
      */
-    public function master_api_token_does_not_need_csrf_token()
+    public function master_api_token_does_not_need_csrf_token(): void
     {
         $response = $this->send(
             $this->request(
@@ -189,7 +189,7 @@ class RequireCsrfTokenTest extends TestCase
     /**
      * @test
      */
-    public function access_token_does_not_need_csrf_token()
+    public function access_token_does_not_need_csrf_token(): void
     {
         $this->database()->table('access_tokens')->insert(
             ['token' => 'myaccesstoken', 'user_id' => 1, 'type' => 'developer']

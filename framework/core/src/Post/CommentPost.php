@@ -146,7 +146,7 @@ class CommentPost extends Post
      *
      * @param string $value
      */
-    public function setContentAttribute($value)
+    public function setContentAttribute($value): void
     {
         $this->attributes['content'] = $value ? static::$formatter->parse($value, $this) : null;
     }
@@ -156,7 +156,7 @@ class CommentPost extends Post
      *
      * @param string $value
      */
-    public function setParsedContentAttribute($value)
+    public function setParsedContentAttribute($value): void
     {
         $this->attributes['content'] = $value;
     }
@@ -187,7 +187,7 @@ class CommentPost extends Post
      *
      * @param \Flarum\Formatter\Formatter $formatter
      */
-    public static function setFormatter(Formatter $formatter)
+    public static function setFormatter(Formatter $formatter): void
     {
         static::$formatter = $formatter;
     }

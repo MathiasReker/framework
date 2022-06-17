@@ -33,7 +33,7 @@ class DeleteDiscussionController extends AbstractDeleteController
     /**
      * {@inheritdoc}
      */
-    protected function delete(ServerRequestInterface $request)
+    protected function delete(ServerRequestInterface $request): void
     {
         $id = Arr::get($request->getQueryParams(), 'id');
         $actor = RequestUtil::getActor($request);

@@ -53,7 +53,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_dont_exist_by_default()
+    public function custom_attributes_dont_exist_by_default(): void
     {
         $this->app();
 
@@ -71,7 +71,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_exist_if_added()
+    public function custom_attributes_exist_if_added(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
@@ -98,7 +98,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_with_invokable_exist_if_added()
+    public function custom_attributes_with_invokable_exist_if_added(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
@@ -121,7 +121,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_exist_if_added_to_parent_class()
+    public function custom_attributes_exist_if_added_to_parent_class(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(BasicUserSerializer::class))
@@ -148,7 +148,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_prioritize_child_classes()
+    public function custom_attributes_prioritize_child_classes(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(BasicUserSerializer::class))
@@ -182,7 +182,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_single_attribute_exists_if_added()
+    public function custom_single_attribute_exists_if_added(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
@@ -211,7 +211,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_single_attribute_with_invokable_exists_if_added()
+    public function custom_single_attribute_with_invokable_exists_if_added(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(ForumSerializer::class))
@@ -234,7 +234,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_single_attribute_exists_if_added_to_parent_class()
+    public function custom_single_attribute_exists_if_added_to_parent_class(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(BasicUserSerializer::class))
@@ -259,7 +259,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_single_attribute_prioritizes_child_classes()
+    public function custom_single_attribute_prioritizes_child_classes(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(BasicUserSerializer::class))
@@ -289,7 +289,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_attributes_can_be_overriden()
+    public function custom_attributes_can_be_overriden(): void
     {
         $this->extend(
             (new Extend\ApiSerializer(BasicUserSerializer::class))
@@ -324,7 +324,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relations_dont_exist_by_default()
+    public function custom_relations_dont_exist_by_default(): void
     {
         $this->extend(
             (new Extend\ApiController(ShowUserController::class))
@@ -347,7 +347,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_hasMany_relationship_exists_if_added()
+    public function custom_hasMany_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -373,7 +373,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_hasOne_relationship_exists_if_added()
+    public function custom_hasOne_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -399,7 +399,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_exists_if_added()
+    public function custom_relationship_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -427,7 +427,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_with_invokable_exists_if_added()
+    public function custom_relationship_with_invokable_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -453,7 +453,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_is_inherited_to_child_classes()
+    public function custom_relationship_is_inherited_to_child_classes(): void
     {
         $this->extend(
             (new Extend\Model(User::class))
@@ -479,7 +479,7 @@ class ApiSerializerTest extends TestCase
     /**
      * @test
      */
-    public function custom_relationship_prioritizes_child_classes()
+    public function custom_relationship_prioritizes_child_classes(): void
     {
         $this->extend(
             (new Extend\Model(User::class))

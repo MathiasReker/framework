@@ -34,7 +34,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function shows_public_group_for_guest()
+    public function shows_public_group_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups/1')
@@ -50,7 +50,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function shows_public_group_for_admin()
+    public function shows_public_group_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups/1', [
@@ -68,7 +68,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function hides_hidden_group_for_guest()
+    public function hides_hidden_group_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups/10')
@@ -81,7 +81,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function shows_hidden_group_for_admin()
+    public function shows_hidden_group_for_admin(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups/10', [
@@ -99,7 +99,7 @@ class ShowTest extends TestCase
     /**
      * @test
      */
-    public function rejects_request_for_non_existing_group()
+    public function rejects_request_for_non_existing_group(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/groups/999', [

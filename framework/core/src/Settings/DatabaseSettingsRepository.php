@@ -34,7 +34,7 @@ class DatabaseSettingsRepository implements SettingsRepositoryInterface
         return $value;
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         $query = $this->database->table('settings')->where('key', $key);
 
@@ -43,7 +43,7 @@ class DatabaseSettingsRepository implements SettingsRepositoryInterface
         $query->$method(compact('key', 'value'));
     }
 
-    public function delete($key)
+    public function delete($key): void
     {
         $this->database->table('settings')->where('key', $key)->delete();
     }

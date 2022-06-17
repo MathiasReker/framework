@@ -40,7 +40,7 @@ class ListTests extends TestCase
         ]);
     }
 
-    private function forbidGuestsFromSeeingForum()
+    private function forbidGuestsFromSeeingForum(): void
     {
         $this->database()->table('group_permission')->where('permission', 'viewForum')->where('group_id', 2)->delete();
     }
@@ -48,7 +48,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function guests_cant_see_anything_if_not_allowed()
+    public function guests_cant_see_anything_if_not_allowed(): void
     {
         $this->forbidGuestsFromSeeingForum();
 
@@ -65,7 +65,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function authorized_users_can_see_posts()
+    public function authorized_users_can_see_posts(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -80,7 +80,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function author_filter_works()
+    public function author_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -98,7 +98,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function author_filter_works_with_multiple_values()
+    public function author_filter_works_with_multiple_values(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -116,7 +116,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function discussion_filter_works()
+    public function discussion_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -134,7 +134,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function type_filter_works()
+    public function type_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -152,7 +152,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function number_filter_works()
+    public function number_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -170,7 +170,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function id_filter_works()
+    public function id_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])
@@ -188,7 +188,7 @@ class ListTests extends TestCase
     /**
      * @test
      */
-    public function id_filter_works_with_multiple_ids()
+    public function id_filter_works_with_multiple_ids(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/posts', ['authenticatedAs' => 1])

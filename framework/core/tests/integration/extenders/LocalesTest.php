@@ -28,7 +28,7 @@ class LocalesTest extends TestCase
     /**
      * @test
      */
-    public function custom_translation_does_not_exist_by_default()
+    public function custom_translation_does_not_exist_by_default(): void
     {
         $this->app()->getContainer()->make('flarum.locales');
         $translator = $this->app()->getContainer()->make(Translator::class);
@@ -39,7 +39,7 @@ class LocalesTest extends TestCase
     /**
      * @test
      */
-    public function custom_translation_exists_if_added()
+    public function custom_translation_exists_if_added(): void
     {
         $this->extend(
             (new Extend\Locales(dirname(__FILE__, 3).'/fixtures/locales'))
@@ -54,7 +54,7 @@ class LocalesTest extends TestCase
     /**
      * @test
      */
-    public function custom_translation_exists_if_added_with_intl_suffix()
+    public function custom_translation_exists_if_added_with_intl_suffix(): void
     {
         $this->extend(
             (new Extend\Locales(dirname(__FILE__, 3).'/fixtures/locales'))
@@ -69,7 +69,7 @@ class LocalesTest extends TestCase
     /**
      * @test
      */
-    public function messageformat_works_in_translations()
+    public function messageformat_works_in_translations(): void
     {
         $this->extend(
             (new Extend\Locales(dirname(__FILE__, 3).'/fixtures/locales'))
@@ -84,7 +84,7 @@ class LocalesTest extends TestCase
     /**
      * @test
      */
-    public function laravel_interface_methods_work()
+    public function laravel_interface_methods_work(): void
     {
         $this->extend(
             (new Extend\Locales(dirname(__FILE__, 3).'/fixtures/locales'))

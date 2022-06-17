@@ -12,7 +12,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 return Migration::createTable(
     'login_providers',
-    function (Blueprint $table) {
+    function (Blueprint $table): void {
         $table->increments('id');
         $table->unsignedInteger('user_id');
         $table->string('provider', 100);

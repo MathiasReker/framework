@@ -46,7 +46,7 @@ class MigrateCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('migrate')
@@ -56,7 +56,7 @@ class MigrateCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $this->info('Migrating Flarum...');
 
@@ -65,7 +65,7 @@ class MigrateCommand extends AbstractCommand
         $this->info('DONE.');
     }
 
-    public function upgrade()
+    public function upgrade(): void
     {
         $this->container->bind(Builder::class, function ($container) {
             return $container->make(ConnectionInterface::class)->getSchemaBuilder();

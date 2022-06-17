@@ -29,7 +29,7 @@ class CreatedFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), Arr::get($matches, 1), Arr::get($matches, 3), $negate);
     }
@@ -39,14 +39,14 @@ class CreatedFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'created';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         preg_match('/^'.$this->getGambitPattern().'$/i', 'created:'.$filterValue, $matches);
 
         $this->constrain($filterState->getQuery(), Arr::get($matches, 1), Arr::get($matches, 3), $negate);
     }
 
-    public function constrain(Builder $query, ?string $firstDate, ?string $secondDate, $negate)
+    public function constrain(Builder $query, ?string $firstDate, ?string $secondDate, $negate): void
     {
         // If we've just been provided with a single YYYY-MM-DD date, then find
         // discussions that were started on that exact date. But if we've been

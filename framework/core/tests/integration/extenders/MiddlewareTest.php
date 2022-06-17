@@ -19,7 +19,7 @@ use Psr\Http\Server\RequestHandlerInterface;
 class MiddlewareTest extends TestCase
 {
     // This adds the first custom middleware for test that require a middleware to already exist
-    private function add_first_middleware()
+    private function add_first_middleware(): void
     {
         $this->extend(
             (new Extend\Middleware('forum'))->add(FirstTestMiddleware::class)
@@ -29,7 +29,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function custom_header_is_not_present_by_default()
+    public function custom_header_is_not_present_by_default(): void
     {
         $response = $this->send($this->request('GET', '/'));
 
@@ -40,7 +40,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function can_add_middleware()
+    public function can_add_middleware(): void
     {
         $this->extend(
             (new Extend\Middleware('forum'))->add(FirstTestMiddleware::class)
@@ -55,7 +55,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function can_replace_middleware()
+    public function can_replace_middleware(): void
     {
         $this->add_first_middleware();
         $this->extend(
@@ -72,7 +72,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function can_remove_middleware()
+    public function can_remove_middleware(): void
     {
         $this->add_first_middleware();
         $this->extend(
@@ -88,7 +88,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function can_insert_before_middleware()
+    public function can_insert_before_middleware(): void
     {
         $this->add_first_middleware();
         $this->extend(
@@ -107,7 +107,7 @@ class MiddlewareTest extends TestCase
     /**
      * @test
      */
-    public function can_insert_after_middleware()
+    public function can_insert_after_middleware(): void
     {
         $this->add_first_middleware();
         $this->extend(

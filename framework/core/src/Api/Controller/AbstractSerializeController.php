@@ -229,7 +229,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
             if (isset($addedRelationCallables[$relation])) {
                 $load = $addedRelationCallables[$relation];
 
-                $callableRelations[$relation] = function ($query) use ($load, $request, $relations) {
+                $callableRelations[$relation] = function ($query) use ($load, $request, $relations): void {
                     $load($query, $request, $relations);
                 };
             } else {
@@ -324,7 +324,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string $serializer
      */
-    public function setSerializer(string $serializer)
+    public function setSerializer(string $serializer): void
     {
         $this->serializer = $serializer;
     }
@@ -334,7 +334,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $name
      */
-    public function addInclude($name)
+    public function addInclude($name): void
     {
         $this->include = array_merge($this->include, (array) $name);
     }
@@ -344,7 +344,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $name
      */
-    public function removeInclude($name)
+    public function removeInclude($name): void
     {
         $this->include = array_diff($this->include, (array) $name);
     }
@@ -354,7 +354,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $name
      */
-    public function addOptionalInclude($name)
+    public function addOptionalInclude($name): void
     {
         $this->optionalInclude = array_merge($this->optionalInclude, (array) $name);
     }
@@ -364,7 +364,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $name
      */
-    public function removeOptionalInclude($name)
+    public function removeOptionalInclude($name): void
     {
         $this->optionalInclude = array_diff($this->optionalInclude, (array) $name);
     }
@@ -374,7 +374,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param int $limit
      */
-    public function setLimit(int $limit)
+    public function setLimit(int $limit): void
     {
         $this->limit = $limit;
     }
@@ -384,7 +384,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param int $max
      */
-    public function setMaxLimit(int $max)
+    public function setMaxLimit(int $max): void
     {
         $this->maxLimit = $max;
     }
@@ -394,7 +394,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $field
      */
-    public function addSortField($field)
+    public function addSortField($field): void
     {
         $this->sortFields = array_merge($this->sortFields, (array) $field);
     }
@@ -404,7 +404,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param string|array $field
      */
-    public function removeSortField($field)
+    public function removeSortField($field): void
     {
         $this->sortFields = array_diff($this->sortFields, (array) $field);
     }
@@ -414,7 +414,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @param array $sort
      */
-    public function setSort(array $sort)
+    public function setSort(array $sort): void
     {
         $this->sort = $sort;
     }
@@ -432,7 +432,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @internal
      */
-    public static function setContainer(Container $container)
+    public static function setContainer(Container $container): void
     {
         static::$container = $container;
     }
@@ -443,7 +443,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @internal
      */
-    public static function addDataPreparationCallback(string $controllerClass, callable $callback)
+    public static function addDataPreparationCallback(string $controllerClass, callable $callback): void
     {
         if (! isset(static::$beforeDataCallbacks[$controllerClass])) {
             static::$beforeDataCallbacks[$controllerClass] = [];
@@ -458,7 +458,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
      *
      * @internal
      */
-    public static function addSerializationPreparationCallback(string $controllerClass, callable $callback)
+    public static function addSerializationPreparationCallback(string $controllerClass, callable $callback): void
     {
         if (! isset(static::$beforeSerializationCallbacks[$controllerClass])) {
             static::$beforeSerializationCallbacks[$controllerClass] = [];
@@ -470,7 +470,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     /**
      * @internal
      */
-    public static function setLoadRelations(string $controllerClass, array $relations)
+    public static function setLoadRelations(string $controllerClass, array $relations): void
     {
         if (! isset(static::$loadRelations[$controllerClass])) {
             static::$loadRelations[$controllerClass] = [];
@@ -482,7 +482,7 @@ abstract class AbstractSerializeController implements RequestHandlerInterface
     /**
      * @internal
      */
-    public static function setLoadRelationCallables(string $controllerClass, array $relations)
+    public static function setLoadRelationCallables(string $controllerClass, array $relations): void
     {
         if (! isset(static::$loadRelationCallables[$controllerClass])) {
             static::$loadRelationCallables[$controllerClass] = [];

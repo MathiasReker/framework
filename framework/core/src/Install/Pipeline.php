@@ -48,7 +48,7 @@ class Pipeline
         return $this;
     }
 
-    public function run()
+    public function run(): void
     {
         $this->successfulSteps = new SplStack;
 
@@ -67,7 +67,7 @@ class Pipeline
      * @param callable $factory
      * @throws StepFailed
      */
-    private function runStep(callable $factory)
+    private function runStep(callable $factory): void
     {
         /** @var Step $step */
         $step = $factory();
@@ -86,7 +86,7 @@ class Pipeline
         }
     }
 
-    private function revertReversibleSteps()
+    private function revertReversibleSteps(): void
     {
         foreach ($this->successfulSteps as $step) {
             if ($step instanceof ReversibleStep) {
@@ -97,7 +97,7 @@ class Pipeline
         }
     }
 
-    private function fireCallbacks($event, Step $step)
+    private function fireCallbacks($event, Step $step): void
     {
         if (isset($this->callbacks[$event])) {
             ($this->callbacks[$event])($step);

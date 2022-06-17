@@ -40,12 +40,12 @@ class NotificationMailer
      * @param MailableInterface $blueprint
      * @param User $user
      */
-    public function send(MailableInterface $blueprint, User $user)
+    public function send(MailableInterface $blueprint, User $user): void
     {
         $this->mailer->send(
             $blueprint->getEmailView(),
             compact('blueprint', 'user'),
-            function (Message $message) use ($blueprint, $user) {
+            function (Message $message) use ($blueprint, $user): void {
                 $message->to($user->email, $user->display_name)
                         ->subject($blueprint->getEmailSubject($this->translator));
             }

@@ -48,7 +48,7 @@ class CacheClearCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('cache:clear')

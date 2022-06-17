@@ -37,7 +37,7 @@ class DefaultRouteTest extends TestCase
     /**
      * This is necessary as we need to add the setting to the DB before the app boots.
      */
-    protected function setDefaultRoute($defaultRoute)
+    protected function setDefaultRoute($defaultRoute): void
     {
         OverrideDefaultRouteServiceProvider::$defaultRoute = $defaultRoute;
         $this->extend(
@@ -48,7 +48,7 @@ class DefaultRouteTest extends TestCase
     /**
      * @test
      */
-    public function default_route_payload_includes_discussions()
+    public function default_route_payload_includes_discussions(): void
     {
         $response = $this->send(
             $this->request('GET', '/')
@@ -60,7 +60,7 @@ class DefaultRouteTest extends TestCase
     /**
      * @test
      */
-    public function nonexistent_custom_homepage_uses_default_payload()
+    public function nonexistent_custom_homepage_uses_default_payload(): void
     {
         $this->setDefaultRoute('/nonexistent');
 
@@ -74,7 +74,7 @@ class DefaultRouteTest extends TestCase
     /**
      * @test
      */
-    public function existent_custom_homepage_doesnt_use_default_payload()
+    public function existent_custom_homepage_doesnt_use_default_payload(): void
     {
         $this->setDefaultRoute('/settings');
 
@@ -90,7 +90,7 @@ class OverrideDefaultRouteServiceProvider extends AbstractServiceProvider
 {
     public static $defaultRoute;
 
-    public function register()
+    public function register(): void
     {
         $settings = $this->container->make(SettingsRepositoryInterface::class);
 

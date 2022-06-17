@@ -32,7 +32,7 @@ class ConnectToDatabase implements Step
         return 'Connecting to database';
     }
 
-    public function run()
+    public function run(): void
     {
         $config = $this->dbConfig->toArray();
         $pdo = (new MySqlConnector)->connect($config);

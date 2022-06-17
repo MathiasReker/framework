@@ -21,7 +21,7 @@ class RoutesTest extends TestCase
     /**
      * @test
      */
-    public function custom_route_does_not_exist_by_default()
+    public function custom_route_does_not_exist_by_default(): void
     {
         $response = $this->send(
             $this->request('GET', '/custom')
@@ -33,7 +33,7 @@ class RoutesTest extends TestCase
     /**
      * @test
      */
-    public function custom_route_can_be_added_by_extender()
+    public function custom_route_can_be_added_by_extender(): void
     {
         $this->extend(
             (new Extend\Routes('forum'))
@@ -51,7 +51,7 @@ class RoutesTest extends TestCase
     /**
      * @test
      */
-    public function existing_route_can_be_removed()
+    public function existing_route_can_be_removed(): void
     {
         $this->extend(
             (new Extend\Routes('api'))
@@ -68,7 +68,7 @@ class RoutesTest extends TestCase
     /**
      * @test
      */
-    public function custom_route_can_override_existing_route_if_removed()
+    public function custom_route_can_override_existing_route_if_removed(): void
     {
         $this->extend(
             (new Extend\Routes('api'))

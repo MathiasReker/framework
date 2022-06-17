@@ -329,9 +329,9 @@ class ApiController implements ExtenderInterface
         return $this;
     }
 
-    public function extend(Container $container, Extension $extension = null)
+    public function extend(Container $container, Extension $extension = null): void
     {
-        $this->beforeDataCallbacks[] = function (AbstractSerializeController $controller) use ($container) {
+        $this->beforeDataCallbacks[] = function (AbstractSerializeController $controller) use ($container): void {
             if (isset($this->serializer) && $this->isApplicable($this->serializer[1], $controller, $container)) {
                 $controller->setSerializer($this->serializer[0]);
             }

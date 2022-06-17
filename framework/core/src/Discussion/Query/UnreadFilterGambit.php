@@ -43,7 +43,7 @@ class UnreadFilterGambit extends AbstractRegexGambit implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    protected function conditions(SearchState $search, array $matches, $negate)
+    protected function conditions(SearchState $search, array $matches, $negate): void
     {
         $this->constrain($search->getQuery(), $search->getActor(), $negate);
     }
@@ -53,17 +53,17 @@ class UnreadFilterGambit extends AbstractRegexGambit implements FilterInterface
         return 'unread';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $this->constrain($filterState->getQuery(), $filterState->getActor(), $negate);
     }
 
-    protected function constrain(Builder $query, User $actor, bool $negate)
+    protected function constrain(Builder $query, User $actor, bool $negate): void
     {
         if ($actor->exists) {
             $readIds = $this->discussions->getReadIdsQuery($actor);
 
-            $query->where(function ($query) use ($readIds, $negate, $actor) {
+            $query->where(function ($query) use ($readIds, $negate, $actor): void {
                 if (! $negate) {
                     $query->whereNotIn('id', $readIds)->where('last_posted_at', '>', $actor->marked_all_as_read_at ?: 0);
                 } else {

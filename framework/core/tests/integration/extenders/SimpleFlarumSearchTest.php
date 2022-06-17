@@ -28,7 +28,7 @@ class SimpleFlarumSearchTest extends TestCase
 {
     use RetrievesAuthorizedUsers;
 
-    public function prepDb()
+    public function prepDb(): void
     {
         $this->database()->rollBack();
 
@@ -76,7 +76,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function works_as_expected_with_no_modifications()
+    public function works_as_expected_with_no_modifications(): void
     {
         $this->prepDb();
 
@@ -92,7 +92,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function custom_full_text_gambit_has_effect_if_added()
+    public function custom_full_text_gambit_has_effect_if_added(): void
     {
         $this->extend((new Extend\SimpleFlarumSearch(DiscussionSearcher::class))->setFullTextGambit(NoResultFullTextGambit::class));
 
@@ -102,7 +102,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function custom_filter_gambit_has_effect_if_added()
+    public function custom_filter_gambit_has_effect_if_added(): void
     {
         $this->extend((new Extend\SimpleFlarumSearch(DiscussionSearcher::class))->addGambit(NoResultFilterGambit::class));
 
@@ -117,9 +117,9 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function search_mutator_has_effect_if_added()
+    public function search_mutator_has_effect_if_added(): void
     {
-        $this->extend((new Extend\SimpleFlarumSearch(DiscussionSearcher::class))->addSearchMutator(function ($search, $criteria) {
+        $this->extend((new Extend\SimpleFlarumSearch(DiscussionSearcher::class))->addSearchMutator(function ($search, $criteria): void {
             $search->getquery()->whereRaw('1=0');
         }));
 
@@ -131,7 +131,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function search_mutator_has_effect_if_added_with_invokable_class()
+    public function search_mutator_has_effect_if_added_with_invokable_class(): void
     {
         $this->extend((new Extend\SimpleFlarumSearch(DiscussionSearcher::class))->addSearchMutator(CustomSearchMutator::class));
 
@@ -143,7 +143,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function cant_resolve_custom_searcher_without_fulltext_gambit()
+    public function cant_resolve_custom_searcher_without_fulltext_gambit(): void
     {
         $this->expectException(BindingResolutionException::class);
 
@@ -153,7 +153,7 @@ class SimpleFlarumSearchTest extends TestCase
     /**
      * @test
      */
-    public function can_resolve_custom_searcher_with_fulltext_gambit()
+    public function can_resolve_custom_searcher_with_fulltext_gambit(): void
     {
         $this->extend(
             (new Extend\SimpleFlarumSearch(CustomSearcher::class))->setFullTextGambit(CustomFullTextGambit::class)
@@ -176,7 +176,7 @@ class NoResultFullTextGambit implements GambitInterface
     /**
      * {@inheritdoc}
      */
-    public function apply(SearchState $search, $searchValue)
+    public function apply(SearchState $search, $searchValue): void
     {
         $search->getQuery()
             ->whereRaw('0=1');
@@ -196,7 +196,7 @@ class NoResultFilterGambit extends AbstractRegexGambit
     /**
      * {@inheritdoc}
      */
-    public function conditions(SearchState $search, array $matches, $negate)
+    public function conditions(SearchState $search, array $matches, $negate): void
     {
         $noResults = trim($matches[1], ' ');
         if ($noResults == '1') {
@@ -208,7 +208,7 @@ class NoResultFilterGambit extends AbstractRegexGambit
 
 class CustomSearchMutator
 {
-    public function __invoke($search, $criteria)
+    public function __invoke($search, $criteria): void
     {
         $search->getQuery()->whereRaw('1=0');
     }
@@ -225,7 +225,7 @@ class CustomSearcher extends AbstractSearcher
 
 class CustomFullTextGambit implements GambitInterface
 {
-    public function apply(SearchState $search, $bit)
+    public function apply(SearchState $search, $bit): void
     {
     }
 }

@@ -32,7 +32,7 @@ class ExceptionHandler implements ExceptionHandling
      * @param  Throwable $e
      * @return void
      */
-    public function report(Throwable $e)
+    public function report(Throwable $e): void
     {
         $this->logger->error((string) $e);
     }
@@ -56,7 +56,7 @@ class ExceptionHandler implements ExceptionHandling
      * @param  Throwable                                        $e
      * @return void
      */
-    public function renderForConsole($output, Throwable $e)
+    public function renderForConsole($output, Throwable $e): void
     {
         // TODO: Implement renderForConsole() method.
     }

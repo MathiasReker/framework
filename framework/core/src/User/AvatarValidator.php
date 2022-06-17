@@ -42,7 +42,7 @@ class AvatarValidator extends AbstractValidator
      *
      * @param array $attributes
      */
-    public function assertValid(array $attributes)
+    public function assertValid(array $attributes): void
     {
         $this->laravelValidator = $this->makeValidator($attributes);
 
@@ -51,7 +51,7 @@ class AvatarValidator extends AbstractValidator
         $this->assertFileSize($attributes['avatar']);
     }
 
-    protected function assertFileRequired(UploadedFileInterface $file)
+    protected function assertFileRequired(UploadedFileInterface $file): void
     {
         $error = $file->getError();
 
@@ -68,7 +68,7 @@ class AvatarValidator extends AbstractValidator
         }
     }
 
-    protected function assertFileMimes(UploadedFileInterface $file)
+    protected function assertFileMimes(UploadedFileInterface $file): void
     {
         $allowedTypes = $this->getAllowedTypes();
 
@@ -93,7 +93,7 @@ class AvatarValidator extends AbstractValidator
         }
     }
 
-    protected function assertFileSize(UploadedFileInterface $file)
+    protected function assertFileSize(UploadedFileInterface $file): void
     {
         $maxSize = $this->getMaxSize();
 
@@ -102,7 +102,7 @@ class AvatarValidator extends AbstractValidator
         }
     }
 
-    protected function raise($error, array $parameters = [], $rule = null)
+    protected function raise($error, array $parameters = [], $rule = null): void
     {
         // When we switched to intl ICU message format, the translation parameters
         // have become required to be in the format `{param}`.

@@ -48,7 +48,7 @@ class UpdateTest extends TestCase
         ]);
     }
 
-    protected function giveNormalUsersEditPerms()
+    protected function giveNormalUsersEditPerms(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -62,7 +62,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_see_their_private_information()
+    public function users_can_see_their_private_information(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -79,7 +79,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_not_see_other_users_private_information()
+    public function users_can_not_see_other_users_private_information(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/1', [
@@ -98,7 +98,7 @@ class UpdateTest extends TestCase
      *
      * This tests the generic user.edit permission used for non-credential/group attributes
      */
-    public function users_can_update_own_avatar()
+    public function users_can_update_own_avatar(): void
     {
         $response = $this->send(
             $this->request('DELETE', '/api/users/2/avatar', [
@@ -112,7 +112,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_own_email_if_password_wrong()
+    public function users_cant_update_own_email_if_password_wrong(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -136,7 +136,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_own_email()
+    public function users_can_update_own_email(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -159,7 +159,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_own_username()
+    public function users_cant_update_own_username(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -179,7 +179,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_own_preferences()
+    public function users_can_update_own_preferences(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -201,7 +201,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_own_groups()
+    public function users_cant_update_own_groups(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -225,7 +225,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_marked_all_as_read()
+    public function users_can_update_marked_all_as_read(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -245,7 +245,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_activate_themselves()
+    public function users_cant_activate_themselves(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -267,7 +267,7 @@ class UpdateTest extends TestCase
      *
      * This tests the generic user.edit permission used for non-credential/group attributes
      */
-    public function users_cant_update_others_avatars_without_permission()
+    public function users_cant_update_others_avatars_without_permission(): void
     {
         $response = $this->send(
             $this->request('DELETE', '/api/users/2/avatar', [
@@ -281,7 +281,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_others_emails_without_permission()
+    public function users_cant_update_others_emails_without_permission(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -304,7 +304,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_others_usernames_without_permission()
+    public function users_cant_update_others_usernames_without_permission(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -324,7 +324,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_others_groups_without_permission()
+    public function users_cant_update_others_groups_without_permission(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -348,7 +348,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_activate_others_without_permission()
+    public function users_cant_activate_others_without_permission(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -370,7 +370,7 @@ class UpdateTest extends TestCase
      *
      * This tests the generic user.edit permission used for non-credential/group attributes
      */
-    public function users_can_update_others_avatars_with_permissions()
+    public function users_can_update_others_avatars_with_permissions(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -385,7 +385,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_others_emails_with_permission()
+    public function users_can_update_others_emails_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -406,7 +406,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_others_usernames_with_permission()
+    public function users_can_update_others_usernames_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -427,7 +427,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_admin_emails_with_permission()
+    public function users_cant_update_admin_emails_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -448,7 +448,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_update_admin_usernames_with_permission()
+    public function users_cant_update_admin_usernames_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -469,7 +469,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_can_update_others_groups_with_permission()
+    public function users_can_update_others_groups_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -494,7 +494,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function regular_users_cant_demote_admins_even_with_permission()
+    public function regular_users_cant_demote_admins_even_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -517,7 +517,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function regular_users_cant_promote_others_to_admin_even_with_permission()
+    public function regular_users_cant_promote_others_to_admin_even_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -542,7 +542,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function regular_users_cant_promote_self_to_admin_even_with_permission()
+    public function regular_users_cant_promote_self_to_admin_even_with_permission(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -567,7 +567,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function users_cant_activate_others_even_with_permissions()
+    public function users_cant_activate_others_even_with_permissions(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -588,7 +588,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function admins_cant_update_others_preferences()
+    public function admins_cant_update_others_preferences(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -610,7 +610,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function admins_cant_update_marked_all_as_read()
+    public function admins_cant_update_marked_all_as_read(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -630,7 +630,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function admins_can_activate_others()
+    public function admins_can_activate_others(): void
     {
         $response = $this->send(
             $this->request('PATCH', '/api/users/2', [
@@ -650,7 +650,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function admins_cant_demote_self()
+    public function admins_cant_demote_self(): void
     {
         $this->giveNormalUsersEditPerms();
         $response = $this->send(
@@ -673,7 +673,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function last_seen_not_updated_quickly()
+    public function last_seen_not_updated_quickly(): void
     {
         $this->app();
 
@@ -694,7 +694,7 @@ class UpdateTest extends TestCase
     /**
      * @test
      */
-    public function last_seen_updated_after_long_time()
+    public function last_seen_updated_after_long_time(): void
     {
         $this->app();
 

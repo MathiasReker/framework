@@ -19,7 +19,7 @@ class FormatterServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.formatter', function (Container $container) {
             return new Formatter(

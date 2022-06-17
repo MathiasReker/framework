@@ -20,7 +20,7 @@ class PostTest extends TestCase
     /**
      * @test
      */
-    public function custom_post_type_doesnt_exist_by_default()
+    public function custom_post_type_doesnt_exist_by_default(): void
     {
         $this->assertArrayNotHasKey('customPost', Post::getModels());
     }
@@ -28,7 +28,7 @@ class PostTest extends TestCase
     /**
      * @test
      */
-    public function custom_post_type_exists_if_added()
+    public function custom_post_type_exists_if_added(): void
     {
         $this->extend((new Extend\Post)->type(PostTestCustomPost::class));
 

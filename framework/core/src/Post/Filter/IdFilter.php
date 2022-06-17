@@ -19,7 +19,7 @@ class IdFilter implements FilterInterface
         return 'id';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $idString = trim($filterValue, '"');
         $ids = explode(',', $idString);

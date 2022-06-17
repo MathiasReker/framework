@@ -16,7 +16,7 @@ use InvalidArgumentException;
 class PathsTest extends TestCase
 {
     /** @test */
-    public function it_complains_when_paths_are_missing()
+    public function it_complains_when_paths_are_missing(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -26,7 +26,7 @@ class PathsTest extends TestCase
     }
 
     /** @test */
-    public function it_makes_paths_available_as_properties()
+    public function it_makes_paths_available_as_properties(): void
     {
         $paths = new Paths([
             'base' => '/var/www/flarum',
@@ -40,7 +40,7 @@ class PathsTest extends TestCase
     }
 
     /** @test */
-    public function it_derives_the_vendor_dir_from_the_base_path()
+    public function it_derives_the_vendor_dir_from_the_base_path(): void
     {
         $paths = new Paths([
             'base' => '/var/www/flarum',
@@ -52,7 +52,7 @@ class PathsTest extends TestCase
     }
 
     /** @test */
-    public function it_allows_setting_a_custom_vendor_dir()
+    public function it_allows_setting_a_custom_vendor_dir(): void
     {
         $paths = new Paths([
             'base' => '/var/www/flarum',
@@ -65,7 +65,7 @@ class PathsTest extends TestCase
     }
 
     /** @test */
-    public function it_strips_trailing_forward_slashes_from_paths()
+    public function it_strips_trailing_forward_slashes_from_paths(): void
     {
         $paths = new Paths([
             'base' => '/var/www/flarum/',
@@ -79,7 +79,7 @@ class PathsTest extends TestCase
     }
 
     /** @test */
-    public function it_strips_trailing_backslashes_from_paths()
+    public function it_strips_trailing_backslashes_from_paths(): void
     {
         $paths = new Paths([
             'base' => 'C:\\flarum\\',

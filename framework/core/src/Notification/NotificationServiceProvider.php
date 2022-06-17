@@ -18,7 +18,7 @@ class NotificationServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton('flarum.notification.drivers', function () {
             return [
@@ -37,7 +37,7 @@ class NotificationServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot(Container $container)
+    public function boot(Container $container): void
     {
         $this->setNotificationDrivers($container);
         $this->setNotificationTypes($container);
@@ -46,7 +46,7 @@ class NotificationServiceProvider extends AbstractServiceProvider
     /**
      * Register notification drivers.
      */
-    protected function setNotificationDrivers(Container $container)
+    protected function setNotificationDrivers(Container $container): void
     {
         foreach ($container->make('flarum.notification.drivers') as $driverName => $driver) {
             NotificationSyncer::addNotificationDriver($driverName, $container->make($driver));
@@ -56,7 +56,7 @@ class NotificationServiceProvider extends AbstractServiceProvider
     /**
      * Register notification types.
      */
-    protected function setNotificationTypes(Container $container)
+    protected function setNotificationTypes(Container $container): void
     {
         $blueprints = $container->make('flarum.notification.blueprints');
 
@@ -65,7 +65,7 @@ class NotificationServiceProvider extends AbstractServiceProvider
         }
     }
 
-    protected function addType(string $blueprint, array $driversEnabledByDefault)
+    protected function addType(string $blueprint, array $driversEnabledByDefault): void
     {
         Notification::setSubjectModel(
             $type = $blueprint::getType(),

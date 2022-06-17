@@ -30,12 +30,12 @@ class DefaultSettingsRepository implements SettingsRepositoryInterface
         return $this->inner->get($key, $this->defaults->get($key, $default));
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         $this->inner->set($key, $value);
     }
 
-    public function delete($keyLike)
+    public function delete($keyLike): void
     {
         $this->inner->delete($keyLike);
     }

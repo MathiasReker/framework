@@ -21,7 +21,7 @@ class LocaleServiceProvider extends AbstractServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function register()
+    public function register(): void
     {
         $this->container->singleton(LocaleManager::class, function (Container $container) {
             $locales = new LocaleManager(

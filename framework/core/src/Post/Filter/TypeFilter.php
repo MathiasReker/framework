@@ -19,7 +19,7 @@ class TypeFilter implements FilterInterface
         return 'type';
     }
 
-    public function filter(FilterState $filterState, string $filterValue, bool $negate)
+    public function filter(FilterState $filterState, string $filterValue, bool $negate): void
     {
         $type = trim($filterValue, '"');
 

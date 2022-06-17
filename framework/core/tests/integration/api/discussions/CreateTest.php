@@ -35,7 +35,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function cannot_create_discussion_without_content()
+    public function cannot_create_discussion_without_content(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/discussions', [
@@ -71,7 +71,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function cannot_create_discussion_without_title()
+    public function cannot_create_discussion_without_title(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/discussions', [
@@ -107,7 +107,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_discussion()
+    public function can_create_discussion(): void
     {
         $response = $this->send(
             $this->request('POST', '/api/discussions', [
@@ -136,7 +136,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_discussion_with_current_lang_slug_transliteration()
+    public function can_create_discussion_with_current_lang_slug_transliteration(): void
     {
         // Forum default is traditional Chinese.
         $this->setting('default_locale', 'zh');
@@ -166,7 +166,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function can_create_discussion_with_forum_locale_transliteration()
+    public function can_create_discussion_with_forum_locale_transliteration(): void
     {
         // Forum default is traditional Chinese.
         $this->setting('default_locale', 'zh');
@@ -198,7 +198,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function discussion_creation_limited_by_throttler()
+    public function discussion_creation_limited_by_throttler(): void
     {
         $this->send(
             $this->request('POST', '/api/discussions', [
@@ -234,7 +234,7 @@ class CreateTest extends TestCase
     /**
      * @test
      */
-    public function throttler_doesnt_apply_to_admin()
+    public function throttler_doesnt_apply_to_admin(): void
     {
         $this->send(
             $this->request('POST', '/api/discussions', [

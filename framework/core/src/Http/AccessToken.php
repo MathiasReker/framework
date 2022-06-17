@@ -140,7 +140,7 @@ class AccessToken extends AbstractModel
      * @param Builder $query
      * @param Carbon $date
      */
-    protected static function scopeValid(Builder $query, Carbon $date)
+    protected static function scopeValid(Builder $query, Carbon $date): void
     {
         if (static::$lifetime > 0) {
             $query->where('last_activity_at', '>', $date->clone()->subSeconds(static::$lifetime));
@@ -153,7 +153,7 @@ class AccessToken extends AbstractModel
      * @param Builder $query
      * @param Carbon $date
      */
-    protected static function scopeExpired(Builder $query, Carbon $date)
+    protected static function scopeExpired(Builder $query, Carbon $date): void
     {
         if (static::$lifetime > 0) {
             $query->where('last_activity_at', '<', $date->clone()->subSeconds(static::$lifetime));
@@ -177,15 +177,15 @@ class AccessToken extends AbstractModel
      * @param Builder $query
      * @param Carbon|null $date
      */
-    public function scopeWhereValid(Builder $query, Carbon $date = null)
+    public function scopeWhereValid(Builder $query, Carbon $date = null): void
     {
         if (is_null($date)) {
             $date = Carbon::now();
         }
 
-        $query->where(function (Builder $query) use ($date) {
+        $query->where(function (Builder $query) use ($date): void {
             foreach ($this->getModels() as $model) {
-                $query->orWhere(function (Builder $query) use ($model, $date) {
+                $query->orWhere(function (Builder $query) use ($model, $date): void {
                     $query->where('type', $model::$type);
                     $model::scopeValid($query, $date);
                 });
@@ -198,15 +198,15 @@ class AccessToken extends AbstractModel
      * @param Builder $query
      * @param Carbon|null $date
      */
-    public function scopeWhereExpired(Builder $query, Carbon $date = null)
+    public function scopeWhereExpired(Builder $query, Carbon $date = null): void
     {
         if (is_null($date)) {
             $date = Carbon::now();
         }
 
-        $query->where(function (Builder $query) use ($date) {
+        $query->where(function (Builder $query) use ($date): void {
             foreach ($this->getModels() as $model) {
-                $query->orWhere(function (Builder $query) use ($model, $date) {
+                $query->orWhere(function (Builder $query) use ($model, $date): void {
                     $query->where('type', $model::$type);
                     $model::scopeExpired($query, $date);
                 });
@@ -258,7 +258,7 @@ class AccessToken extends AbstractModel
      * @param string $model The class name of the model for that type.
      * @return void
      */
-    public static function setModel(string $type, string $model)
+    public static function setModel(string $type, string $model): void
     {
         static::$models[$type] = $model;
     }

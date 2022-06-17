@@ -28,7 +28,7 @@ class ToggleExtensionHandler
      * @throws \Flarum\Extension\Exception\MissingDependenciesException
      * @throws \Flarum\Extension\Exception\DependentExtensionsException
      */
-    public function handle(ToggleExtension $command)
+    public function handle(ToggleExtension $command): void
     {
         $command->actor->assertAdmin();
 

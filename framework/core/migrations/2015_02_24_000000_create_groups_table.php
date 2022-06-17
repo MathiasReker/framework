@@ -12,7 +12,7 @@ use Illuminate\Database\Schema\Blueprint;
 
 return Migration::createTable(
     'groups',
-    function (Blueprint $table) {
+    function (Blueprint $table): void {
         $table->increments('id');
         $table->string('name_singular', 100);
         $table->string('name_plural', 100);

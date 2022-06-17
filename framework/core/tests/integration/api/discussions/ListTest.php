@@ -48,7 +48,7 @@ class ListTest extends TestCase
     /**
      * Mark some discussions, but not others, as read to test that filter/gambit.
      */
-    protected function read()
+    protected function read(): void
     {
         $user = User::find(2);
         $user->marked_all_as_read_at = Carbon::createFromDate(1990, 0, 0)->toDateTimeString();
@@ -58,7 +58,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function shows_index_for_guest()
+    public function shows_index_for_guest(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -73,7 +73,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function author_filter_works()
+    public function author_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -92,7 +92,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function author_filter_works_negated()
+    public function author_filter_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -111,7 +111,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_filter_works_with_date()
+    public function created_filter_works_with_date(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -130,7 +130,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_filter_works_negated_with_date()
+    public function created_filter_works_negated_with_date(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -149,7 +149,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_filter_works_with_range()
+    public function created_filter_works_with_range(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -168,7 +168,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_filter_works_negated_with_range()
+    public function created_filter_works_negated_with_range(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -187,7 +187,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function hidden_filter_works()
+    public function hidden_filter_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', ['authenticatedAs' => 1])
@@ -206,7 +206,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function hidden_filter_works_negated()
+    public function hidden_filter_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', ['authenticatedAs' => 1])
@@ -225,7 +225,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function unread_filter_works()
+    public function unread_filter_works(): void
     {
         $this->app();
         $this->read();
@@ -247,7 +247,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function unread_filter_works_when_negated()
+    public function unread_filter_works_when_negated(): void
     {
         $this->app();
         $this->read();
@@ -269,7 +269,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function author_gambit_works()
+    public function author_gambit_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -288,7 +288,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function author_gambit_works_negated()
+    public function author_gambit_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -307,7 +307,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_gambit_works_with_date()
+    public function created_gambit_works_with_date(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -326,7 +326,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_gambit_works_negated_with_date()
+    public function created_gambit_works_negated_with_date(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -345,7 +345,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_gambit_works_with_range()
+    public function created_gambit_works_with_range(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -364,7 +364,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function created_gambit_works_negated_with_range()
+    public function created_gambit_works_negated_with_range(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions')
@@ -383,7 +383,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function hidden_gambit_works()
+    public function hidden_gambit_works(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', ['authenticatedAs' => 1])
@@ -402,7 +402,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function hidden_gambit_works_negated()
+    public function hidden_gambit_works_negated(): void
     {
         $response = $this->send(
             $this->request('GET', '/api/discussions', ['authenticatedAs' => 1])
@@ -421,7 +421,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function unread_gambit_works()
+    public function unread_gambit_works(): void
     {
         $this->app();
         $this->read();
@@ -443,7 +443,7 @@ class ListTest extends TestCase
     /**
      * @test
      */
-    public function unread_gambit_works_when_negated()
+    public function unread_gambit_works_when_negated(): void
     {
         $this->app();
         $this->read();

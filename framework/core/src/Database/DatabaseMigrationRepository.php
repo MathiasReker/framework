@@ -61,7 +61,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
      * @param string $extension
      * @return void
      */
-    public function log($file, $extension = null)
+    public function log($file, $extension = null): void
     {
         $record = ['migration' => $file, 'extension' => $extension];
 
@@ -75,7 +75,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
      * @param string $extension
      * @return void
      */
-    public function delete($file, $extension = null)
+    public function delete($file, $extension = null): void
     {
         $query = $this->table()->where('migration', $file);
 

@@ -30,7 +30,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function disallows_group_filter_for_user_without_permission()
+    public function disallows_group_filter_for_user_without_permission(): void
     {
         $response = $this->createRequest(['admin']);
 
@@ -40,7 +40,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function allows_group_filter_for_admin()
+    public function allows_group_filter_for_admin(): void
     {
         $response = $this->createRequest(['admin'], 1);
 
@@ -50,7 +50,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function allows_group_filter_for_user_with_permission()
+    public function allows_group_filter_for_user_with_permission(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -65,7 +65,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function non_admin_gets_correct_results()
+    public function non_admin_gets_correct_results(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -116,7 +116,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function non_admin_cannot_see_hidden_groups()
+    public function non_admin_cannot_see_hidden_groups(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -135,7 +135,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function non_admin_can_select_multiple_groups_but_not_hidden()
+    public function non_admin_can_select_multiple_groups_but_not_hidden(): void
     {
         $this->prepareDatabase([
             'group_permission' => [
@@ -156,7 +156,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function admin_gets_correct_results_group()
+    public function admin_gets_correct_results_group(): void
     {
         $response = $this->createRequest(['admin'], 1);
         $responseBodyContents = json_decode($response->getBody()->getContents());
@@ -201,7 +201,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_see_hidden_groups()
+    public function admin_can_see_hidden_groups(): void
     {
         $this->createHiddenUser();
         $response = $this->createRequest(['99'], 1);
@@ -215,7 +215,7 @@ class GroupSearchTest extends TestCase
     /**
      * @test
      */
-    public function admin_can_select_multiple_groups_and_hidden()
+    public function admin_can_select_multiple_groups_and_hidden(): void
     {
         $this->createMultipleUsersAndGroups();
         $this->createHiddenUser();
@@ -240,7 +240,7 @@ class GroupSearchTest extends TestCase
         );
     }
 
-    private function createMultipleUsersAndGroups()
+    private function createMultipleUsersAndGroups(): void
     {
         $this->prepareDatabase([
             'users' => [
@@ -297,7 +297,7 @@ class GroupSearchTest extends TestCase
         ]);
     }
 
-    private function createHiddenUser()
+    private function createHiddenUser(): void
     {
         $this->prepareDatabase([
             'users' => [

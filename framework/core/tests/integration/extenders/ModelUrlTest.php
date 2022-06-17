@@ -42,7 +42,7 @@ class ModelUrlTest extends TestCase
     /**
      * @test
      */
-    public function uses_default_driver_by_default()
+    public function uses_default_driver_by_default(): void
     {
         $slugManager = $this->app()->getContainer()->make(SlugManager::class);
 
@@ -55,7 +55,7 @@ class ModelUrlTest extends TestCase
     /**
      * @test
      */
-    public function custom_slug_driver_has_effect_if_added()
+    public function custom_slug_driver_has_effect_if_added(): void
     {
         $this->extend((new Extend\ModelUrl(User::class))->addSlugDriver('testDriver', TestSlugDriver::class));
 

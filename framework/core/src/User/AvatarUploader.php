@@ -30,7 +30,7 @@ class AvatarUploader
      * @param User $user
      * @param Image $image
      */
-    public function upload(User $user, Image $image)
+    public function upload(User $user, Image $image): void
     {
         if (extension_loaded('exif')) {
             $image->orientate();
@@ -51,7 +51,7 @@ class AvatarUploader
      * We don't place this in remove() because otherwise we would call changeAvatarPath 2 times when uploading.
      * @param User $user
      */
-    protected function removeFileAfterSave(User $user)
+    protected function removeFileAfterSave(User $user): void
     {
         $avatarPath = $user->getRawOriginal('avatar_url');
 
@@ -60,7 +60,7 @@ class AvatarUploader
             return;
         }
 
-        $user->afterSave(function () use ($avatarPath) {
+        $user->afterSave(function () use ($avatarPath): void {
             if ($this->uploadDir->exists($avatarPath)) {
                 $this->uploadDir->delete($avatarPath);
             }
@@ -70,7 +70,7 @@ class AvatarUploader
     /**
      * @param User $user
      */
-    public function remove(User $user)
+    public function remove(User $user): void
     {
         $this->removeFileAfterSave($user);
 

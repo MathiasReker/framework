@@ -37,7 +37,7 @@ class InstallCommand extends AbstractCommand
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('install')
@@ -59,7 +59,7 @@ class InstallCommand extends AbstractCommand
     /**
      * {@inheritdoc}
      */
-    protected function fire()
+    protected function fire(): void
     {
         $this->init();
 
@@ -76,7 +76,7 @@ class InstallCommand extends AbstractCommand
         }
     }
 
-    protected function init()
+    protected function init(): void
     {
         if ($this->input->getOption('file')) {
             $this->dataSource = new FileDataProvider($this->input);
@@ -85,7 +85,7 @@ class InstallCommand extends AbstractCommand
         }
     }
 
-    protected function install()
+    protected function install(): void
     {
         $pipeline = $this->dataSource->configure(
             $this->installation->configPath($this->input->getOption('config'))
@@ -94,23 +94,23 @@ class InstallCommand extends AbstractCommand
         $this->runPipeline($pipeline);
     }
 
-    private function runPipeline(Pipeline $pipeline)
+    private function runPipeline(Pipeline $pipeline): void
     {
         $pipeline
-            ->on('start', function (Step $step) {
+            ->on('start', function (Step $step): void {
                 $this->output->write($step->getMessage().'...');
-            })->on('end', function () {
+            })->on('end', function (): void {
                 $this->output->write("<info>done</info>\n");
-            })->on('fail', function () {
+            })->on('fail', function (): void {
                 $this->output->write("<error>failed</error>\n");
                 $this->output->writeln('Rolling back...');
-            })->on('rollback', function (Step $step) {
+            })->on('rollback', function (Step $step): void {
                 $this->output->writeln($step->getMessage().' (rollback)');
             })
             ->run();
     }
 
-    protected function showProblems($problems)
+    protected function showProblems($problems): void
     {
         $this->output->writeln(
             '<error>Please fix the following problems before we can continue with the installation.</error>'

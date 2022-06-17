@@ -21,12 +21,12 @@ class UninstalledSettingsRepository implements SettingsRepositoryInterface
         return $default;
     }
 
-    public function set($key, $value)
+    public function set($key, $value): void
     {
         // Do nothing
     }
 
-    public function delete($keyLike)
+    public function delete($keyLike): void
     {
         // Do nothing
     }

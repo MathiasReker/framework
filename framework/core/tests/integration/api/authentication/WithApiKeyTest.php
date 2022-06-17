@@ -39,7 +39,7 @@ class WithApiKeyTest extends TestCase
     /**
      * @test
      */
-    public function cannot_authorize_without_key()
+    public function cannot_authorize_without_key(): void
     {
         $response = $this->send(
             $this->request('GET', '/api')
@@ -52,7 +52,7 @@ class WithApiKeyTest extends TestCase
     /**
      * @test
      */
-    public function master_token_can_authenticate_as_anyone()
+    public function master_token_can_authenticate_as_anyone(): void
     {
         $response = $this->send(
             $this->request('GET', '/api')
@@ -71,7 +71,7 @@ class WithApiKeyTest extends TestCase
     /**
      * @test
      */
-    public function personal_api_token_cannot_authenticate_as_anyone()
+    public function personal_api_token_cannot_authenticate_as_anyone(): void
     {
         $response = $this->send(
             $this->request('GET', '/api')
@@ -90,7 +90,7 @@ class WithApiKeyTest extends TestCase
     /**
      * @test
      */
-    public function personal_api_token_authenticates_user()
+    public function personal_api_token_authenticates_user(): void
     {
         $response = $this->send(
             $this->request('GET', '/api')

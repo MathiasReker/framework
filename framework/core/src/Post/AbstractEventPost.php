@@ -30,7 +30,7 @@ abstract class AbstractEventPost extends Post
      *
      * @param string $value
      */
-    public function setContentAttribute($value)
+    public function setContentAttribute($value): void
     {
         $this->attributes['content'] = json_encode($value);
     }

@@ -17,7 +17,7 @@ use RuntimeException;
 class ConfigTest extends TestCase
 {
     /** @test */
-    public function it_complains_when_base_url_is_missing()
+    public function it_complains_when_base_url_is_missing(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -25,7 +25,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_wraps_base_url_in_value_object()
+    public function it_wraps_base_url_in_value_object(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost/myforum/',
@@ -38,7 +38,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_helper_for_debug_mode()
+    public function it_has_a_helper_for_debug_mode(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -56,7 +56,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_turns_off_debug_mode_by_default()
+    public function it_turns_off_debug_mode_by_default(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -66,7 +66,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_helper_for_maintenance_mode()
+    public function it_has_a_helper_for_maintenance_mode(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -84,7 +84,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_turns_off_maintenance_mode_by_default()
+    public function it_turns_off_maintenance_mode_by_default(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -94,7 +94,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_exposes_additional_keys_via_array_access()
+    public function it_exposes_additional_keys_via_array_access(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -105,7 +105,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_exposes_nested_keys_via_dot_syntax()
+    public function it_exposes_nested_keys_via_dot_syntax(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -120,7 +120,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_does_not_allow_mutation_via_array_access()
+    public function it_does_not_allow_mutation_via_array_access(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',
@@ -137,7 +137,7 @@ class ConfigTest extends TestCase
     }
 
     /** @test */
-    public function it_does_not_allow_removal_via_array_access()
+    public function it_does_not_allow_removal_via_array_access(): void
     {
         $config = new Config([
             'url' => 'https://flarum.localhost',

@@ -53,7 +53,7 @@ class AccountActivationMailer
         $this->translator = $translator;
     }
 
-    public function handle(Registered $event)
+    public function handle(Registered $event): void
     {
         $user = $event->user;
 

@@ -37,7 +37,7 @@ class SendTestMailController implements RequestHandlerInterface
 
         $body = $this->translator->trans('core.email.send_test.body', ['username' => $actor->username]);
 
-        $this->mailer->raw($body, function (Message $message) use ($actor) {
+        $this->mailer->raw($body, function (Message $message) use ($actor): void {
             $message->to($actor->email);
             $message->subject($this->translator->trans('core.email.send_test.subject'));
         });

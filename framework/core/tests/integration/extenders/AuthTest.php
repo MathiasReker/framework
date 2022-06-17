@@ -21,7 +21,7 @@ class AuthTest extends TestCase
     /**
      * @test
      */
-    public function standard_password_works_by_default()
+    public function standard_password_works_by_default(): void
     {
         $this->app();
 
@@ -33,7 +33,7 @@ class AuthTest extends TestCase
     /**
      * @test
      */
-    public function standard_password_can_be_disabled()
+    public function standard_password_can_be_disabled(): void
     {
         $this->extend(
             (new Extend\Auth)
@@ -50,7 +50,7 @@ class AuthTest extends TestCase
     /**
      * @test
      */
-    public function custom_checker_can_be_added()
+    public function custom_checker_can_be_added(): void
     {
         $this->extend(
             (new Extend\Auth)
@@ -68,7 +68,7 @@ class AuthTest extends TestCase
     /**
      * @test
      */
-    public function false_checker_overrides_true()
+    public function false_checker_overrides_true(): void
     {
         $this->extend(
             (new Extend\Auth)

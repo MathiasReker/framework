@@ -33,7 +33,7 @@ class DeleteUserController extends AbstractDeleteController
     /**
      * {@inheritdoc}
      */
-    protected function delete(ServerRequestInterface $request)
+    protected function delete(ServerRequestInterface $request): void
     {
         $this->bus->dispatch(
             new DeleteUser(Arr::get($request->getQueryParams(), 'id'), RequestUtil::getActor($request))

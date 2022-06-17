@@ -36,28 +36,28 @@ class AbstractPolicyTest extends TestCase
         m::close();
     }
 
-    public function test_policy_can_be_called_with_object()
+    public function test_policy_can_be_called_with_object(): void
     {
         $allowed = $this->policy->checkAbility(new User(), 'create', new User());
 
         $this->assertEquals(AbstractPolicy::ALLOW, $allowed);
     }
 
-    public function test_policy_can_be_called_with_class()
+    public function test_policy_can_be_called_with_class(): void
     {
         $allowed = $this->policy->checkAbility(new User(), 'edit', User::class);
 
         $this->assertEquals(AbstractPolicy::DENY, $allowed);
     }
 
-    public function test_policy_converts_true_to_ALLOW()
+    public function test_policy_converts_true_to_ALLOW(): void
     {
         $allowed = $this->policy->checkAbility(new User(), 'somethingRandom', User::class);
 
         $this->assertEquals(AbstractPolicy::ALLOW, $allowed);
     }
 
-    public function test_policy_converts_false_to_DENY()
+    public function test_policy_converts_false_to_DENY(): void
     {
         $allowed = $this->policy->checkAbility(new User(), 'somethingElseRandom', User::class);
 

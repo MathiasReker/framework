@@ -108,7 +108,7 @@ class ListNotificationsController extends AbstractListController
     /**
      * @param \Flarum\Notification\Notification[] $notifications
      */
-    private function loadSubjectDiscussions(array $notifications)
+    private function loadSubjectDiscussions(array $notifications): void
     {
         $ids = [];
 
